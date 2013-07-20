@@ -1,0 +1,179 @@
+var NappDrawerModule = require('dk.napp.drawer');
+
+function createAPIExampleWindow(){
+	var win = Ti.UI.createWindow();
+	
+	var data = [
+		{title: "Toggle shadow"},
+		{title: "Toggle stretch drawer"},
+		{title: "Close"}	
+	];
+	
+	var tableView = Ti.UI.createTableView({
+		data:data
+	});
+	
+	tableView.addEventListener("click", function(e){
+		Ti.API.info("isLeftWindowOpen: " + drawer.isLeftWindowOpen());
+		switch(e.index){
+			case 0:
+				drawer.setShowShadow(!drawer.showShadow);
+				break;
+			case 1:
+				drawer.setShouldStretchDrawer(!drawer.shouldStretchDrawer);
+				break;
+			case 2:
+				drawer.toggleLeftWindow();
+				break;
+		}
+		setTimeout(function(){
+			Ti.API.info("isLeftWindowOpen: " + drawer.isLeftWindowOpen());
+		}, 500);
+	});
+	
+	win.add(tableView);
+	return win;
+}
+
+
+function createCenterNavWindow(){	
+	var leftBtn = Ti.UI.createButton({title:"Left"});
+	leftBtn.addEventListener("click", function(){
+		drawer.toggleLeftWindow();
+	});
+	var rightBtn = Ti.UI.createButton({title:"Right"});
+	rightBtn.addEventListener("click", function(){
+		drawer.toggleRightWindow();
+	});
+	
+	var win = Ti.UI.createWindow({
+		backgroundColor:'#eee',
+		title:"Drawer Controller",
+		barColor:"#000",
+		leftNavButton: leftBtn,
+		rightNavButton: rightBtn
+	});
+	
+	var bounceBtn = Ti.UI.createButton({
+		top:20,
+		width:300,
+		title:"Bounce Right Window"
+	});
+	bounceBtn.addEventListener("click", function(){
+		drawer.bounceRightWindow();
+	});
+	win.add(bounceBtn);
+	
+	
+	var closeGestureMode = 1;
+	var closeGestureModeBtn = Ti.UI.createButton({
+		title:"closeGestureMode: ALL", 
+		width:300,
+		top:80
+	});
+	closeGestureModeBtn.addEventListener("click", function(e){
+		if(closeGestureMode == 2){
+			closeGestureMode = 0;
+		} else {
+			closeGestureMode++;
+		}
+		switch(closeGestureMode){
+			case 0:
+				drawer.setCloseDrawerGestureMode(NappDrawerModule.CLOSE_MODE_TAP_CENTERWINDOW);
+				closeGestureModeBtn.setTitle("closeGesture: Tap Center");
+				break;
+			case 1:
+				drawer.setCloseDrawerGestureMode(NappDrawerModule.CLOSE_MODE_ALL);
+				closeGestureModeBtn.setTitle("closeGesture: ALL");
+				break;
+			case 2:
+				drawer.setCloseDrawerGestureMode(NappDrawerModule.CLOSE_MODE_PANNING_NAVBAR);
+				closeGestureModeBtn.setTitle("closeGesture: NAVBAR");
+				break;
+		}
+	});
+	win.add(closeGestureModeBtn);
+	
+	
+	var animationMode = 0;
+	var animationModeBtn = Ti.UI.createButton({
+		title:"animation: NONE", 
+		width:300,
+		top:140
+	});
+	animationModeBtn.addEventListener("click", function(e){
+		if(animationMode == 5){
+			animationMode = 0;
+		} else {
+			animationMode++;
+		}
+		switch(animationMode){
+			case 0:
+				drawer.setAnimationMode(NappDrawerModule.ANIMATION_NONE);
+				animationModeBtn.setTitle("animation: None");
+				break;
+			case 1:
+				drawer.setAnimationMode(NappDrawerModule.ANIMATION_PARALLAX_FACTOR_3);
+				animationModeBtn.setTitle("animation: Parallax factor 3");
+				break;
+			case 2:
+				drawer.setAnimationMode(NappDrawerModule.ANIMATION_PARALLAX_FACTOR_7);
+				animationModeBtn.setTitle("animation: Parallax factor 7");
+				break;
+			case 3:
+				drawer.setAnimationMode(NappDrawerModule.ANIMATION_FADE);
+				animationModeBtn.setTitle("animation: Fade");
+				break;
+			case 4:
+				drawer.setAnimationMode(NappDrawerModule.ANIMATION_SLIDE);
+				animationModeBtn.setTitle("animation: Slide");
+				break;
+			case 5:
+				drawer.setAnimationMode(NappDrawerModule.ANIMATION_SLIDE_SCALE);
+				animationModeBtn.setTitle("animation: Slide & Scale");
+				break;
+		}
+	});
+	win.add(animationModeBtn);
+	
+	
+	var slider = Ti.UI.createSlider({
+		top: 280,
+	    min: 50,
+	    max: 280,
+	    width: 280,
+	    value: 200
+	});
+	var label = Ti.UI.createLabel({
+	    text: "Left Drawer Width: " + slider.value,
+	    top: 250
+    });
+	slider.addEventListener('touchend', function(e) {
+		var value = Math.round(e.value);
+		label.setText("Left Drawer Width: " + value);
+	    drawer.setLeftDrawerWidth(value);
+	});
+	win.add(label);
+	win.add(slider);
+
+	// NAV controller
+	var navController = Ti.UI.iPhone.createNavigationGroup({
+		window : win
+	});
+	return navController;
+}
+
+
+var drawer = NappDrawerModule.createDrawer({
+	leftWindow: createAPIExampleWindow(),
+	centerWindow: createCenterNavWindow(),
+	//rightWindow: Ti.UI.createWindow({backgroundColor:"blue"}),
+	closeDrawerGestureMode: NappDrawerModule.CLOSE_MODE_ALL,
+	openDrawerGestureMode: NappDrawerModule.OPEN_MODE_ALL,
+	leftDrawerWidth: 200,
+	//rightDrawerWidth: 220
+});
+
+drawer.open();
+
+Ti.API.info("isAnyWindowOpen: " + drawer.isAnyWindowOpen());
