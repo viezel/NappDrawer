@@ -186,6 +186,9 @@ mainWindow. isAnyWindowOpen();
 
 ## Changelog
 
+* v1.0.2
+  * Added animations. `animationMode`
+
 * v1.0.1
   * Added `isAnyWindowOpen`, `isLeftWindowOpen`, `isRightWindowOpen` methods
 
