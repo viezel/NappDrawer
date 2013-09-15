@@ -5,12 +5,12 @@
 The Napp Drawer module extends the Appcelerator Titanium Mobile framework. 
 The module is licensed under the MIT license.
 
-There are **some minor platform parity differences** in this module. iOS version uses Windows whereas Android uses views. 
+There are **some minor platform parity differences** in this module. iOS version uses Windows whereas Android uses views. The android version still uses the same properties even though its views rather than windows, e.g. `isAnyWindowOpen()` is the exact same method call on each platform. 
 
 
-### Get the module
+### Community Driven
 
-**Find the newest version in the dist folder**
+I encourage everyone to send Pull Requests - keeping this module flying with new features.
 
 
 ## Author
