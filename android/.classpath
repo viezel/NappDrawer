@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<classpath>
+	<classpathentry kind="src" path="src"/>
+	<classpathentry kind="src" path="build/.apt_generated"/>
+	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER"/>
+	<classpathentry kind="lib" path="/Volumes/DATA/Titanium/androidsdk/platforms/android-8/android.jar"/>
+	<classpathentry kind="lib" path="/Volumes/DATA/Titanium/androidsdk/tools/support/annotations.jar"/>
+	<classpathentry kind="lib" path="/Volumes/DATA/Titanium/androidsdk/extras/android/support/v13/android-support-v13.jar"/>
+	<classpathentry kind="lib" path="/Users/napp/Library/Application Support/Titanium/mobilesdk/osx/3.1.2.GA/android/kroll-apt.jar"/>
+	<classpathentry kind="lib" path="/Users/napp/Library/Application Support/Titanium/mobilesdk/osx/3.1.2.GA/android/kroll-common.jar"/>
+	<classpathentry kind="lib" path="/Users/napp/Library/Application Support/Titanium/mobilesdk/osx/3.1.2.GA/android/titanium.jar"/>
+	<classpathentry kind="lib" path="/Users/napp/Library/Application Support/Titanium/mobilesdk/osx/3.1.2.GA/android/modules/titanium-ui.jar"/>
+	<classpathentry kind="output" path="bin"/>
+</classpath>
