@@ -48,6 +48,30 @@ UINavigationController * NavigationControllerForViewProxy(TiUIiPhoneNavigationGr
 	return self.controller;
 }
 
+// TODO
+- (void)orientationChanged:(NSNotification *)notification
+{
+    NSLog(@"proxy orientationChanged");
+    UIDeviceOrientation deviceOrientation = [UIDevice currentDevice].orientation;
+    if (UIDeviceOrientationIsLandscape(deviceOrientation))
+    {
+        // landscape code here
+    }
+    else if (UIDeviceOrientationIsPortrait(deviceOrientation))
+    {
+        // portrait code here
+        
+    }
+    
+    if(controller != nil){
+        // Method 2: layout !
+        [[[self controller] view] layoutSubviews];
+        
+        // Method 3: Force redraw
+        [[[self controller] view] setNeedsDisplay];
+    }
+}
+
 -(MMDrawerController*)controller
 {
 	if (controller==nil)
@@ -117,6 +141,14 @@ UINavigationController * NavigationControllerForViewProxy(TiUIiPhoneNavigationGr
         UIView * controllerView = [controller view];
         [controllerView setFrame:[self bounds]];
         [self addSubview:controllerView];
+        
+        
+        // orientation
+        [[UIDevice currentDevice] beginGeneratingDeviceOrientationNotifications];
+        [[NSNotificationCenter defaultCenter] addObserver:self
+                                                 selector:@selector(orientationChanged:)
+                                                     name:UIDeviceOrientationDidChangeNotification
+                                                   object:nil];
         
         
 	}

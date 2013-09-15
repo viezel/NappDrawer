@@ -186,6 +186,7 @@ mainWindow. isAnyWindowOpen();
 
 ## Changelog
 
+
 * v1.0.2
   * Added animations. `animationMode`
 

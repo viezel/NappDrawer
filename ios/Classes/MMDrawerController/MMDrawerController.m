@@ -39,7 +39,7 @@ CGFloat const MMDrawerDefaultShadowOpacity = 0.8;
 
 NSTimeInterval const MMDrawerMinimumAnimationDuration = 0.15f;
 
-CGFloat const MMDrawerBezelRange = 20.0f;
+CGFloat const MMDrawerBezelRange = 80.0f;
 
 CGFloat const MMDrawerPanVelocityXAnimationThreshold = 200.0f;
 

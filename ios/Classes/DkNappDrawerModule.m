@@ -64,14 +64,18 @@ MAKE_SYSTEM_PROP(ANIMATION_NONE,                        100);
 
 #pragma mark Lifecycle
 
--(void)startup
+-(void)startup  // module class startup method
 {
-	// this method is called when the module is first loaded
+    // this method is called when the module is first loaded
 	// you *must* call the superclass
-	[super startup];
-	
-	NSLog(@"[INFO] %@ loaded",self);
+    [super startup];
+    NSLog(@"[INFO] %@ loaded",self);
 }
+ 
+
+
+
+ 
 
 -(void)shutdown:(id)sender
 {

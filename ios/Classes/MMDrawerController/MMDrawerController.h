@@ -145,6 +145,12 @@ typedef void (^MMDrawerControllerDrawerVisualStateBlock)(MMDrawerController * dr
 @property (nonatomic, assign, readonly) CGFloat visibleRightDrawerWidth;
 
 /**
+ Napp: `drawerBezelRange`.
+ */
+@property (nonatomic, assign) CGFloat drawerBezelRange;
+
+
+/**
  The animation velocity of the open and close methods, measured in points per second.
  
  By default, this is set to 840 points per second (three times the default drawer width), meaning it takes 1/3 of a second for the `centerViewController` to open/close across the default drawer width. Note that there is a minimum .1 second duration for built in animations, to account for small distance animations.
