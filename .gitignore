@@ -1,8 +1,2 @@
 .DS_Store
 tmp
-bin
-build
-*.plist
-*.xcuserstate
-*.xcscheme
-*.xcuserdatad
