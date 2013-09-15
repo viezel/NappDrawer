@@ -119,14 +119,6 @@ mainWindow.setAnimationMode(NappDrawerModule.ANIMATION_SLIDEUP);
 | ANIMATION_ZOOM | Zoom animation. | 
 | ANIMATION_SCALE | The side view will scale. | 
 
-### AnimationVelocity
-
-The animation velocity of the open and close methods, measured in points per second.
-By default, this is set to 840 points per second (three times the default drawer width), meaning it takes 1/3 of a second for the `Window` to open/close across the default drawer width. Note that there is a minimum .1 second duration for built in animations, to account for small distance animations.
-
-```javascript
-mainWindow.setAnimationVelocity(400);
-```
 
 ### ShadowWidth
 
