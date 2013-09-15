@@ -8,7 +8,7 @@ The module is licensed under the MIT license.
 Thanks to *Jeremy Feinstein* for his work with this repo: https://github.com/jfeinstein10/SlidingMenu and a special thanks to *Martin Guillon* for helping me out.
 
 
-### NOTICE: The below API method calls are often called something with window. The is only to keep parity with the iOS version of this module. Please remember that this Android version uses views and not windows.**
+### NOTICE: The below API method calls are often called something with window. The is only to keep parity with the iOS version of this module. Please remember that this Android version uses views and not windows.
 
 
 ## Get the module
