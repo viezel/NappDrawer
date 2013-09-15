@@ -137,6 +137,23 @@ mainWindow.setShadowWidth("40dp");
 ```
 
 
+### ParallaxAmount
+
+Parallax is the amount of parallax between the centerView and a sideView animation. Set a value between 0 and 1. Its a very cool effect. Play with the slider in the example code to see the effect!
+
+```javascript
+mainWindow.setParallaxAmount(0.3);
+```
+
+### Fading
+
+Use this property if you want the sideView drawer to fade in and out while entering/leaving the screen. The fade degree is between 0.0 and 1.0.
+
+```javascript
+mainWindow.setFading(0.3);
+```
+
+
 ## API Methods
 
 ### toggleLeftWindow, toggleRightWindow

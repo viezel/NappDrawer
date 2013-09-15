@@ -454,6 +454,11 @@ public class DrawerProxy extends TiWindowProxy implements TiActivityWindow
 		menu.setBehindScrollScale(TiConvert.toFloat(value));
 	}
 	
+	@Kroll.method @Kroll.setProperty
+	public void setFading(Object arg){
+		setPropertyAndFire(Drawer.PROPERTY_FADING, arg);
+	}
+	
 	// window setters..
 	@Kroll.method @Kroll.setProperty
 	public void setLeftWindow(Object arg){
