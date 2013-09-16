@@ -7,6 +7,9 @@ The module is licensed under the MIT license.
 
 There are **some minor platform parity differences** in this module. iOS version uses Windows whereas Android uses views. The android version still uses the same properties even though its views rather than windows, e.g. `isAnyWindowOpen()` is the exact same method call on each platform. 
 
+### Demo Video
+
+[![IMAGE ALT TEXT HERE](http://img.youtube.com/vi/VfuGr4VsWjw/0.jpg)](http://www.youtube.com/watch?v=VfuGr4VsWjw)
 
 ### Community Driven
 
