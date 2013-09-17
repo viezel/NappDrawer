@@ -2,7 +2,7 @@
 # this is your module manifest and used by Titanium
 # during compilation, packaging, distribution, etc.
 #
-version: 1.0.2
+version: 1.0.3
 apiversion: 2
 description: Drawer controller
 author: Mads Møller
