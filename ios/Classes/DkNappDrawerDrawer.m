@@ -130,6 +130,14 @@ UINavigationController * NavigationControllerForViewProxy(TiUIiPhoneNavigationGr
         if([self.proxy valueForUndefinedKey:@"centerHiddenInteractionMode"] != nil){
             [self setCenterHiddenInteractionMode_:[self.proxy valueForUndefinedKey:@"centerHiddenInteractionMode"]];
         }
+        
+        if([self.proxy valueForUndefinedKey:@"showShadow"] != nil){
+            
+            [self setShowShadow_:[self.proxy valueForUndefinedKey:@"showShadow"]];
+            
+            //[self setCenterHiddenInteractionMode_:[self.proxy valueForUndefinedKey:@"centerHiddenInteractionMode"]];
+        }
+        
         /*
         if([self.proxy valueForUndefinedKey:@"animationMode"] != nil){
             [self setAnimationMode_:[self.proxy valueForUndefinedKey:@"animationMode"]];

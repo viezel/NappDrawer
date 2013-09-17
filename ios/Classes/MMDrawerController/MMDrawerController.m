@@ -691,7 +691,9 @@ static CAKeyframeAnimation * bounceKeyFrameAnimationForDistanceOnView(CGFloat di
 }
 
 -(void)setShowsShadow:(BOOL)showsShadow{
+    
     _showsShadow = showsShadow;
+    //self.showsShadow = showsShadow;
     [self updateShadowForCenterView];
 }
 
@@ -980,6 +982,7 @@ static inline CGFloat originXForDrawerOriginAndTargetOriginOffset(CGFloat origin
 }
 
 -(void)updateShadowForCenterView{
+    
     UIView * centerView = self.centerContainerView;
     if(self.showsShadow){
         centerView.layer.masksToBounds = NO;
@@ -989,6 +992,7 @@ static inline CGFloat originXForDrawerOriginAndTargetOriginOffset(CGFloat origin
     }
     else {
         centerView.layer.shadowPath = [UIBezierPath bezierPathWithRect:CGRectNull].CGPath;
+        centerView.layer.shadowOpacity = 0;
     }
 }
 

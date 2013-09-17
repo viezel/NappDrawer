@@ -186,6 +186,8 @@ mainWindow. isAnyWindowOpen();
 
 ## Changelog
 
+* v1.0.3
+  * Fixed issue with setShowShadow(bool) that prevented it from working. Exposed property 'showShadow' (true/false) in 'createDrawer' function.
 
 * v1.0.2
   * Added animations. `animationMode`
