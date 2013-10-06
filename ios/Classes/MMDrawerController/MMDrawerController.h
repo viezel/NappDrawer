@@ -39,6 +39,9 @@
  ## How Open/Close Gestures are handled
  Two gestures are added to every instance of a drawer controller, one for pan and one for touch. `MMDrawerController` is the delegate for each of the gesture recoginzers, and determines if a touch should be sent to the appropriate gesture when a touch is detected compared with the masks set for open and close gestures and the state of the drawer controller.
  
+ ## Integrating with State Restoration
+ In order to opt in to state restoration for `MMDrawerController`, you must set the `restorationIdentifier` of your drawer controller. Instances of your centerViewController, leftDrawerViewController and rightDrawerViewController must also be configured with their own `restorationIdentifier` (and optionally a restorationClass) if you intend for those to be restored as well. If your MMDrawerController had an open drawer when your app was sent to the background, that state will also be restored.
+ 
  ## What this library doesn't do.
  This library is not meant for:
     - Top or bottom drawer views
@@ -58,9 +61,11 @@ typedef NS_OPTIONS(NSInteger, MMOpenDrawerGestureMode) {
     MMOpenDrawerGestureModePanningNavigationBar     = 1 << 1,
     MMOpenDrawerGestureModePanningCenterView        = 1 << 2,
     MMOpenDrawerGestureModeBezelPanningCenterView   = 1 << 3,
-    MMOpenDrawerGestureModeAll                      =   MMOpenDrawerGestureModePanningNavigationBar |
-                                                        MMOpenDrawerGestureModePanningCenterView    |
-                                                        MMOpenDrawerGestureModeBezelPanningCenterView,
+    MMOpenDrawerGestureModeCustom                   = 1 << 4,
+    MMOpenDrawerGestureModeAll                      =   MMOpenDrawerGestureModePanningNavigationBar     |
+                                                        MMOpenDrawerGestureModePanningCenterView        |
+                                                        MMOpenDrawerGestureModeBezelPanningCenterView   |
+                                                        MMOpenDrawerGestureModeCustom,
 };
 
 typedef NS_OPTIONS(NSInteger, MMCloseDrawerGestureMode) {
@@ -71,12 +76,14 @@ typedef NS_OPTIONS(NSInteger, MMCloseDrawerGestureMode) {
     MMCloseDrawerGestureModeTapNavigationBar        = 1 << 4,
     MMCloseDrawerGestureModeTapCenterView           = 1 << 5,
     MMCloseDrawerGestureModePanningDrawerView       = 1 << 6,
+    MMCloseDrawerGestureModeCustom                  = 1 << 7,
     MMCloseDrawerGestureModeAll                     =   MMCloseDrawerGestureModePanningNavigationBar    |
                                                         MMCloseDrawerGestureModePanningCenterView       |
                                                         MMCloseDrawerGestureModeBezelPanningCenterView  |
                                                         MMCloseDrawerGestureModeTapNavigationBar        |
                                                         MMCloseDrawerGestureModeTapCenterView           |
-                                                        MMCloseDrawerGestureModePanningDrawerView,
+                                                        MMCloseDrawerGestureModePanningDrawerView       |
+                                                        MMCloseDrawerGestureModeCustom,
 };
 
 typedef NS_ENUM(NSInteger, MMDrawerOpenCenterInteractionMode) {
@@ -145,12 +152,6 @@ typedef void (^MMDrawerControllerDrawerVisualStateBlock)(MMDrawerController * dr
 @property (nonatomic, assign, readonly) CGFloat visibleRightDrawerWidth;
 
 /**
- Napp: `drawerBezelRange`.
- */
-@property (nonatomic, assign) CGFloat drawerBezelRange;
-
-
-/**
  The animation velocity of the open and close methods, measured in points per second.
  
  By default, this is set to 840 points per second (three times the default drawer width), meaning it takes 1/3 of a second for the `centerViewController` to open/close across the default drawer width. Note that there is a minimum .1 second duration for built in animations, to account for small distance animations.
@@ -198,6 +199,20 @@ typedef void (^MMDrawerControllerDrawerVisualStateBlock)(MMDrawerController * dr
  By default, this is set to YES.
  */
 @property (nonatomic, assign) BOOL showsShadow;
+
+/**
+ The flag determining if a custom background view should appear beneath the status bar, forcing the child content to be drawn lower than the status bar. This property is only available for > iOS 7.0 to take into account for the new behavior of the status bar.
+ 
+ By default, this is set to NO. If running on < iOS 7.0, it will always return NO.
+ */
+@property (nonatomic, assign) BOOL showsStatusBarBackgroundView;
+
+/**
+ The color of the status bar background view if `showsStatusBarBackgroundView` is set to YES. This value is ignored in < iOS 7.0.
+ 
+ By default, this is set `[UIColor blackColor]`.
+ */
+@property (nonatomic, strong) UIColor * statusBarViewBackgroundColor;
 
 ///---------------------------------------
 /// @name Initializing a `MMDrawerController`
@@ -283,7 +298,7 @@ typedef void (^MMDrawerControllerDrawerVisualStateBlock)(MMDrawerController * dr
  @param completion The block called when the animation is finsihed.
  
  */
--(void)setCenterViewController:(UIViewController *)centerViewController withCloseAnimation:(BOOL)closeAnimated completion:(void(^)(BOOL))completion;
+-(void)setCenterViewController:(UIViewController *)centerViewController withCloseAnimation:(BOOL)closeAnimated completion:(void(^)(BOOL finished))completion;
 
 /**
  Sets the new `centerViewController`. 
@@ -295,7 +310,7 @@ typedef void (^MMDrawerControllerDrawerVisualStateBlock)(MMDrawerController * dr
  @param completion The block called when the animation is finsihed.
  
  */
--(void)setCenterViewController:(UIViewController *)newCenterViewController withFullCloseAnimation:(BOOL)fullCloseAnimated completion:(void(^)(BOOL))completion;
+-(void)setCenterViewController:(UIViewController *)newCenterViewController withFullCloseAnimation:(BOOL)fullCloseAnimated completion:(void(^)(BOOL finished))completion;
 
 ///---------------------------------------
 /// @name Animating the Width of a Drawer
@@ -379,5 +394,20 @@ typedef void (^MMDrawerControllerDrawerVisualStateBlock)(MMDrawerController * dr
  @param gestureCompletionBlock A block object to be called that allows the implementer be notified when a gesture action has been completed.
  */
 -(void)setGestureCompletionBlock:(void(^)(MMDrawerController * drawerController, UIGestureRecognizer * gesture))gestureCompletionBlock;
+
+///---------------------------------------
+/// @name Custom Gesture Handler
+///---------------------------------------
+
+/**
+ Sets a callback to be called to determine if a UIGestureRecognizer should recieve the given UITouch.
+ 
+ This block provides a way to allow a gesture to be recognized with custom logic. For example, you may have a certain part of your view that should accept a pan gesture recognizer to open the drawer, but not another a part. If you return YES, the gesture is recognized and the appropriate action is taken. This provides similar support to how Facebook allows you to pan on the background view of the main table view, but not the content itself. You can inspect the `openSide` property of the `drawerController` to determine the current state of the drawer, and apply the appropriate logic within your block.
+ 
+ Note that either `openDrawerGestureModeMask` must contain `MMOpenDrawerGestureModeCustom`, or `closeDrawerGestureModeMask` must contain `MMCloseDrawerGestureModeCustom` for this block to be consulted.
+ 
+ @param gestureShouldRecognizeTouchBlock A block object to be called to determine if the given `touch` should be recognized by the given gesture.
+ */
+-(void)setGestureShouldRecognizeTouchBlock:(BOOL(^)(MMDrawerController * drawerController, UIGestureRecognizer * gesture, UITouch * touch))gestureShouldRecognizeTouchBlock;
 
 @end

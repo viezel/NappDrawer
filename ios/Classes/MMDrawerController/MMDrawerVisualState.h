@@ -58,10 +58,4 @@
  */
 +(MMDrawerControllerDrawerVisualStateBlock)parallaxVisualStateBlockWithParallaxFactor:(CGFloat)parallaxFactor;
 
-
-+(MMDrawerControllerDrawerVisualStateBlock)nappParallaxVisualStateBlock:(CGFloat)parallaxFactor;
-
-+(MMDrawerControllerDrawerVisualStateBlock)fadeVisualStateBlock;
-
-
 @end

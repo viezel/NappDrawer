@@ -172,15 +172,26 @@
     [self setNeedsDisplay];
 }
 
-- (void)setSelected:(BOOL)selected{
+-(void)setSelected:(BOOL)selected{
     [super setSelected:selected];
     [self setNeedsDisplay];
 }
 
-- (void)setHighlighted:(BOOL)highlighted{
+-(void)setHighlighted:(BOOL)highlighted{
     [super setHighlighted:highlighted];
     [self setNeedsDisplay];
 }
+
+-(void)setTintColor:(UIColor *)tintColor{
+    if([super respondsToSelector:@selector(setTintColor:)]){
+        [super setTintColor:tintColor];
+    }
+}
+
+-(void)tintColorDidChange{
+     [self setNeedsDisplay];
+}
+
 @end
 
 @interface MMDrawerBarButtonItem ()
@@ -190,14 +201,77 @@
 
 @implementation MMDrawerBarButtonItem
 
++(UIImage*)drawerButtonItemImage{
+    
+    static UIImage *drawerButtonImage = nil;
+    static dispatch_once_t onceToken;
+    dispatch_once(&onceToken, ^{
+
+        UIGraphicsBeginImageContextWithOptions( CGSizeMake(26, 26), NO, 0 );
+        
+        //// Color Declarations
+        UIColor* fillColor = [UIColor whiteColor];
+        
+        //// Frames
+        CGRect frame = CGRectMake(0, 0, 26, 26);
+        
+        //// Bottom Bar Drawing
+        UIBezierPath* bottomBarPath = [UIBezierPath bezierPathWithRect: CGRectMake(CGRectGetMinX(frame) + floor((CGRectGetWidth(frame) - 16) * 0.50000 + 0.5), CGRectGetMinY(frame) + floor((CGRectGetHeight(frame) - 1) * 0.72000 + 0.5), 16, 1)];
+        [fillColor setFill];
+        [bottomBarPath fill];
+        
+        
+        //// Middle Bar Drawing
+        UIBezierPath* middleBarPath = [UIBezierPath bezierPathWithRect: CGRectMake(CGRectGetMinX(frame) + floor((CGRectGetWidth(frame) - 16) * 0.50000 + 0.5), CGRectGetMinY(frame) + floor((CGRectGetHeight(frame) - 1) * 0.48000 + 0.5), 16, 1)];
+        [fillColor setFill];
+        [middleBarPath fill];
+        
+        
+        //// Top Bar Drawing
+        UIBezierPath* topBarPath = [UIBezierPath bezierPathWithRect: CGRectMake(CGRectGetMinX(frame) + floor((CGRectGetWidth(frame) - 16) * 0.50000 + 0.5), CGRectGetMinY(frame) + floor((CGRectGetHeight(frame) - 1) * 0.24000 + 0.5), 16, 1)];
+        [fillColor setFill];
+        [topBarPath fill];
+        
+        drawerButtonImage = UIGraphicsGetImageFromCurrentImageContext();
+    });
+    
+    return drawerButtonImage;
+}
+
 -(id)initWithTarget:(id)target action:(SEL)action{
-    MMDrawerMenuButtonView * buttonView = [[MMDrawerMenuButtonView alloc] initWithFrame:CGRectMake(0, 0, 26, 26)];
-    [buttonView addTarget:target action:action forControlEvents:UIControlEventTouchUpInside];
-    self = [self initWithCustomView:buttonView];
-    if(self){
-        [self setButtonView:buttonView];
+    
+    if((floor(NSFoundationVersionNumber) > NSFoundationVersionNumber_iOS_6_1)){
+        return [self initWithImage:[self.class drawerButtonItemImage]
+                             style:UIBarButtonItemStylePlain
+                            target:target
+                            action:action];
     }
-    return self;
+    else {
+        MMDrawerMenuButtonView * buttonView = [[MMDrawerMenuButtonView alloc] initWithFrame:CGRectMake(0, 0, 26, 26)];
+        [buttonView addTarget:self action:@selector(touchUpInside:) forControlEvents:UIControlEventTouchUpInside];
+        self = [self initWithCustomView:buttonView];
+        if(self){
+            [self setButtonView:buttonView];
+        }
+        self.action = action;
+        self.target = target;
+        return self;
+    }
+}
+
+-(id)initWithCoder:(NSCoder *)aDecoder{
+    // non-ideal way to get the target/action, but it works
+    UIBarButtonItem* barButtonItem = [[UIBarButtonItem alloc] initWithCoder: aDecoder];
+    return [self initWithTarget:barButtonItem.target action:barButtonItem.action];
+}
+
+-(void)touchUpInside:(id)sender{
+
+#pragma clang diagnostic push
+#pragma clang diagnostic ignored "-Warc-performSelector-leaks"    
+    [self.target performSelector:self.action withObject:sender];
+#pragma clang diagnostic pop;
+    
 }
 
 -(UIColor *)menuButtonColorForState:(UIControlState)state{
@@ -214,6 +288,15 @@
 
 -(void)setShadowColor:(UIColor *)color forState:(UIControlState)state{
     [self.buttonView setShadowColor:color forState:state];
+}
+
+-(void)setTintColor:(UIColor *)tintColor{
+    if([super respondsToSelector:@selector(setTintColor:)]){
+        [super setTintColor:tintColor];
+    }
+    if([self.buttonView respondsToSelector:@selector(setTintColor:)]){
+        [self.buttonView setTintColor:tintColor];
+    }
 }
 
 @end
