@@ -26,31 +26,6 @@
 	return [[DkNappDrawerDrawer alloc] init];
 }
 
-
-
-
-/*
-# pragma Orientation
-
--(void)willAnimateRotationToInterfaceOrientation:(UIInterfaceOrientation)toInterfaceOrientation duration:(NSTimeInterval)duration
-{
-    [super willAnimateRotationToInterfaceOrientation:toInterfaceOrientation duration:duration];
-    
-    NSLog(@"willAnimateRotationToInterfaceOrientation");
-    // Method: 1
-    [self reposition];
-    
-    // Method 2: layout !
-    [[self view] layoutSubviews];
-    
-    // Method 3: Force redraw
-    [[self view] setNeedsDisplay];
-    MMDrawerController * mainController = [self _controller];
-    [[mainController.centerViewController view] setNeedsDisplay];
-    [[mainController.centerViewController view] layoutSubviews];
-}
-*/
-
 # pragma API
 
 -(void)toggleLeftWindow:(id)args {

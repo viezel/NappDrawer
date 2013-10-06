@@ -11,9 +11,7 @@
 #import "DkNappDrawerDrawerProxy.h"
 #import "TiUtils.h"
 #import "TiViewController.h"
-#import "TiUIiPhoneNavigationGroupProxy.h"
-
-
+#import "TiUIiOSNavWindowProxy.h"
 
 UIViewController * ControllerForViewProxy(TiViewProxy * proxy);
 
@@ -27,10 +25,10 @@ UIViewController * ControllerForViewProxy(TiViewProxy * proxy)
         [proxy reposition];
         [proxy windowDidOpen];
     },YES);
-    return [[[TiViewController alloc] initWithViewProxy:(TiViewProxy<TiUIViewController>*)proxy] autorelease];
+    return [[[TiViewController alloc] initWithViewProxy:proxy] autorelease];
 }
 
-UINavigationController * NavigationControllerForViewProxy(TiUIiPhoneNavigationGroupProxy *proxy)
+UINavigationController * NavigationControllerForViewProxy(TiUIiOSNavWindowProxy *proxy)
 {
     return [proxy controller];
 }
@@ -48,30 +46,6 @@ UINavigationController * NavigationControllerForViewProxy(TiUIiPhoneNavigationGr
 	return self.controller;
 }
 
-// TODO
-- (void)orientationChanged:(NSNotification *)notification
-{
-    NSLog(@"proxy orientationChanged");
-    UIDeviceOrientation deviceOrientation = [UIDevice currentDevice].orientation;
-    if (UIDeviceOrientationIsLandscape(deviceOrientation))
-    {
-        // landscape code here
-    }
-    else if (UIDeviceOrientationIsPortrait(deviceOrientation))
-    {
-        // portrait code here
-        
-    }
-    
-    if(controller != nil){
-        // Method 2: layout !
-        [[[self controller] view] layoutSubviews];
-        
-        // Method 3: Force redraw
-        [[[self controller] view] setNeedsDisplay];
-    }
-}
-
 -(MMDrawerController*)controller
 {
 	if (controller==nil)
@@ -79,7 +53,7 @@ UINavigationController * NavigationControllerForViewProxy(TiUIiPhoneNavigationGr
         
         // Check in centerWindow is a UINavigationController
         BOOL useNavController = FALSE;
-        if([[[[self.proxy valueForUndefinedKey:@"centerWindow"] class] description] isEqualToString:@"TiUIiPhoneNavigationGroupProxy"]) {
+        if([[[[self.proxy valueForUndefinedKey:@"centerWindow"] class] description] isEqualToString:@"TiUIiOSNavWindowProxy"]) {
             useNavController = TRUE;
         }
         
@@ -132,32 +106,14 @@ UINavigationController * NavigationControllerForViewProxy(TiUIiPhoneNavigationGr
         }
         
         if([self.proxy valueForUndefinedKey:@"showShadow"] != nil){
-            
             [self setShowShadow_:[self.proxy valueForUndefinedKey:@"showShadow"]];
-            
-            //[self setCenterHiddenInteractionMode_:[self.proxy valueForUndefinedKey:@"centerHiddenInteractionMode"]];
         }
-        
-        /*
-        if([self.proxy valueForUndefinedKey:@"animationMode"] != nil){
-            [self setAnimationMode_:[self.proxy valueForUndefinedKey:@"animationMode"]];
-        }
-        */
         
         
         // set frame bounds & add it
         UIView * controllerView = [controller view];
         [controllerView setFrame:[self bounds]];
         [self addSubview:controllerView];
-        
-        
-        // orientation
-        [[UIDevice currentDevice] beginGeneratingDeviceOrientationNotifications];
-        [[NSNotificationCenter defaultCenter] addObserver:self
-                                                 selector:@selector(orientationChanged:)
-                                                     name:UIDeviceOrientationDidChangeNotification
-                                                   object:nil];
-        
         
 	}
 	return controller;
@@ -175,7 +131,7 @@ UINavigationController * NavigationControllerForViewProxy(TiUIiPhoneNavigationGr
 {
 	ENSURE_UI_THREAD(setCenterWindow_, args);
     BOOL useNavController = FALSE;
-    if([[[args class] description] isEqualToString:@"TiUIiPhoneNavigationGroupProxy"]) {
+    if([[[args class] description] isEqualToString:@"TiUIiOSNavWindowProxy"]) {
         useNavController = TRUE;
     }
     UIViewController *centerWindow = useNavController ? NavigationControllerForViewProxy([self.proxy valueForUndefinedKey:@"centerWindow"]) : ControllerForViewProxy([self.proxy valueForUndefinedKey:@"centerWindow"]);
