@@ -6,7 +6,9 @@ function createAPIExampleWindow(){
 	var data = [
 		{title: "Toggle shadow"},
 		{title: "Toggle stretch drawer"},
-		{title: "Close"}	
+		{title: "Close Drawer"},
+		{title: "New Window"},
+		{title: "Default Window"}	
 	];
 	
 	var tableView = Ti.UI.createTableView({
@@ -25,14 +27,64 @@ function createAPIExampleWindow(){
 			case 2:
 				drawer.toggleLeftWindow();
 				break;
+			case 3:
+				var newWin = openNewNavWindow();
+				drawer.setCenterWindow(newWin);
+				drawer.toggleLeftWindow();
+				break;
+			case 4:
+				drawer.setCenterWindow(createCenterNavWindow());
+				drawer.toggleLeftWindow();
+				break;
 		}
-		setTimeout(function(){
-			Ti.API.info("isLeftWindowOpen: " + drawer.isLeftWindowOpen());
-		}, 500);
 	});
 	
 	win.add(tableView);
 	return win;
+}
+
+
+function openNewNavWindow(){
+	var leftBtn = Ti.UI.createButton({title:"Left"});
+	leftBtn.addEventListener("click", function(){
+		drawer.toggleLeftWindow();
+	});
+	var win = Ti.UI.createWindow({
+		backgroundColor:'#222',
+		translucent:true,
+		extendEdges:[Ti.UI.EXTEND_EDGE_TOP],
+		title:"New Nav Window",
+		barColor:"#FFA",
+		tintColor:"yellow",
+		leftNavButton:leftBtn
+	});
+	
+	var scrollView = Ti.UI.createScrollView({
+		layout:"vertical",
+		left:0,
+		right:0,
+		contentHeight:'auto',
+		contentWidth:"100%",
+		showVerticalScrollIndicator: true,
+		showHorizontalScrollIndicator: false
+	});
+	
+	for(var i=0; i<20; i++){
+		var label = Ti.UI.createLabel({
+			top:30,
+			text:"iOS7 is the new black",
+			color:"#FFF",
+			font:{
+				fontSize:20
+			}
+		});
+		scrollView.add(label);
+	}
+	win.add(scrollView);
+	var navController =  Ti.UI.iOS.createNavigationWindow({
+		window : win
+	});
+	return navController;
 }
 
 
@@ -48,22 +100,13 @@ function createCenterNavWindow(){
 	
 	var win = Ti.UI.createWindow({
 		backgroundColor:'#eee',
-		title:"Drawer Controller",
-		barColor:"#000",
+		translucent:false,
+		title:"NappDrawer",
+		barColor:"#F9A",
+		tintColor:"purple",
 		leftNavButton: leftBtn,
 		rightNavButton: rightBtn
 	});
-	
-	var bounceBtn = Ti.UI.createButton({
-		top:20,
-		width:300,
-		title:"Bounce Right Window"
-	});
-	bounceBtn.addEventListener("click", function(){
-		drawer.bounceRightWindow();
-	});
-	win.add(bounceBtn);
-	
 	
 	var closeGestureMode = 1;
 	var closeGestureModeBtn = Ti.UI.createButton({
@@ -156,22 +199,23 @@ function createCenterNavWindow(){
 	win.add(label);
 	win.add(slider);
 
-	// NAV controller
-	var navController = Ti.UI.iPhone.createNavigationGroup({
+	var navController =  Ti.UI.iOS.createNavigationWindow({
 		window : win
 	});
 	return navController;
 }
 
+var mainWindow = createCenterNavWindow();
 
 var drawer = NappDrawerModule.createDrawer({
 	leftWindow: createAPIExampleWindow(),
-	centerWindow: createCenterNavWindow(),
-	//rightWindow: Ti.UI.createWindow({backgroundColor:"blue"}),
+	centerWindow: mainWindow,
+	rightWindow: Ti.UI.createWindow({backgroundColor:"#FFF"}),
 	closeDrawerGestureMode: NappDrawerModule.CLOSE_MODE_ALL,
 	openDrawerGestureMode: NappDrawerModule.OPEN_MODE_ALL,
+	showShadow: false, //no shadow in iOS7
 	leftDrawerWidth: 200,
-	//rightDrawerWidth: 220
+	rightDrawerWidth: 120
 });
 
 drawer.open();

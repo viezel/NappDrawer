@@ -186,6 +186,11 @@ mainWindow. isAnyWindowOpen();
 
 ## Changelog
 
+* v1.1.0
+  * iOS7 support
+  * Titanium minimum SDK changed to 3.1.3.GA
+  * iOS min-sdk is now 5.0 
+
 * v1.0.3
   * Fixed issue with setShowShadow(bool) that prevented it from working. Exposed property 'showShadow' (true/false) in 'createDrawer' function.
 
