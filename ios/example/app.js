@@ -8,7 +8,8 @@ function createAPIExampleWindow(){
 		{title: "Toggle stretch drawer"},
 		{title: "Close Drawer"},
 		{title: "New Window"},
-		{title: "Default Window"}	
+		{title: "Default Window"},
+		{title: "Remove right Drawer"}	
 	];
 	
 	var tableView = Ti.UI.createTableView({
@@ -34,6 +35,10 @@ function createAPIExampleWindow(){
 				break;
 			case 4:
 				drawer.setCenterWindow(createCenterNavWindow());
+				drawer.toggleLeftWindow();
+				break;
+			case 5:
+				drawer.setRightWindow(false);
 				drawer.toggleLeftWindow();
 				break;
 		}

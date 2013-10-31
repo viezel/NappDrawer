@@ -141,15 +141,21 @@ UINavigationController * NavigationControllerForViewProxy(TiUIiOSNavWindowProxy 
 -(void)setLeftWindow_:(id)args
 {
 	ENSURE_UI_THREAD(setLeftWindow_, args);
-	ENSURE_SINGLE_ARG(args, TiViewProxy);
-	[controller setLeftDrawerViewController:ControllerForViewProxy(args)];
+    if([TiUtils boolValue:args] == 0 ){
+        [controller setLeftDrawerViewController:nil];
+    } else {
+        [controller setLeftDrawerViewController:ControllerForViewProxy(args)];
+    }
 }
 
 -(void)setRightWindow_:(id)args
 {
 	ENSURE_UI_THREAD(setRightWindow_, args);
-	ENSURE_SINGLE_ARG(args, TiViewProxy);
-	[controller setRightDrawerViewController:ControllerForViewProxy(args)];
+    if([TiUtils boolValue:args] == 0 ){
+        [controller setRightDrawerViewController:nil];
+    } else {
+        [controller setRightDrawerViewController:ControllerForViewProxy(args)];
+    }
 }
 
 -(void)setLeftDrawerWidth_:(id)args
