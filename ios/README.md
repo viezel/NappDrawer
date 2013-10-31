@@ -53,6 +53,12 @@ var newWin = Ti.UI.createWindow({
 mainWindow.setCenterWindow(newWin);	
 ```
 
+If you want to remove the side drawer, you can do this be parsing false as the argument.
+```javascript	
+mainWindow.setRightWindow(false);	
+```
+
+
 ### LeftDrawerWidth, rightDrawerWidth
 
 Update the width with these methods. The default width is `280`
@@ -185,6 +191,9 @@ mainWindow. isAnyWindowOpen();
 ```
 
 ## Changelog
+
+* v1.1.1
+  * Added support for removing the side drawer.
 
 * v1.1.0
   * iOS7 support
