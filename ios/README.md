@@ -37,7 +37,8 @@ var mainWindow = NappDrawerModule.createDrawer({
 	closeDrawerGestureMode: NappDrawerModule.CLOSE_MODE_ALL,
 	openDrawerGestureMode: NappDrawerModule.OPEN_MODE_ALL,
 	leftDrawerWidth: 180,
-	rightDrawerWidth: 220
+	rightDrawerWidth: 220,
+	orientationModes: [Ti.UI.PORTRAIT, Ti.UI.UPSIDE_PORTRAIT]
 });
 ```	
 
@@ -161,6 +162,14 @@ A small effect when the drawer is dragged, the drawer stretches.
 
 ```javascript
 mainWindow.setShouldStretchDrawer(true);
+```
+
+### OrientationModes
+
+Use this property to restrict the drawer to a certain set of orientations. You can use any of Titanium's orientation constants defined in Ti.UI. (LANDSCAPE_LEFT, LANDSCAPE_RIGHT, PORTRAIT, UPSIDE_PORTRAIT).
+
+```javascript
+mainWindow.setOrientationModes([Ti.UI.PORTRAIT, Ti.UI.UPSIDE_PORTRAIT]);
 ```
 
 

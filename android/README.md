@@ -46,7 +46,8 @@ var mainWindow = NappDrawerModule.createDrawer({
 	rightDrawerWidth: "200dp",
 	animationMode: NappDrawerModule.ANIMATION_NONE,
 	closeDrawerGestureMode: NappDrawerModule.MODE_MARGIN,
-	openDrawerGestureMode: NappDrawerModule.MODE_ALL
+	openDrawerGestureMode: NappDrawerModule.MODE_ALL,
+	orientationModes: [Ti.UI.PORTRAIT, Ti.UI.UPSIDE_PORTRAIT]
 });
 ```	
 
@@ -145,6 +146,13 @@ Use this property if you want the sideView drawer to fade in and out while enter
 mainWindow.setFading(0.3);
 ```
 
+### OrientationModes
+
+Use this property to restrict the drawer to a certain set of orientations. You can use any of Titanium's orientation constants defined in Ti.UI. (LANDSCAPE_LEFT, LANDSCAPE_RIGHT, PORTRAIT, UPSIDE_PORTRAIT).
+
+```javascript
+mainWindow.setOrientationModes([Ti.UI.PORTRAIT, Ti.UI.UPSIDE_PORTRAIT]);
+```
 
 ## API Methods
 

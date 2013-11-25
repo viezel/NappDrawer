@@ -194,7 +194,8 @@ var drawer = NappDrawerModule.createDrawer({
 	rightDrawerWidth: "200dp",
 	animationMode: NappDrawerModule.ANIMATION_NONE,
 	closeDrawerGestureMode: NappDrawerModule.MODE_MARGIN,
-	openDrawerGestureMode: NappDrawerModule.MODE_ALL
+	openDrawerGestureMode: NappDrawerModule.MODE_ALL,
+	orientationModes: [Ti.UI.PORTRAIT, Ti.UI.UPSIDE_PORTRAIT]
 });
 
 

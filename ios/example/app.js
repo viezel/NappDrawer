@@ -220,7 +220,8 @@ var drawer = NappDrawerModule.createDrawer({
 	openDrawerGestureMode: NappDrawerModule.OPEN_MODE_ALL,
 	showShadow: false, //no shadow in iOS7
 	leftDrawerWidth: 200,
-	rightDrawerWidth: 120
+	rightDrawerWidth: 120,
+	orientationModes: [Ti.UI.PORTRAIT, Ti.UI.UPSIDE_PORTRAIT]
 });
 
 drawer.open();
