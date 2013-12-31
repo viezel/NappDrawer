@@ -9,17 +9,18 @@
 
 #import "TiBase.h"
 #import "TiUIView.h"
-#import "MMDrawerController.h"
+// #import "MMDrawerController.h"
+#import "CustomMMDrawerController.h"
 #import "NappDrawerVisualState.h"
 
 #import <QuartzCore/QuartzCore.h>
 
 @interface DkNappDrawerDrawer : TiUIView {
 @private
-	MMDrawerController *controller;
+	CustomMMDrawerController *controller;
 }
 
--(MMDrawerController*)controller;
+-(CustomMMDrawerController*)controller;
 
 //API
 -(void)toggleLeftWindow:(id)args;
