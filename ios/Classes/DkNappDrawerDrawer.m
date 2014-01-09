@@ -66,17 +66,17 @@ UINavigationController * NavigationControllerForViewProxy(TiUIiOSNavWindowProxy 
         if(leftWindow != nil){
             if(rightWindow != nil){
                 //both left and right
-                controller =  [[MMDrawerController alloc] initWithCenterViewController: centerWindow
+                controller =  [[CustomMMDrawerController alloc] initWithCenterViewController: centerWindow
                                                               leftDrawerViewController: ControllerForViewProxy(leftWindow)
                                                              rightDrawerViewController: ControllerForViewProxy(rightWindow) ];
             } else {
                 //left only
-                controller =  [[MMDrawerController alloc] initWithCenterViewController: centerWindow
+                controller =  [[CustomMMDrawerController alloc] initWithCenterViewController: centerWindow
                                                               leftDrawerViewController: ControllerForViewProxy(leftWindow)];
             }
         } else if(rightWindow != nil){
             //right only
-            controller =  [[MMDrawerController alloc] initWithCenterViewController: centerWindow
+            controller =  [[CustomMMDrawerController alloc] initWithCenterViewController: centerWindow
                                                          rightDrawerViewController: ControllerForViewProxy(rightWindow) ];
         } else {
             //error
@@ -109,6 +109,15 @@ UINavigationController * NavigationControllerForViewProxy(TiUIiOSNavWindowProxy 
             [self setShowShadow_:[self.proxy valueForUndefinedKey:@"showShadow"]];
         }
         
+        // open/close window
+        [controller setWindowAppearanceCallback:^(NSString *state) {
+            if ([state isEqualToString:@"open"]) {
+                [self.proxy fireEvent:@"windowDidOpen"];
+            }
+            else if ([state isEqualToString:@"close"]) {
+                [self.proxy fireEvent:@"windowDidClose"];
+            }
+        }];
         
         // set frame bounds & add it
         UIView * controllerView = [controller view];
