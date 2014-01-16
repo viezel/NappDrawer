@@ -66,17 +66,17 @@ UINavigationController * NavigationControllerForViewProxy(TiUIiOSNavWindowProxy 
         if(leftWindow != nil){
             if(rightWindow != nil){
                 //both left and right
-                controller =  [[MMDrawerController alloc] initWithCenterViewController: centerWindow
+                controller =  [[CustomMMDrawerController alloc] initWithCenterViewController: centerWindow
                                                               leftDrawerViewController: ControllerForViewProxy(leftWindow)
                                                              rightDrawerViewController: ControllerForViewProxy(rightWindow) ];
             } else {
                 //left only
-                controller =  [[MMDrawerController alloc] initWithCenterViewController: centerWindow
+                controller =  [[CustomMMDrawerController alloc] initWithCenterViewController: centerWindow
                                                               leftDrawerViewController: ControllerForViewProxy(leftWindow)];
             }
         } else if(rightWindow != nil){
             //right only
-            controller =  [[MMDrawerController alloc] initWithCenterViewController: centerWindow
+            controller =  [[CustomMMDrawerController alloc] initWithCenterViewController: centerWindow
                                                          rightDrawerViewController: ControllerForViewProxy(rightWindow) ];
         } else {
             //error
@@ -109,10 +109,31 @@ UINavigationController * NavigationControllerForViewProxy(TiUIiOSNavWindowProxy 
             [self setShowShadow_:[self.proxy valueForUndefinedKey:@"showShadow"]];
         }
         
+        if([self.proxy valueForUndefinedKey:@"animationMode"] != nil) {
+            [self setAnimationMode_:[self.proxy valueForUndefinedKey:@"animationMode"]];
+        }
+        
+        if([self.proxy valueForUndefinedKey:@"animationVelocity"] != nil) {
+            [self setAnimationVelocity_:[self.proxy valueForUndefinedKey:@"animationVelocity"]];
+        }
+        
+        if([self.proxy valueForUndefinedKey:@"shouldStretchDrawer"] != nil) {
+            [self setShouldStretchDrawer_:[self.proxy valueForUndefinedKey:@"shouldStretchDrawer"]];
+        }
+
         if([self.proxy valueForUndefinedKey:@"showStatusBarView"] != nil){
             [self setShowsStatusBarBackgroundView_:[self.proxy valueForUndefinedKey:@"showStatusBarView"]];
         }
-        
+
+        // open/close window
+        [controller setWindowAppearanceCallback:^(NSString *state) {
+            if ([state isEqualToString:@"open"]) {
+                [self.proxy fireEvent:@"windowDidOpen"];
+            }
+            else if ([state isEqualToString:@"close"]) {
+                [self.proxy fireEvent:@"windowDidClose"];
+            }
+        }];
         
         // set frame bounds & add it
         UIView * controllerView = [controller view];
