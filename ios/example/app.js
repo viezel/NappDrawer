@@ -224,6 +224,16 @@ var drawer = NappDrawerModule.createDrawer({
 	orientationModes: [Ti.UI.PORTRAIT, Ti.UI.UPSIDE_PORTRAIT]
 });
 
+drawer.addEventListener('windowDidOpen', function(e) {
+	Ti.API.info("windowDidOpen");
+});
+
+drawer.addEventListener('windowDidClose', function(e) {
+	Ti.API.info("windowDidClose");
+});
+
 drawer.open();
+
+
 
 Ti.API.info("isAnyWindowOpen: " + drawer.isAnyWindowOpen());

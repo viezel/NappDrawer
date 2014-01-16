@@ -196,7 +196,29 @@ mainWindow.bounceLeftWindow();
 Check if a side or any window is opened in the drawer.
 
 ```javascript
-mainWindow. isAnyWindowOpen();
+mainWindow.isAnyWindowOpen();
+```
+
+## Events
+
+### windowDidOpen
+
+When the drawer has been opened. 
+
+```javascript
+mainWindow.addEventListener("windowDidOpen", function(e) {
+	// do stuff
+});
+```
+
+### windowDidClose
+
+When the drawer has been closed. 
+
+```javascript
+mainWindow.addEventListener("windowDidClose", function(e) {
+	// do stuff
+});
 ```
 
 ## Changelog
