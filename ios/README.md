@@ -223,6 +223,10 @@ mainWindow.addEventListener("windowDidClose", function(e) {
 
 ## Changelog
 
+* v1.1.2
+  * Added events for open and close the drawer.
+  * Added `animationMode`, `animationVelocity`, `shouldStretchDrawer` to the create method. 
+
 * v1.1.1
   * Added support for removing the side drawer.
 
