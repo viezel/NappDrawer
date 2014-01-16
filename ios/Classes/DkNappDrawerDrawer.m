@@ -109,6 +109,10 @@ UINavigationController * NavigationControllerForViewProxy(TiUIiOSNavWindowProxy 
             [self setShowShadow_:[self.proxy valueForUndefinedKey:@"showShadow"]];
         }
         
+        if([self.proxy valueForUndefinedKey:@"showStatusBarView"] != nil){
+            [self setShowsStatusBarBackgroundView_:[self.proxy valueForUndefinedKey:@"showStatusBarView"]];
+        }
+        
         
         // set frame bounds & add it
         UIView * controllerView = [controller view];
@@ -212,7 +216,25 @@ UINavigationController * NavigationControllerForViewProxy(TiUIiOSNavWindowProxy 
     ENSURE_UI_THREAD(setShouldStretchDrawer_,args);
     ENSURE_SINGLE_ARG(args, NSNumber);
     [controller setShouldStretchDrawer:[TiUtils boolValue:args]];
+    
 }
+
+-(void)setShowsStatusBarBackgroundView_:(id)args
+{
+    ENSURE_UI_THREAD(setShowsStatusBarBackgroundView_,args);
+    ENSURE_SINGLE_ARG(args, NSNumber);
+    [controller setShowsStatusBarBackgroundView:[TiUtils boolValue:args]];
+}
+
+-(UIStatusBarStyle)preferredStatusBarStyle {
+    if(self.controller.showsStatusBarBackgroundView){
+        return UIStatusBarStyleLightContent;
+    }
+    else {
+        return UIStatusBarStyleDefault;
+    }
+}
+
 
 -(void)setAnimationMode_:(id)args
 {
