@@ -124,6 +124,10 @@ UINavigationController * NavigationControllerForViewProxy(TiUIiOSNavWindowProxy 
         if([self.proxy valueForUndefinedKey:@"showStatusBarView"] != nil){
             [self setShowsStatusBarBackgroundView_:[self.proxy valueForUndefinedKey:@"showStatusBarView"]];
         }
+        
+        if([self.proxy valueForUndefinedKey:@"statusBarStyle"] != nil){
+            [self setStatusBarStyle_:[self.proxy valueForUndefinedKey:@"statusBarStyle"]];
+        }
 
         // open/close window
         [controller setWindowAppearanceCallback:^(NSString *state) {
@@ -257,6 +261,13 @@ UINavigationController * NavigationControllerForViewProxy(TiUIiOSNavWindowProxy 
 }
 
 
+-(void)setStatusBarStyle_:(NSNumber *)style
+{
+    ENSURE_UI_THREAD(setStatusBarStyle_,style);
+    [[UIApplication sharedApplication] setStatusBarStyle:[style intValue]];
+}
+
+
 -(void)setAnimationMode_:(id)args
 {
     ENSURE_UI_THREAD(setAnimationMode_,args);
@@ -292,6 +303,8 @@ UINavigationController * NavigationControllerForViewProxy(TiUIiOSNavWindowProxy 
     }
 
 }
+
+
 
 
 // API
