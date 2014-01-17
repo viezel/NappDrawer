@@ -38,6 +38,7 @@ var mainWindow = NappDrawerModule.createDrawer({
 	openDrawerGestureMode: NappDrawerModule.OPEN_MODE_ALL,
 	leftDrawerWidth: 180,
 	rightDrawerWidth: 220,
+	statusBarStyle: NappDrawerModule.STATUSBAR_WHITE,
 	orientationModes: [Ti.UI.PORTRAIT, Ti.UI.UPSIDE_PORTRAIT]
 });
 ```	
@@ -172,6 +173,28 @@ Use this property to restrict the drawer to a certain set of orientations. You c
 mainWindow.setOrientationModes([Ti.UI.PORTRAIT, Ti.UI.UPSIDE_PORTRAIT]);
 ```
 
+### StatusBarStyle
+
+Use this property to set the statusBar. You will need to add the following to tiapp.xml in order to make this work:
+
+    <ios>
+        <plist>
+    	    <dict>
+        	    <key>UIViewControllerBasedStatusBarAppearance</key>
+                <false/>
+            </dict>
+        </plist>
+    </ios>
+
+
+| input (constant) | Description | 
+| ----- | ----------- |
+| STATUSBAR_BLACK | The statusbar icons and text will be black | 
+| STATUSBAR_WHITE | The statusbar icons and text will be white | 
+
+```javascript
+mainWindow.setStatusBarStyle(NappDrawerModule.STATUSBAR_WHITE);
+```
 
 ## API Methods
 
@@ -222,6 +245,9 @@ mainWindow.addEventListener("windowDidClose", function(e) {
 ```
 
 ## Changelog
+
+* v1.1.3
+  * Added `statusBarStyle` to help iOS7 and the LIGHT CONTENT bug. Thanks to @adrianopaladini. 
 
 * v1.1.2
   * Added events for open and close the drawer.
