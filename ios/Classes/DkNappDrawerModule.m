@@ -36,6 +36,9 @@ MAKE_SYSTEM_PROP(OPEN_CENTER_MODE_NONE,                 MMDrawerOpenCenterIntera
 MAKE_SYSTEM_PROP(OPEN_CENTER_MODE_FULL,                 MMDrawerOpenCenterInteractionModeFull);
 MAKE_SYSTEM_PROP(OPEN_CENTER_MODE_NAVBAR,               MMDrawerOpenCenterInteractionModeNavigationBarOnly);
 
+
+# pragma mark AnimationModes
+
 MAKE_SYSTEM_PROP(ANIMATION_SLIDE_SCALE,                 1);
 MAKE_SYSTEM_PROP(ANIMATION_SLIDE,                       2);
 //MAKE_SYSTEM_PROP(ANIMATION_SWINGING_DOOR,               3);
@@ -46,6 +49,14 @@ MAKE_SYSTEM_PROP(ANIMATION_FADE,                        7);
 MAKE_SYSTEM_PROP(ANIMATION_NONE,                        100);
 
 
+# pragma mark StatusBar
+
+MAKE_SYSTEM_PROP(STATUSBAR_BLACK,0);
+MAKE_SYSTEM_PROP(STATUSBAR_WHITE,1);
+
+MAKE_SYSTEM_PROP(STATUSBAR_ANIMATION_NONE,0);
+MAKE_SYSTEM_PROP(STATUSBAR_ANIMATION_FADE,1);
+MAKE_SYSTEM_PROP(STATUSBAR_ANIMATION_SLIDE,2);
 
 
 #pragma mark Internal
@@ -71,11 +82,6 @@ MAKE_SYSTEM_PROP(ANIMATION_NONE,                        100);
     [super startup];
     NSLog(@"[INFO] %@ loaded",self);
 }
- 
-
-
-
- 
 
 -(void)shutdown:(id)sender
 {
@@ -125,23 +131,35 @@ MAKE_SYSTEM_PROP(ANIMATION_NONE,                        100);
 	}
 }
 
+
+
 #pragma Public APIs
 
--(id)example:(id)args
+
+-(void)hideStatusBar:(id)args
 {
-	// example method
-	return @"hello world";
+    ENSURE_SINGLE_ARG_OR_NIL(args,NSDictionary);
+    ENSURE_UI_THREAD(hideStatusBar,args);
+    
+    int style = [TiUtils intValue:@"animationStyle" properties:args def:UIStatusBarAnimationSlide];
+    [[UIApplication sharedApplication] setStatusBarHidden:YES withAnimation:style];
 }
 
--(id)exampleProp
+
+-(void)showStatusBar:(id)args
 {
-	// example property getter
-	return @"hello world";
+    ENSURE_SINGLE_ARG_OR_NIL(args,NSDictionary);
+    ENSURE_UI_THREAD(showStatusBar,args);
+    
+    int style = [TiUtils intValue:@"animationStyle" properties:args def:UIStatusBarAnimationSlide];
+    [[UIApplication sharedApplication] setStatusBarHidden:NO withAnimation:style];
 }
 
--(void)setExampleProp:(id)value
+
+-(void)setStatusBarStyle:(NSNumber *)style
 {
-	// example property setter
+	ENSURE_UI_THREAD(setStatusBarStyle,style);
+	[[UIApplication sharedApplication] setStatusBarStyle:[style intValue]];
 }
 
 @end
