@@ -221,6 +221,7 @@ var drawer = NappDrawerModule.createDrawer({
 	showShadow: false, //no shadow in iOS7
 	leftDrawerWidth: 200,
 	rightDrawerWidth: 120,
+	statusBarStyle: NappDrawerModule.STATUSBAR_WHITE,  // remember to set UIViewControllerBasedStatusBarAppearance to false in tiapp.xml
 	orientationModes: [Ti.UI.PORTRAIT, Ti.UI.UPSIDE_PORTRAIT]
 });
 
@@ -233,7 +234,5 @@ drawer.addEventListener('windowDidClose', function(e) {
 });
 
 drawer.open();
-
-
 
 Ti.API.info("isAnyWindowOpen: " + drawer.isAnyWindowOpen());
