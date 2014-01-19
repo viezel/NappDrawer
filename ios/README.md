@@ -246,6 +246,10 @@ mainWindow.addEventListener("windowDidClose", function(e) {
 
 ## Changelog
 
+* v1.1.4
+  * Added gesture events for open and close the drawer. 
+  * Added `close()` method to remove the Drawer completely. 
+
 * v1.1.3
   * Added `statusBarStyle` to help iOS7 and the LIGHT CONTENT bug. Thanks to @adrianopaladini. 
 

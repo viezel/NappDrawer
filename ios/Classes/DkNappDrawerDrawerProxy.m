@@ -56,5 +56,9 @@
     return [(DkNappDrawerDrawer*)[self view] isRightWindowOpen:args];
 }
 
+-(void)close:(id)args {
+    TiThreadPerformOnMainThread(^{[(DkNappDrawerDrawer*)[self view] close:args];}, NO);
+}
+
 
 @end

@@ -305,8 +305,6 @@ UINavigationController * NavigationControllerForViewProxy(TiUIiOSNavWindowProxy 
 }
 
 
-
-
 // API
 -(void)toggleLeftWindow:(id)args
 {
@@ -346,5 +344,11 @@ UINavigationController * NavigationControllerForViewProxy(TiUIiOSNavWindowProxy 
 {
     return NUMBOOL(controller.openSide == MMDrawerSideLeft);
 }
+
+-(void)close:(id)args {
+    [self dealloc];
+}
+
+
 
 @end

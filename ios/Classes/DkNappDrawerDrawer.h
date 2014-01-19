@@ -29,5 +29,6 @@
 -(NSNumber*)isAnyWindowOpen:(id)args;
 -(NSNumber*)isLeftWindowOpen:(id)args;
 -(NSNumber*)isRightWindowOpen:(id)args;
+-(void)close:(id)args;
 
 @end
