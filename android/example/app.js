@@ -121,10 +121,10 @@ var gestureModeBtn = Ti.UI.createButton({title:"Gesture Mode: ALL", toggled:true
 gestureModeBtn.addEventListener("click", function(e){
 	if(!e.source.toggled){
 		var mode = "ALL";
-		drawer.setOpenDrawerGestureMode(NappDrawerModule.MODE_ALL);
+		drawer.setOpenDrawerGestureMode(NappDrawerModule.OPEN_MODE_ALL);
 	} else {
 		var mode = "NONE";
-		drawer.setOpenDrawerGestureMode(NappDrawerModule.MODE_NONE);
+		drawer.setOpenDrawerGestureMode(NappDrawerModule.OPEN_MODE_NONE);
 	}
 	gestureModeBtn.setTitle("Gesture Mode: " + mode);
 	e.source.toggled = !e.source.toggled;
@@ -193,8 +193,8 @@ var drawer = NappDrawerModule.createDrawer({
 	leftDrawerWidth: "200dp",
 	rightDrawerWidth: "200dp",
 	animationMode: NappDrawerModule.ANIMATION_NONE,
-	closeDrawerGestureMode: NappDrawerModule.MODE_MARGIN,
-	openDrawerGestureMode: NappDrawerModule.MODE_ALL,
+	closeDrawerGestureMode: NappDrawerModule.CLOSE_MODE_MARGIN,
+	openDrawerGestureMode: NappDrawerModule.OPEN_MODE_ALL,
 	orientationModes: [Ti.UI.PORTRAIT, Ti.UI.UPSIDE_PORTRAIT]
 });
 
