@@ -23,7 +23,9 @@ Simply add the following lines to your `tiapp.xml` file:
 
 ## Reference
 
-For more detailed code examples take a look into the example app
+For more detailed code examples take a look into the example app.
+
+For Alloy projects, use the [nl.fokkezb.drawer](https://github.com/fokkezb/nl.fokkezb.drawer) widget.
 
 ### centerWindow, leftWindow, rightWindow
 
