@@ -45,8 +45,8 @@ var mainWindow = NappDrawerModule.createDrawer({
 	leftDrawerWidth: "200dp",
 	rightDrawerWidth: "200dp",
 	animationMode: NappDrawerModule.ANIMATION_NONE,
-	closeDrawerGestureMode: NappDrawerModule.MODE_MARGIN,
-	openDrawerGestureMode: NappDrawerModule.MODE_ALL,
+	closeDrawerGestureMode: NappDrawerModule.CLOSE_MODE_MARGIN,
+	openDrawerGestureMode: NappDrawerModule.OPEN_MODE_ALL,
 	orientationModes: [Ti.UI.PORTRAIT, Ti.UI.UPSIDE_PORTRAIT]
 });
 ```	
@@ -83,9 +83,12 @@ mainWindow.setOpenDrawerGestureMode(NappDrawerModule.MODE_NONE);
 
 | input (constant) | Description | 
 | ----- | ----------- |
-| MODE_NONE | The user can not open the drawer by any swipe gestures. | 
-| MODE_MARGIN | The user can open the drawer by a swipe gesture on the screen's margin. | 
-| MODE_ALL | The user can open the drawer by a swipe gesture anywhere on the screen. | 
+| OPEN_MODE_NONE | The user can not open the drawer by any swipe gestures. | 
+| OPEN_MODE_MARGIN | The user can open the drawer by a swipe gesture on the screen's margin. | 
+| OPEN_MODE_ALL | The user can open the drawer by a swipe gesture anywhere on the screen. | 
+| CLOSE_MODE_NONE | The user can not close the drawer by any swipe gestures. | 
+| CLOSE_MODE_MARGIN | The user can close the drawer by a swipe gesture on the screen's margin. | 
+| CLOSE_MODE_ALL | The user can close the drawer by a swipe gesture anywhere on the screen. | 
 
 
 
