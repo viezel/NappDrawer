@@ -178,6 +178,8 @@ mainWindow. isAnyWindowOpen();
 
 ## Changelog
 
+* v1.1  
+  * Added variable names to resemble iOS version more - for openDrawerGestureMode and closeDrawerGestureMode
 * v1.0  
   * init
 
