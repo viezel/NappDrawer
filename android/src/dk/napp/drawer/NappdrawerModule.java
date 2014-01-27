@@ -30,9 +30,13 @@ public class NappdrawerModule extends KrollModule
 	@Kroll.constant public static final int RIGHT_WINDOW = 3;
 	@Kroll.constant public static final int CENTER_WINDOW = 2;
 	
-	@Kroll.constant public static final int MODE_MARGIN = 0;
-	@Kroll.constant public static final int MODE_ALL = 1;
-	@Kroll.constant public static final int MODE_NONE = 2;
+	@Kroll.constant public static final int OPEN_MODE_MARGIN = 0;
+	@Kroll.constant public static final int OPEN_MODE_ALL = 1;
+	@Kroll.constant public static final int OPEN_MODE_NONE = 2;
+	
+	@Kroll.constant public static final int CLOSE_MODE_MARGIN = 0;
+	@Kroll.constant public static final int CLOSE_MODE_ALL = 1;
+	@Kroll.constant public static final int CLOSE_MODE_NONE = 2;
 	
 	@Kroll.constant public static final int ANIMATION_NONE = 1;
 	@Kroll.constant public static final int ANIMATION_SLIDEUP = 2;

@@ -164,11 +164,11 @@ public class Drawer extends TiUIView implements ConfigurationChangedListener{
 	
 	private void updateCloseDrawerGestureMode(int mode)
 	{
-		if (mode == NappdrawerModule.MODE_ALL) {
+		if (mode == NappdrawerModule.CLOSE_MODE_ALL) {
 			slidingMenu.setTouchModeBehind(SlidingMenu.TOUCHMODE_FULLSCREEN);
-		} else if (mode == NappdrawerModule.MODE_MARGIN) {
+		} else if (mode == NappdrawerModule.CLOSE_MODE_MARGIN) {
 			slidingMenu.setTouchModeBehind(SlidingMenu.TOUCHMODE_MARGIN);
-		} else if (mode == NappdrawerModule.MODE_NONE) {
+		} else if (mode == NappdrawerModule.CLOSE_MODE_NONE) {
 			slidingMenu.setTouchModeBehind(SlidingMenu.TOUCHMODE_NONE);
 		} else {
 			slidingMenu.setTouchModeBehind(SlidingMenu.TOUCHMODE_FULLSCREEN);
@@ -177,11 +177,11 @@ public class Drawer extends TiUIView implements ConfigurationChangedListener{
 	
 	private void updateOpenDrawerGestureMode(int mode)
 	{
-		if (mode == NappdrawerModule.MODE_ALL) {
+		if (mode == NappdrawerModule.OPEN_MODE_ALL) {
 			slidingMenu.setTouchModeAbove(SlidingMenu.TOUCHMODE_FULLSCREEN);
-		} else if (mode == NappdrawerModule.MODE_MARGIN) {
+		} else if (mode == NappdrawerModule.OPEN_MODE_MARGIN) {
 			slidingMenu.setTouchModeAbove(SlidingMenu.TOUCHMODE_MARGIN);
-		} else if (mode == NappdrawerModule.MODE_NONE) {
+		} else if (mode == NappdrawerModule.OPEN_MODE_NONE) {
 			slidingMenu.setTouchModeAbove(SlidingMenu.TOUCHMODE_NONE);
 		} else {
 			slidingMenu.setTouchModeAbove(SlidingMenu.TOUCHMODE_FULLSCREEN);
