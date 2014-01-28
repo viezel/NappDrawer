@@ -215,5 +215,31 @@ drawer.addEventListener("windowDidClose", function(e){
 });
 
 
+// Action Bar - REAL example
+drawer.addEventListener('open', onNavDrawerWinOpen);
+function onNavDrawerWinOpen(evt) {
+    this.removeEventListener('open', onNavDrawerWinOpen);
+
+    if(this.getActivity()) {
+        // need to explicitly use getXYZ methods
+        var actionBar = this.getActivity().getActionBar();
+
+        if (actionBar) {
+            // Now we can do stuff to the actionbar  
+            actionBar.setTitle('NappDrawer Example');
+            
+            // show an angle bracket next to the home icon,
+            // indicating to users that the home icon is tappable
+            actionBar.setDisplayHomeAsUp(true);
+
+            // toggle the left window when the home icon is selected
+            actionBar.setOnHomeIconItemSelected(function() {
+                drawer.toggleLeftWindow();
+           });
+        }
+    }    
+}
+
+
 // lets open it
 drawer.open();
