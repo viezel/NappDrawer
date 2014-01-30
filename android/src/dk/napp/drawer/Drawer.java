@@ -337,7 +337,7 @@ public class Drawer extends TiUIView implements ConfigurationChangedListener{
 			slidingMenu.setBehindScrollScale(d.getDouble(PROPERTY_MENU_SCROLL_SCALE).floatValue());
 		}
 		if (d.containsKey(PROPERTY_SHADOW_WIDTH)) {
-			slidingMenu.setShadowWidth(getDevicePixels(d.get(PROPERTY_RIGHT_VIEW_WIDTH)));
+			slidingMenu.setShadowWidth(getDevicePixels(d.get(PROPERTY_SHADOW_WIDTH)));
 		}
 		
 		if (d.containsKey(PROPERTY_ANIMATION_MODE)) {
