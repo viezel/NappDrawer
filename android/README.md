@@ -180,8 +180,13 @@ mainWindow. isAnyWindowOpen();
 
 ## Changelog
 
+* v1.1.1  
+  * Bugfix for ShadowWidth. Issue #51
+  * Updated Ti min-sdk to 3.1.3.GA
+
 * v1.1  
   * Added variable names to resemble iOS version more - for openDrawerGestureMode and closeDrawerGestureMode
+  
 * v1.0  
   * init
 
