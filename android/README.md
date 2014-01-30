@@ -88,9 +88,6 @@ mainWindow.setOpenDrawerGestureMode(NappDrawerModule.MODE_NONE);
 | OPEN_MODE_NONE | The user can not open the drawer by any swipe gestures. | 
 | OPEN_MODE_MARGIN | The user can open the drawer by a swipe gesture on the screen's margin. | 
 | OPEN_MODE_ALL | The user can open the drawer by a swipe gesture anywhere on the screen. | 
-| CLOSE_MODE_NONE | The user can not close the drawer by any swipe gestures. | 
-| CLOSE_MODE_MARGIN | The user can close the drawer by a swipe gesture on the screen's margin. | 
-| CLOSE_MODE_ALL | The user can close the drawer by a swipe gesture anywhere on the screen. | 
 
 
 
@@ -104,9 +101,9 @@ mainWindow.setCloseDrawerGestureMode(NappDrawerModule.MODE_MARGIN);
 
 | input (constant) | Description | 
 | ----- | ----------- |
-| MODE_NONE | The user can not close the drawer by any swipe gestures. | 
-| MODE_MARGIN | The user can close the drawer by a swipe gesture on the screen's margin. | 
-| MODE_ALL | The user can close the drawer by a swipe gesture anywhere on the screen. | 
+| CLOSE_MODE_NONE | The user can not close the drawer by any swipe gestures. | 
+| CLOSE_MODE_MARGIN | The user can close the drawer by a swipe gesture on the screen's margin. | 
+| CLOSE_MODE_ALL | The user can close the drawer by a swipe gesture anywhere on the screen. | 
 
 *Note that these gestures may impact touches sent to the child view controllers, so be sure to use these appropriately for your application.*
 
