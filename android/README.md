@@ -80,7 +80,7 @@ mainWindow.setLeftDrawerWidth("160dp");
 Set gesture support for opening the drawer through a mask.  
 
 ```javascript
-mainWindow.setOpenDrawerGestureMode(NappDrawerModule.MODE_NONE);
+mainWindow.setOpenDrawerGestureMode(NappDrawerModule.OPEN_MODE_NONE);
 ```
 
 | input (constant) | Description | 
@@ -96,7 +96,7 @@ mainWindow.setOpenDrawerGestureMode(NappDrawerModule.MODE_NONE);
 Set gesture support for closing the drawer through a mask.
 
 ```javascript
-mainWindow.setCloseDrawerGestureMode(NappDrawerModule.MODE_MARGIN);
+mainWindow.setCloseDrawerGestureMode(NappDrawerModule.CLOSE_MODE_NONE);
 ```
 
 | input (constant) | Description | 
