@@ -274,7 +274,6 @@ public class Drawer extends TiUIView implements ConfigurationChangedListener{
 		}
 		if (d.containsKey(PROPERTY_LEFT_VIEW)) {
 			Object leftView = d.get(PROPERTY_LEFT_VIEW);
-			Log.e(TAG, ""+d.get(PROPERTY_LEFT_VIEW));
 			if (leftView != null && leftView instanceof TiViewProxy) {
 				if (leftView instanceof WindowProxy)
 					throw new IllegalStateException("[ERROR] Cannot use window as SlideMenu view");
