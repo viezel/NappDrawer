@@ -346,6 +346,8 @@ UINavigationController * NavigationControllerForViewProxy(TiUIiOSNavWindowProxy 
 }
 
 -(void)close:(id)args {
+    self.removeFromSuperview;
+    RELEASE_TO_NIL(controller);
     [self dealloc];
 }
 
