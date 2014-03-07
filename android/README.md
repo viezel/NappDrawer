@@ -177,6 +177,9 @@ mainWindow. isAnyWindowOpen();
 
 ## Changelog
 
+* v1.1.2  
+  * Added focus/blur events for Android 
+
 * v1.1.1  
   * Bugfix for ShadowWidth. Issue #51
   * Updated Ti min-sdk to 3.1.3.GA
