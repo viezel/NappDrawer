@@ -193,7 +193,11 @@ public class DrawerProxy extends TiWindowProxy implements TiActivityWindow
 	
 	@Override
 	public void onWindowFocusChange(boolean focused) {
-		fireEvent(TiC.EVENT_FOCUS, focused);
+		if (focused){
+			fireEvent(TiC.EVENT_FOCUS, null);
+		} else {
+			fireEvent(TiC.EVENT_BLUR, null);
+		}
 	}
 
 	private void fillIntent(Activity activity, Intent intent)
