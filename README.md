@@ -11,7 +11,15 @@ There are **some minor platform parity differences** in this module. iOS version
 
 [![IMAGE ALT TEXT HERE](http://img.youtube.com/vi/VfuGr4VsWjw/0.jpg)](http://www.youtube.com/watch?v=VfuGr4VsWjw)
 
-### Community Driven
+## Quick Start
+
+### Get it [![gitTio](http://gitt.io/badge.png)](http://gitt.io/component/dk.napp.drawer)
+Download the latest distribution ZIP-file and consult the [Titanium Documentation](http://docs.appcelerator.com/titanium/latest/#!/guide/Using_a_Module) on how install it, or simply use the [gitTio CLI](http://gitt.io/cli):
+
+`$ gittio install -g dk.napp.drawer`
+
+
+## Community Driven
 
 I encourage everyone to send Pull Requests - keeping this module flying with new features.
 
