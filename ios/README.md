@@ -248,6 +248,9 @@ mainWindow.addEventListener("windowDidClose", function(e) {
 
 ## Changelog
 
+* v1.1.5
+  * Recompiled with Ti 3.2.3.GA to fix `close()` crash.
+
 * v1.1.4
   * Added gesture events for open and close the drawer. 
   * Added `close()` method to remove the Drawer completely. 
