@@ -73,6 +73,9 @@ public class CustomViewBehind extends ViewGroup {
 			removeView(mContent);
 		mContent = v;
 		if(v != null){
+			if (mContent.getParent() != null) {
+				((ViewGroup) mContent.getParent()).removeView(mContent);
+			}
 			addView(mContent);
 		}
 	}
@@ -90,6 +93,9 @@ public class CustomViewBehind extends ViewGroup {
 			removeView(mSecondaryContent);
 		mSecondaryContent = v;
 		if(v != null){
+			if (mSecondaryContent.getParent() != null) {
+				((ViewGroup) mSecondaryContent.getParent()).removeView(mSecondaryContent);
+			}
 			addView(mSecondaryContent);
 		}
 	}
