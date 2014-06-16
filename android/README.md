@@ -179,6 +179,9 @@ mainWindow. isAnyWindowOpen();
 
 ## Changelog
 
+* v1.1.3  
+  * Fix #71 - IllegalStateException when recreating activity in Android
+
 * v1.1.2  
   * Added focus/blur events for Android 
 
