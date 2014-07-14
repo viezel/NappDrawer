@@ -248,6 +248,9 @@ mainWindow.addEventListener("windowDidClose", function(e) {
 
 ## Changelog
 
+* v1.1.6
+  * Updated MMDrawerController classes to latest release
+
 * v1.1.5
   * Recompiled with Ti 3.2.3.GA to fix `close()` crash.
 
