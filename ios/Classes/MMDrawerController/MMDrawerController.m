@@ -374,6 +374,23 @@ static NSString *MMDrawerOpenSideKey = @"MMDrawerOpenSide";
     }
 }
 
+-(void)removeOldViewController:(NSArray*)items
+{
+	UIViewController *oldCenterViewController = [items objectAtIndex:0];
+	NSNumber *animated = [items objectAtIndex:1];
+	
+	[oldCenterViewController willMoveToParentViewController:nil];
+	if([animated boolValue] == NO){
+		[oldCenterViewController beginAppearanceTransition:NO animated:NO];
+	}
+	[oldCenterViewController removeFromParentViewController];
+	[oldCenterViewController.view removeFromSuperview];
+	if([animated boolValue] == NO){
+		[oldCenterViewController endAppearanceTransition];
+	}
+	
+}
+
 #pragma mark - Updating the Center View Controller
 //If animated is NO, then we need to handle all the appearance calls within this method. Otherwise,
 //let the method calling this one handle proper appearance methods since they will have more context
@@ -403,18 +420,10 @@ static NSString *MMDrawerOpenSideKey = @"MMDrawerOpenSide";
     }
   }
   
-    UIViewController * oldCenterViewController = self.centerViewController;
-    if(oldCenterViewController){
-        [oldCenterViewController willMoveToParentViewController:nil];
-        if(animated == NO){
-            [oldCenterViewController beginAppearanceTransition:NO animated:NO];
-        }
-        [oldCenterViewController removeFromParentViewController];
-        [oldCenterViewController.view removeFromSuperview];
-        if(animated == NO){
-            [oldCenterViewController endAppearanceTransition];
-        }
-    }
+	if(self.centerViewController != nil)
+	{
+		[self performSelector:@selector(removeOldViewController:) withObject: @[self.centerViewController, [NSNumber numberWithBool:animated]] afterDelay:0.1];
+	}
     
     _centerViewController = centerViewController;
     
