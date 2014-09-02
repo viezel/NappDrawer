@@ -11,12 +11,14 @@
 #import "TiUIView.h"
 #import "CustomMMDrawerController.h"
 #import "NappDrawerVisualState.h"
+#import "TiUIiOSNavWindowProxy.h"
 
 #import <QuartzCore/QuartzCore.h>
 
 @interface DkNappDrawerDrawer : TiUIView {
 @private
 	CustomMMDrawerController *controller;
+    TiUIiOSNavWindowProxy *navProxy;
 }
 
 -(CustomMMDrawerController*)controller;

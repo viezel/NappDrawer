@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>IDESourceControlProjectFavoriteDictionaryKey</key>
+	<false/>
+	<key>IDESourceControlProjectIdentifier</key>
+	<string>D358EF46-2834-4BA6-AAF4-81C6FAA2E9FA</string>
+	<key>IDESourceControlProjectName</key>
+	<string>NappDrawer</string>
+	<key>IDESourceControlProjectOriginsDictionary</key>
+	<dict>
+		<key>5EFFF0DD-8795-47BD-A7C4-5856691FB5D2</key>
+		<string>https://github.com/appersonlabs/NappDrawer</string>
+		<key>95B4FE03-36CA-4C4F-A7A3-BC6752DDB3AB</key>
+		<string>https://github.com/mutualmobile/MMDrawerController</string>
+	</dict>
+	<key>IDESourceControlProjectPath</key>
+	<string>ios/NappDrawer.xcodeproj/project.xcworkspace</string>
+	<key>IDESourceControlProjectRelativeInstallPathDictionary</key>
+	<dict>
+		<key>5EFFF0DD-8795-47BD-A7C4-5856691FB5D2</key>
+		<string>../../..</string>
+		<key>95B4FE03-36CA-4C4F-A7A3-BC6752DDB3AB</key>
+		<string>../../MMDrawerController</string>
+	</dict>
+	<key>IDESourceControlProjectURL</key>
+	<string>https://github.com/appersonlabs/NappDrawer</string>
+	<key>IDESourceControlProjectVersion</key>
+	<integer>110</integer>
+	<key>IDESourceControlProjectWCCIdentifier</key>
+	<string>5EFFF0DD-8795-47BD-A7C4-5856691FB5D2</string>
+	<key>IDESourceControlProjectWCConfigurations</key>
+	<array>
+		<dict>
+			<key>IDESourceControlRepositoryExtensionIdentifierKey</key>
+			<string>public.vcs.git</string>
+			<key>IDESourceControlWCCIdentifierKey</key>
+			<string>95B4FE03-36CA-4C4F-A7A3-BC6752DDB3AB</string>
+			<key>IDESourceControlWCCName</key>
+			<string>MMDrawerController</string>
+		</dict>
+		<dict>
+			<key>IDESourceControlRepositoryExtensionIdentifierKey</key>
+			<string>public.vcs.git</string>
+			<key>IDESourceControlWCCIdentifierKey</key>
+			<string>5EFFF0DD-8795-47BD-A7C4-5856691FB5D2</string>
+			<key>IDESourceControlWCCName</key>
+			<string>NappDrawer</string>
+		</dict>
+	</array>
+</dict>
+</plist>

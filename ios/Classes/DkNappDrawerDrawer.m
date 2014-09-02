@@ -165,6 +165,18 @@ UINavigationController * NavigationControllerForViewProxy(TiUIiOSNavWindowProxy 
     }
     UIViewController *centerWindow = useNavController ? NavigationControllerForViewProxy([self.proxy valueForUndefinedKey:@"centerWindow"]) : ControllerForViewProxy([self.proxy valueForUndefinedKey:@"centerWindow"]);
 	[controller setCenterViewController: centerWindow];
+    
+    // Cleanup
+    if( useNavController )
+    {
+        if( navProxy != nil )
+        {
+            NSLog(@"[DEBUG| Destroying old nav proxy");
+            [navProxy windowDidClose];
+        }
+        // Save new proxy
+        navProxy = [self.proxy valueForUndefinedKey:@"centerWindow"];
+    }
 }
 
 -(void)setLeftWindow_:(id)args
