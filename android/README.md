@@ -53,8 +53,6 @@ var mainWindow = NappDrawerModule.createDrawer({
 });
 ```
 
-*NOTE:* As result of a limitation in the underlying library you cannot set `leftDrawerWidth` and `rightDrawerWidth` independently. [Track this issue here](https://github.com/viezel/NappDrawer/issues/77).
-
 ## API Properties
 	
 ### CenterWindow, leftWindow, rightWindow

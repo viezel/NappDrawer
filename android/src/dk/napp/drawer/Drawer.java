@@ -47,7 +47,8 @@ public class Drawer extends TiUIView implements ConfigurationChangedListener{
 	
 	private static final String TAG = "NappDrawer";
 	private TiBaseActivity activity;
-	private int menuWidth;
+	private int leftMenuWidth;
+	private int rightMenuWidth;
 	
 	// Static Properties
 	public static final String PROPERTY_LEFT_VIEW = "leftWindow";
@@ -125,7 +126,7 @@ public class Drawer extends TiUIView implements ConfigurationChangedListener{
 		
 		slidingMenu.setMode(SlidingMenu.LEFT);
 		slidingMenu.setTouchModeAbove(SlidingMenu.TOUCHMODE_FULLSCREEN);
-		menuWidth = -100;
+		leftMenuWidth = -100;
 		slidingMenu.setFadeDegree(0.0f);
 		slidingMenu.setBehindScrollScale(0.0f);
 		slidingMenu.setShadowWidth(0);
@@ -151,15 +152,24 @@ public class Drawer extends TiUIView implements ConfigurationChangedListener{
 	
 	private void updateMenuWidth()
 	{
-		if (menuWidth > 0)
-			slidingMenu.setBehindWidth(menuWidth);
+		if (leftMenuWidth > 0)
+			slidingMenu.setBehindWidth(leftMenuWidth);
 		else
-			slidingMenu.setBehindOffset(-menuWidth);
+			slidingMenu.setBehindOffset(-leftMenuWidth);
 	}
+
+	private void updateRightMenuWidth()
+	{
+		if (rightMenuWidth > 0)
+			slidingMenu.setRightBehindWidth(rightMenuWidth);
+		else
+			slidingMenu.setRightBehindOffset(-rightMenuWidth);
+	}
+
 	
 	public int getMenuWidth()
 	{
-		return menuWidth;
+		return leftMenuWidth;
 	}
 	
 	private void updateCloseDrawerGestureMode(int mode)
@@ -321,12 +331,12 @@ public class Drawer extends TiUIView implements ConfigurationChangedListener{
 		}
 		
 		if (d.containsKey(PROPERTY_LEFT_VIEW_WIDTH)) {
-			menuWidth = getDevicePixels(d.get(PROPERTY_LEFT_VIEW_WIDTH)); 
+			leftMenuWidth = getDevicePixels(d.get(PROPERTY_LEFT_VIEW_WIDTH)); 
 			updateMenuWidth();
 		}
 		if (d.containsKey(PROPERTY_RIGHT_VIEW_WIDTH)) {
-			menuWidth = getDevicePixels(d.get(PROPERTY_RIGHT_VIEW_WIDTH));
-			updateMenuWidth();
+			rightMenuWidth = getDevicePixels(d.get(PROPERTY_RIGHT_VIEW_WIDTH));
+      updateRightMenuWidth();
 		}
 		
 		if (d.containsKey(PROPERTY_FADING)) {
@@ -404,11 +414,11 @@ public class Drawer extends TiUIView implements ConfigurationChangedListener{
 		} else if(key.equals(PROPERTY_OPEN_MODE)) {
 			updateOpenDrawerGestureMode(TiConvert.toInt(newValue));
 		} else if (key.equals(PROPERTY_LEFT_VIEW_WIDTH)) {
-			menuWidth = getDevicePixels(newValue);
+			leftMenuWidth = getDevicePixels(newValue);
 			updateMenuWidth();
 		} else if (key.equals(PROPERTY_RIGHT_VIEW_WIDTH)) {
-			menuWidth = getDevicePixels(newValue);
-			updateMenuWidth();
+			rightMenuWidth = getDevicePixels(newValue);
+      updateRightMenuWidth();
 		} else if (key.equals(PROPERTY_FADING)) {
 			slidingMenu.setFadeDegree(TiConvert.toFloat(newValue));
 		} else if (key.equals(PROPERTY_MENU_SCROLL_SCALE)) {
