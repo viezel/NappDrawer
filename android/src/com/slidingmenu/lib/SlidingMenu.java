@@ -602,6 +602,10 @@ public class SlidingMenu extends RelativeLayout {
 		mViewBehind.setWidthOffset(i);
 	}
 
+	public void setRightBehindOffset(int offset) {
+	    mViewBehind.setSecondaryWidthOffset(offset);
+	}
+
 	/**
 	 * Sets the behind offset.
 	 *
@@ -632,14 +636,8 @@ public class SlidingMenu extends RelativeLayout {
 		setAboveOffset(i);
 	}
 
-	/**
-	 * Sets the behind width.
-	 *
-	 * @param i The width the Sliding Menu will open to, in pixels
-	 */
-	@SuppressWarnings("deprecation")
-	public void setBehindWidth(int i) {
-		int width;
+  private int getDisplayWidth() {
+    int width;
 		Display display = ((WindowManager) getContext().getSystemService(Context.WINDOW_SERVICE))
 				.getDefaultDisplay();
 		try {
@@ -652,7 +650,26 @@ public class SlidingMenu extends RelativeLayout {
 		} catch (Exception e) {
 			width = display.getWidth();
 		}
-		setBehindOffset(width-i);
+    return width;
+  }
+	/**
+	 * Sets the behind width.
+	 *
+	 * @param i The width the Sliding Menu will open to, in pixels
+	 */
+	@SuppressWarnings("deprecation")
+	public void setBehindWidth(int i) {
+    setBehindOffset(getDisplayWidth()-i);
+	}
+
+	/**
+	 * Sets the behind width.
+	 *
+	 * @param i The width the Sliding Menu will open to, in pixels
+	 */
+	@SuppressWarnings("deprecation")
+	public void setRightBehindWidth(int i) {
+    setRightBehindOffset(getDisplayWidth()-i);
 	}
 
 	/**
