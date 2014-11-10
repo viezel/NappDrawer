@@ -203,14 +203,24 @@ UINavigationController * NavigationControllerForViewProxy(TiUIiOSNavWindowProxy 
 {
     ENSURE_UI_THREAD(setLeftDrawerWidth_,args);
     //ENSURE_SINGLE_ARG(args, NSNumber);
-	[controller setMaximumLeftDrawerWidth:[TiUtils floatValue:args]];
+    if( [args respondsToSelector:@selector(objectForKey:)] )
+    {
+        [controller setMaximumLeftDrawerWidth:[TiUtils floatValue:@"width" properties:args] animated:[TiUtils boolValue:@"animated" properties:args def:NO] completion:nil];
+    } else {
+        [controller setMaximumLeftDrawerWidth:[TiUtils floatValue:args]];
+    }
 }
 
 -(void)setRightDrawerWidth_:(id)args
 {
     ENSURE_UI_THREAD(setRightDrawerWidth_,args);
    // ENSURE_SINGLE_ARG(args, NSNumber);
-	[controller setMaximumRightDrawerWidth:[TiUtils floatValue:args]];
+    if( [args respondsToSelector:@selector(objectForKey:)] )
+    {
+        [controller setMaximumRightDrawerWidth:[TiUtils floatValue:@"width" properties:args] animated:[TiUtils boolValue:@"animated" properties:args def:NO] completion:nil];
+    } else {
+        [controller setMaximumRightDrawerWidth:[TiUtils floatValue:args]];
+    }
 }
 
 -(void)setCloseDrawerGestureMode_:(id)args
