@@ -71,6 +71,15 @@ Update the width with these methods. The default width is `280`
 mainWindow.setLeftDrawerWidth(160);
 ```
 
+With animation:
+
+```javascript
+mainWindow.setLeftDrawerWidth({
+	width: 160,
+	animated: true
+});
+```
+
 ### CenterHiddenInteractionMode
 
 Set different types of interactivity for the centerWindow. 
@@ -247,6 +256,9 @@ mainWindow.addEventListener("windowDidClose", function(e) {
 ```
 
 ## Changelog
+
+* v1.1.7
+  * Added support for setting the drawer width with an animation
 
 * v1.1.6
   * Updated MMDrawerController classes to latest release
