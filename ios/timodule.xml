@@ -5,7 +5,7 @@
 		configuration in <iphone>, <android>, and <mobileweb> sections
 	-->
 	<ios>
-        <min-ios-ver>5.0</min-ios-ver>
+        <min-ios-ver>7.0</min-ios-ver>
 	</ios>
 	<android xmlns:android="http://schemas.android.com/apk/res/android">
 	</android>
