@@ -18,6 +18,29 @@
 	[self reposition];
 }
 
+
+-(void)windowWillClose {
+    TiViewProxy* leftWinProxy = [self valueForUndefinedKey:@"leftWindow"];
+    TiViewProxy* rightWinProxy = [self valueForUndefinedKey:@"rightWindow"];
+    TiViewProxy* centerWinProxy = [self valueForUndefinedKey:@"centerWindow"];
+    [leftWinProxy windowWillClose];
+    [rightWinProxy windowWillClose];
+    [centerWinProxy windowWillClose];
+    
+    [super windowWillClose];
+}
+
+-(void)windowDidClose{
+    TiViewProxy* leftWinProxy = [self valueForUndefinedKey:@"leftWindow"];
+    TiViewProxy* rightWinProxy = [self valueForUndefinedKey:@"rightWindow"];
+    TiViewProxy* centerWinProxy = [self valueForUndefinedKey:@"centerWindow"];
+    [leftWinProxy windowDidClose];
+    [rightWinProxy windowDidClose];
+    [centerWinProxy windowDidClose];
+    
+    [super windowDidClose];
+}
+
 -(MMDrawerController *)_controller {
 	return [(DkNappDrawerDrawer*)[self view] controller];
 }
@@ -54,10 +77,6 @@
 
 -(NSNumber*)isRightWindowOpen:(id)args {
     return [(DkNappDrawerDrawer*)[self view] isRightWindowOpen:args];
-}
-
--(void)close:(id)args {
-    TiThreadPerformOnMainThread(^{[(DkNappDrawerDrawer*)[self view] close:args];}, NO);
 }
 
 
