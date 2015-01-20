@@ -2,7 +2,7 @@
 
 ## Description
 
-The Napp Drawer module extends the Appcelerator Titanium Mobile framework. 
+The Napp Drawer module extends the Appcelerator Titanium Mobile framework.
 The module is licensed under the MIT license.
 
 Thanks to the folks at Mutual Mobile for their great work with MMDrawerController https://github.com/mutualmobile/MMDrawerController
@@ -12,12 +12,12 @@ Thanks to the folks at Mutual Mobile for their great work with MMDrawerControlle
 
 **Find the newest version in the dist folder**
 
-## Referencing the module in your Ti mobile application 
+## Referencing the module in your Ti mobile application
 
 Simply add the following lines to your `tiapp.xml` file:
-    
+
     <modules>
-        <module platform="iphone">dk.napp.drawer</module> 
+        <module platform="iphone">dk.napp.drawer</module>
     </modules>
 
 
@@ -29,11 +29,11 @@ For Alloy projects, use the [nl.fokkezb.drawer](https://github.com/fokkezb/nl.fo
 
 ### centerWindow, leftWindow, rightWindow
 
-Napp Drawer does not require you to use the 3 windows. You can also use either the combo of center/left or center/right for your desired needs. 
+Napp Drawer does not require you to use the 3 windows. You can also use either the combo of center/left or center/right for your desired needs.
 
 ```javascript
 var mainWindow = NappDrawerModule.createDrawer({
-	centerWindow: navController, 
+	centerWindow: navController,
 	leftWindow: winLeft,
 	rightWindow: winRight,
 	closeDrawerGestureMode: NappDrawerModule.CLOSE_MODE_ALL,
@@ -43,23 +43,23 @@ var mainWindow = NappDrawerModule.createDrawer({
 	statusBarStyle: NappDrawerModule.STATUSBAR_WHITE,
 	orientationModes: [Ti.UI.PORTRAIT, Ti.UI.UPSIDE_PORTRAIT]
 });
-```	
+```
 
 ## API Properties
-	
+
 ### CenterWindow, leftWindow, rightWindow
 
-A method that allow change of a window. You can either use a window or a navigation group. 
-```javascript	
+A method that allow change of a window. You can either use a window or a navigation group.
+```javascript
 var newWin = Ti.UI.createWindow({
 	backgroundColor: "#FF0000"
 };
-mainWindow.setCenterWindow(newWin);	
+mainWindow.setCenterWindow(newWin);
 ```
 
 If you want to remove the side drawer, you can do this be parsing false as the argument.
-```javascript	
-mainWindow.setRightWindow(false);	
+```javascript
+mainWindow.setRightWindow(false);
 ```
 
 
@@ -82,34 +82,34 @@ mainWindow.setLeftDrawerWidth({
 
 ### CenterHiddenInteractionMode
 
-Set different types of interactivity for the centerWindow. 
+Set different types of interactivity for the centerWindow.
 
 ```javascript
 mainWindow.setCenterHiddenInteractionMode(NappDrawerModule.OPEN_CENTER_MODE_FULL);
 ```
 
-| input (constant) | Description | 
+| input (constant) | Description |
 | ----- | ----------- |
-| OPEN_CENTER_MODE_NONE | The user can not interact with any content in the center view. | 
-| OPEN_CENTER_MODE_FULL | The user can interact with all content in the center view. | 
-| OPEN_CENTER_MODE_NAVBAR | The user can interact with only content on the navigation bar. The setting allows the menu button to still respond, allowing you to toggle the drawer closed when it is open. This is the default setting. | 
+| OPEN_CENTER_MODE_NONE | The user can not interact with any content in the center view. |
+| OPEN_CENTER_MODE_FULL | The user can interact with all content in the center view. |
+| OPEN_CENTER_MODE_NAVBAR | The user can interact with only content on the navigation bar. The setting allows the menu button to still respond, allowing you to toggle the drawer closed when it is open. This is the default setting. |
 
 
 ### OpenDrawerGestureMode
 
-Set gesture support for opening the drawer through a mask.  
+Set gesture support for opening the drawer through a mask.
 
 ```javascript
 mainWindow.setOpenDrawerGestureMode(NappDrawerModule.OPEN_MODE_BEZEL_PANNING_CENTERWINDOW);
 ```
 
-| input (constant) | Description | 
+| input (constant) | Description |
 | ----- | ----------- |
-| OPEN_MODE_NONE | The user can not open the drawer by panning. | 
-| OPEN_MODE_ALL | The user can open the drawer by panning anywhere. | 
-| OPEN_MODE_PANNING_NAVBAR | The user can open the drawer by panning anywhere on the navigation bar. | 
-| OPEN_MODE_PANNING_CENTERWINDOW | The user can open the drawer by panning anywhere on the center view. | 
-| OPEN_MODE_BEZEL_PANNING_CENTERWINDOW | The user can open the drawer by starting a pan anywhere within 20 points of the bezel. | 
+| OPEN_MODE_NONE | The user can not open the drawer by panning. |
+| OPEN_MODE_ALL | The user can open the drawer by panning anywhere. |
+| OPEN_MODE_PANNING_NAVBAR | The user can open the drawer by panning anywhere on the navigation bar. |
+| OPEN_MODE_PANNING_CENTERWINDOW | The user can open the drawer by panning anywhere on the center view. |
+| OPEN_MODE_BEZEL_PANNING_CENTERWINDOW | The user can open the drawer by starting a pan anywhere within 20 points of the bezel. |
 
 
 ### CloseDrawerGestureMode
@@ -120,36 +120,36 @@ Set gesture support for closing the drawer through a mask.
 mainWindow.setCloseDrawerGestureMode(NappDrawerModule.CLOSE_MODE_TAP_CENTERWINDOW);
 ```
 
-| input (constant) | Description | 
+| input (constant) | Description |
 | ----- | ----------- |
-| CLOSE_MODE_NONE | The user cannot close the drawer by any panning gestures. | 
-| CLOSE_MODE_ALL | The user can close the drawer by panning anywhere. | 
-| CLOSE_MODE_PANNING_NAVBAR | The user can close the drawer by panning anywhere on the navigation bar. | 
-| CLOSE_MODE_PANNING_CENTERWINDOW | The user can close the drawer by panning anywhere on the center view. | 
-| CLOSE_MODE_BEZEL_PANNING_CENTERWINDOW | The user can close the drawer by starting a pan anywhere within the bezel of the center view. | 
-| CLOSE_MODE_TAP_NAVBAR | The user can close the drawer by tapping the navigation bar. | 
-| CLOSE_MODE_TAP_CENTERWINDOW | The user can close the drawer by tapping the center view. | 
-| CLOSE_MODE_PANNING_DRAWER | The user can close the drawer by panning anywhere on the drawer view. | 
+| CLOSE_MODE_NONE | The user cannot close the drawer by any panning gestures. |
+| CLOSE_MODE_ALL | The user can close the drawer by panning anywhere. |
+| CLOSE_MODE_PANNING_NAVBAR | The user can close the drawer by panning anywhere on the navigation bar. |
+| CLOSE_MODE_PANNING_CENTERWINDOW | The user can close the drawer by panning anywhere on the center view. |
+| CLOSE_MODE_BEZEL_PANNING_CENTERWINDOW | The user can close the drawer by starting a pan anywhere within the bezel of the center view. |
+| CLOSE_MODE_TAP_NAVBAR | The user can close the drawer by tapping the navigation bar. |
+| CLOSE_MODE_TAP_CENTERWINDOW | The user can close the drawer by tapping the center view. |
+| CLOSE_MODE_PANNING_DRAWER | The user can close the drawer by panning anywhere on the drawer view. |
 
 *Note that these gestures may impact touches sent to the child view controllers, so be sure to use these appropriately for your application.*
 
 ### AnimationMode
 
-Set the overall animation of the side windows when opening and closing the drawer. 
+Set the overall animation of the side windows when opening and closing the drawer.
 
 ```javascript
 mainWindow.setAnimationMode(NappDrawerModule.ANIMATION_SLIDE);
 ```
 
-| input (constant) | Description | 
+| input (constant) | Description |
 | ----- | ----------- |
-| ANIMATION_NONE | No animation | 
-| ANIMATION_SLIDE | The side window will slide in at the same speed as the drawer. This is equivalent to a parallax effect with factor 1 (no parallax effect).  | 
-| ANIMATION_PARALLAX_FACTOR_3 | The slide animation, but with a parallax effect. The higher factor equals less animation distance rate. This is 3 times slower than ANIMATION_SLIDE. | 
-| ANIMATION_PARALLAX_FACTOR_5 | The slide animation, but with a parallax effect. The higher factor equals less animation distance rate. This is 5 times slower than ANIMATION_SLIDE. | 
-| ANIMATION_PARALLAX_FACTOR_7 | The slide animation, but with a parallax effect. The higher factor equals less animation distance rate. This is 7 times slower than ANIMATION_SLIDE. | 
-| ANIMATION_FADE | Fading out/in the side window. | 
-| ANIMATION_SLIDE_SCALE | The Side window will slide and scale simultaneously. | 
+| ANIMATION_NONE | No animation |
+| ANIMATION_SLIDE | The side window will slide in at the same speed as the drawer. This is equivalent to a parallax effect with factor 1 (no parallax effect).  |
+| ANIMATION_PARALLAX_FACTOR_3 | The slide animation, but with a parallax effect. The higher factor equals less animation distance rate. This is 3 times slower than ANIMATION_SLIDE. |
+| ANIMATION_PARALLAX_FACTOR_5 | The slide animation, but with a parallax effect. The higher factor equals less animation distance rate. This is 5 times slower than ANIMATION_SLIDE. |
+| ANIMATION_PARALLAX_FACTOR_7 | The slide animation, but with a parallax effect. The higher factor equals less animation distance rate. This is 7 times slower than ANIMATION_SLIDE. |
+| ANIMATION_FADE | Fading out/in the side window. |
+| ANIMATION_SLIDE_SCALE | The Side window will slide and scale simultaneously. |
 
 ### AnimationVelocity
 
@@ -198,10 +198,10 @@ Use this property to set the statusBar. You will need to add the following to ti
     </ios>
 
 
-| input (constant) | Description | 
+| input (constant) | Description |
 | ----- | ----------- |
-| STATUSBAR_BLACK | The statusbar icons and text will be black | 
-| STATUSBAR_WHITE | The statusbar icons and text will be white | 
+| STATUSBAR_BLACK | The statusbar icons and text will be black |
+| STATUSBAR_WHITE | The statusbar icons and text will be white |
 
 ```javascript
 mainWindow.setStatusBarStyle(NappDrawerModule.STATUSBAR_WHITE);
@@ -211,7 +211,7 @@ mainWindow.setStatusBarStyle(NappDrawerModule.STATUSBAR_WHITE);
 
 ### toggleLeftWindow, toggleRightWindow
 
-`toggleLeftWindow()` and `toggleRightWindow()` are used to toggle each visibility of either the left or right window. 
+`toggleLeftWindow()` and `toggleRightWindow()` are used to toggle each visibility of either the left or right window.
 
 ```javascript
 mainWindow.toggleLeftWindow();
@@ -237,7 +237,7 @@ mainWindow.isAnyWindowOpen();
 
 ### windowDidOpen
 
-When the drawer has been opened. 
+When the drawer has been opened.
 
 ```javascript
 mainWindow.addEventListener("windowDidOpen", function(e) {
@@ -247,7 +247,7 @@ mainWindow.addEventListener("windowDidOpen", function(e) {
 
 ### windowDidClose
 
-When the drawer has been closed. 
+When the drawer has been closed.
 
 ```javascript
 mainWindow.addEventListener("windowDidClose", function(e) {
@@ -256,6 +256,8 @@ mainWindow.addEventListener("windowDidClose", function(e) {
 ```
 
 ## Changelog
+* v1.2.1
+  * Fixed close() leaking child windows
 
 * v1.1.7
   * Added support for setting the drawer width with an animation
@@ -267,15 +269,15 @@ mainWindow.addEventListener("windowDidClose", function(e) {
   * Recompiled with Ti 3.2.3.GA to fix `close()` crash.
 
 * v1.1.4
-  * Added gesture events for open and close the drawer. 
-  * Added `close()` method to remove the Drawer completely. 
+  * Added gesture events for open and close the drawer.
+  * Added `close()` method to remove the Drawer completely.
 
 * v1.1.3
-  * Added `statusBarStyle` to help iOS7 and the LIGHT CONTENT bug. Thanks to @adrianopaladini. 
+  * Added `statusBarStyle` to help iOS7 and the LIGHT CONTENT bug. Thanks to @adrianopaladini.
 
 * v1.1.2
   * Added events for open and close the drawer.
-  * Added `animationMode`, `animationVelocity`, `shouldStretchDrawer` to the create method. 
+  * Added `animationMode`, `animationVelocity`, `shouldStretchDrawer` to the create method.
 
 * v1.1.1
   * Added support for removing the side drawer.
@@ -283,7 +285,7 @@ mainWindow.addEventListener("windowDidClose", function(e) {
 * v1.1.0
   * iOS7 support
   * Titanium minimum SDK changed to 3.1.3.GA
-  * iOS min-sdk is now 5.0 
+  * iOS min-sdk is now 5.0
 
 * v1.0.3
   * Fixed issue with setShowShadow(bool) that prevented it from working. Exposed property 'showShadow' (true/false) in 'createDrawer' function.
@@ -294,16 +296,16 @@ mainWindow.addEventListener("windowDidClose", function(e) {
 * v1.0.1
   * Added `isAnyWindowOpen`, `isLeftWindowOpen`, `isRightWindowOpen` methods
 
-* v1.0  
+* v1.0
   * init
 
 
 ## Author
 
-**Mads Møller**  
-web: http://www.napp.dk  
-email: mm@napp.dk  
-twitter: @nappdev  
+**Mads Møller**
+web: http://www.napp.dk
+email: mm@napp.dk
+twitter: @nappdev
 
 
 ## License
