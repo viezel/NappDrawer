@@ -38,14 +38,14 @@
 		B67E52F11780B7E8001348B3 /* DkNappDrawerDrawer.h in Headers */ = {isa = PBXBuildFile; fileRef = B67E52EF1780B7E8001348B3 /* DkNappDrawerDrawer.h */; };
 		B67E52F21780B7E8001348B3 /* DkNappDrawerDrawer.m in Sources */ = {isa = PBXBuildFile; fileRef = B67E52F01780B7E8001348B3 /* DkNappDrawerDrawer.m */; };
 		D914F3A919B403DC00E3C518 /* MMDrawerBarButtonItem.h in Headers */ = {isa = PBXBuildFile; fileRef = D914F3A019B403DC00E3C518 /* MMDrawerBarButtonItem.h */; };
-		D914F3AA19B403DC00E3C518 /* MMDrawerBarButtonItem.m in Sources */ = {isa = PBXBuildFile; fileRef = D914F3A119B403DC00E3C518 /* MMDrawerBarButtonItem.m */; };
+		D914F3AA19B403DC00E3C518 /* MMDrawerBarButtonItem.m in Sources */ = {isa = PBXBuildFile; fileRef = D914F3A119B403DC00E3C518 /* MMDrawerBarButtonItem.m */; settings = {COMPILER_FLAGS = "-fobjc-arc"; }; };
 		D914F3AB19B403DC00E3C518 /* MMDrawerController+Subclass.h in Headers */ = {isa = PBXBuildFile; fileRef = D914F3A219B403DC00E3C518 /* MMDrawerController+Subclass.h */; };
 		D914F3AC19B403DC00E3C518 /* MMDrawerController.h in Headers */ = {isa = PBXBuildFile; fileRef = D914F3A319B403DC00E3C518 /* MMDrawerController.h */; };
-		D914F3AD19B403DC00E3C518 /* MMDrawerController.m in Sources */ = {isa = PBXBuildFile; fileRef = D914F3A419B403DC00E3C518 /* MMDrawerController.m */; };
+		D914F3AD19B403DC00E3C518 /* MMDrawerController.m in Sources */ = {isa = PBXBuildFile; fileRef = D914F3A419B403DC00E3C518 /* MMDrawerController.m */; settings = {COMPILER_FLAGS = "-fobjc-arc"; }; };
 		D914F3AE19B403DC00E3C518 /* MMDrawerVisualState.h in Headers */ = {isa = PBXBuildFile; fileRef = D914F3A519B403DC00E3C518 /* MMDrawerVisualState.h */; };
-		D914F3AF19B403DC00E3C518 /* MMDrawerVisualState.m in Sources */ = {isa = PBXBuildFile; fileRef = D914F3A619B403DC00E3C518 /* MMDrawerVisualState.m */; };
+		D914F3AF19B403DC00E3C518 /* MMDrawerVisualState.m in Sources */ = {isa = PBXBuildFile; fileRef = D914F3A619B403DC00E3C518 /* MMDrawerVisualState.m */; settings = {COMPILER_FLAGS = "-fobjc-arc"; }; };
 		D914F3B019B403DC00E3C518 /* UIViewController+MMDrawerController.h in Headers */ = {isa = PBXBuildFile; fileRef = D914F3A719B403DC00E3C518 /* UIViewController+MMDrawerController.h */; };
-		D914F3B119B403DC00E3C518 /* UIViewController+MMDrawerController.m in Sources */ = {isa = PBXBuildFile; fileRef = D914F3A819B403DC00E3C518 /* UIViewController+MMDrawerController.m */; };
+		D914F3B119B403DC00E3C518 /* UIViewController+MMDrawerController.m in Sources */ = {isa = PBXBuildFile; fileRef = D914F3A819B403DC00E3C518 /* UIViewController+MMDrawerController.m */; settings = {COMPILER_FLAGS = "-fobjc-arc"; }; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
