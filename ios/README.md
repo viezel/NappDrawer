@@ -207,6 +207,16 @@ Use this property to set the statusBar. You will need to add the following to ti
 mainWindow.setStatusBarStyle(NappDrawerModule.STATUSBAR_WHITE);
 ```
 
+### Alternative method
+
+If your drawer has a rightWindow, you can also set the statusbarStyle off that window, which will automagically apply that style to all of the drawer. This was discovered by Andrea Vitale.
+
+```javascript
+  rightWindow: Ti.UI.createWindow({
+    statusBarStyle: Ti.UI.iPhone.StatusBar.LIGHT_CONTENT
+  }),
+```
+
 ## API Methods
 
 ### toggleLeftWindow, toggleRightWindow
