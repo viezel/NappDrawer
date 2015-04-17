@@ -30,7 +30,6 @@ import org.appcelerator.titanium.util.TiUIHelper;
 import com.slidingmenu.lib.SlidingMenu;
 
 import dk.napp.drawer.Drawer;
-
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Message;
@@ -514,4 +513,21 @@ public class DrawerProxy extends TiWindowProxy implements TiActivityWindow
 	}
 	
 	
+	@Kroll.method
+	@Kroll.setProperty
+	public void setHamburgerIcon(Object arg) {
+		setPropertyAndFire(Drawer.PROPERTY_HAMBURGER_ICON, arg);
+	}
+	
+	@Kroll.method
+	@Kroll.setProperty
+	public void setHamburgerIconColor(Object arg) {
+		setPropertyAndFire(Drawer.PROPERTY_HAMBURGER_ICON_COLOR, arg);
+	}	
+	
+	@Kroll.method
+	@Kroll.setProperty
+	public void setArrowAnimation(Object arg) {
+		setPropertyAndFire(Drawer.PROPERTY_ARROW_ANIMATION, arg);
+	}	
 }

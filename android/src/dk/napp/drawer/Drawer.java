@@ -29,6 +29,7 @@ import org.appcelerator.titanium.view.TiUIView;
 import ti.modules.titanium.ui.WindowProxy;
 
 import android.content.res.Configuration;
+import android.content.res.Resources;
 import android.graphics.Canvas;
 import android.graphics.Color;
 import android.graphics.drawable.GradientDrawable;
@@ -37,6 +38,9 @@ import android.view.animation.Interpolator;
 
 import com.slidingmenu.lib.SlidingMenu.CanvasTransformer;
 import com.slidingmenu.lib.SlidingMenu;
+
+import chrisrenke.drawerarrowdrawable.DrawerArrowDrawable ;
+
 
 public class Drawer extends TiUIView implements ConfigurationChangedListener{
 	
@@ -50,6 +54,14 @@ public class Drawer extends TiUIView implements ConfigurationChangedListener{
 	private int leftMenuWidth;
 	private int rightMenuWidth;
 	
+	// Used by DrawerArrowDrawable
+	private float leftMenuOffset=0;
+	private DrawerArrowDrawable drawerArrowDrawable;
+	private boolean useHamburgerIcon = false;
+	private boolean useArrowAnimation = false;
+	private boolean useHamburgerIconCustomColor = false;
+	int hamburgerIconColor = 0;
+	
 	// Static Properties
 	public static final String PROPERTY_LEFT_VIEW = "leftWindow";
 	public static final String PROPERTY_CENTER_VIEW = "centerWindow";
@@ -62,7 +74,10 @@ public class Drawer extends TiUIView implements ConfigurationChangedListener{
 	public static final String PROPERTY_OPEN_MODE = "openDrawerGestureMode";
 	public static final String PROPERTY_CLOSE_MODE = "closeDrawerGestureMode";
 	public static final String PROPERTY_ANIMATION_MODE = "animationMode";
-	
+	public static final String PROPERTY_HAMBURGER_ICON = "hamburgerIcon";
+	public static final String PROPERTY_ARROW_ANIMATION = "arrowAnimation";
+    public static final String PROPERTY_HAMBURGER_ICON_COLOR = "hamburgerIconColor";
+    
 	// for animations
 	private static Interpolator interp = new Interpolator() {
 		@Override
@@ -81,6 +96,11 @@ public class Drawer extends TiUIView implements ConfigurationChangedListener{
         
 		// configure the SlidingMenu
 		slidingMenu = new SlidingMenu(activity);
+		
+		// set the drawerArrowIcon
+		Resources resources = activity.getResources();
+		drawerArrowDrawable = new DrawerArrowDrawable(resources);
+		
 		slidingMenu.setOnClosedListener(new SlidingMenu.OnClosedListener() {
 			@Override
 			public void onClosed() {
@@ -119,6 +139,21 @@ public class Drawer extends TiUIView implements ConfigurationChangedListener{
 				if (proxy.hasListeners("didChangeOffset")) {
 					KrollDict options = new KrollDict();
 					options.put("offset", scroll);
+					if( useArrowAnimation){
+						// Only the rightDrawer should convert the offset in 0-1 range for the drawerArrowAnimation.
+						if (scroll <= 0f) {
+							leftMenuOffset = 0f;
+						}else{
+							leftMenuOffset = (float) scroll/leftMenuWidth;
+						}
+						
+			    	    if (leftMenuOffset >= .995) {
+			    	      drawerArrowDrawable.setFlip(true);
+			    	    } else if (leftMenuOffset <= .005) {
+			    	      drawerArrowDrawable.setFlip(false);
+			    	    }
+			    	    drawerArrowDrawable.setParameter(leftMenuOffset);
+					}
 					proxy.fireEvent("didChangeOffset", options);
 				}	
 			}
@@ -269,6 +304,19 @@ public class Drawer extends TiUIView implements ConfigurationChangedListener{
 			slidingMenu.setSecondaryMenu(null);
 		}
 	}
+	
+	
+	private void updateDrawerArrowDrawable() {
+		if( useArrowAnimation || useHamburgerIcon ){
+			if( useHamburgerIconCustomColor ){
+				drawerArrowDrawable.setStrokeColor(hamburgerIconColor);
+			}
+			activity.getSupportActionBar().setHomeAsUpIndicator(drawerArrowDrawable);
+			activity.getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+		}else{
+			activity.getSupportActionBar().setHomeAsUpIndicator(0);
+		}
+	}
 
 	@Override
 	public void processProperties(KrollDict d)
@@ -319,6 +367,7 @@ public class Drawer extends TiUIView implements ConfigurationChangedListener{
 				Log.e(TAG, "[ERROR] Invalid type for centerView");
 			}
 		}
+
 		
 		updateMenus();	
 		
@@ -336,7 +385,7 @@ public class Drawer extends TiUIView implements ConfigurationChangedListener{
 		}
 		if (d.containsKey(PROPERTY_RIGHT_VIEW_WIDTH)) {
 			rightMenuWidth = getDevicePixels(d.get(PROPERTY_RIGHT_VIEW_WIDTH));
-      updateRightMenuWidth();
+			updateRightMenuWidth();
 		}
 		
 		if (d.containsKey(PROPERTY_FADING)) {
@@ -352,6 +401,23 @@ public class Drawer extends TiUIView implements ConfigurationChangedListener{
 		if (d.containsKey(PROPERTY_ANIMATION_MODE)) {
 			updateAnimationMode(TiConvert.toInt(d.get(PROPERTY_ANIMATION_MODE)));
 		}
+		
+        if (d.containsKey(PROPERTY_HAMBURGER_ICON)) {
+        	useHamburgerIcon = TiConvert.toBoolean(d.get(PROPERTY_HAMBURGER_ICON));
+        	updateDrawerArrowDrawable();
+        }
+        
+        if (d.containsKey(PROPERTY_HAMBURGER_ICON_COLOR)) {
+        	hamburgerIconColor = TiConvert.toColor(d.getString(PROPERTY_HAMBURGER_ICON_COLOR));
+        	useHamburgerIconCustomColor = true;
+        	updateDrawerArrowDrawable();
+		 }
+        
+		if (d.containsKey(PROPERTY_ARROW_ANIMATION)) {
+			useArrowAnimation = TiConvert.toBoolean(d.get(PROPERTY_ARROW_ANIMATION));
+			updateDrawerArrowDrawable();
+		}
+		
 		
 		super.processProperties(d);
 	}
@@ -418,7 +484,7 @@ public class Drawer extends TiUIView implements ConfigurationChangedListener{
 			updateMenuWidth();
 		} else if (key.equals(PROPERTY_RIGHT_VIEW_WIDTH)) {
 			rightMenuWidth = getDevicePixels(newValue);
-      updateRightMenuWidth();
+			updateRightMenuWidth();
 		} else if (key.equals(PROPERTY_FADING)) {
 			slidingMenu.setFadeDegree(TiConvert.toFloat(newValue));
 		} else if (key.equals(PROPERTY_MENU_SCROLL_SCALE)) {
@@ -427,6 +493,16 @@ public class Drawer extends TiUIView implements ConfigurationChangedListener{
 			slidingMenu.setShadowWidth(getDevicePixels(newValue));
 		} else if (key.equals(PROPERTY_ANIMATION_MODE)) {
 			updateAnimationMode(TiConvert.toInt(newValue));
+		} else if (key.equals(PROPERTY_HAMBURGER_ICON)) {
+			useHamburgerIcon = TiConvert.toBoolean(newValue);
+        	updateDrawerArrowDrawable();
+		} else if (key.equals(PROPERTY_HAMBURGER_ICON_COLOR)) {
+	        	hamburgerIconColor = TiConvert.toColor((String) newValue);
+	        	useHamburgerIconCustomColor = true;
+	        	updateDrawerArrowDrawable();
+		} else if (key.equals(PROPERTY_ARROW_ANIMATION)) {
+			useArrowAnimation = TiConvert.toBoolean(newValue);
+			updateDrawerArrowDrawable();	        	
 		} else {
 			super.propertyChanged(key, oldValue, newValue, proxy);
 		}
