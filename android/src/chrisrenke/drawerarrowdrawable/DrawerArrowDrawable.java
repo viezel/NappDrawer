@@ -165,8 +165,8 @@ public class DrawerArrowDrawable extends Drawable {
 
     int dimen = (int) (DIMEN_DP * density);
     
-    int paddingLeft  = (int) (6.12f * density);
-    int paddingRight = (int) (6.12f * density);
+    int paddingLeft  = (int) (12.25f * density);
+    int paddingRight = (int) (12.25f * density);
     
     bounds = new Rect(0-paddingLeft, 0, dimen+paddingRight, dimen);
     
