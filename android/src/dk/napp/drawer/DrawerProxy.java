@@ -208,7 +208,6 @@ public class DrawerProxy extends TiWindowProxy implements TiActivityWindow
 		if (hasProperty(TiC.PROPERTY_WINDOW_SOFT_INPUT_MODE)) {
 			intent.putExtra(TiC.PROPERTY_WINDOW_SOFT_INPUT_MODE, TiConvert.toInt(getProperty(TiC.PROPERTY_WINDOW_SOFT_INPUT_MODE)));
 		}
-
 		if (hasProperty(TiC.PROPERTY_EXIT_ON_CLOSE)) {
 			intent.putExtra(TiC.INTENT_PROPERTY_FINISH_ROOT, TiConvert.toBoolean(getProperty(TiC.PROPERTY_EXIT_ON_CLOSE)));
 		} else {

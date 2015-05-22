@@ -6,10 +6,10 @@
 	<classpathentry kind="lib" path="/Applications/android-sdk/platforms/android-21/android.jar"/>
 	<classpathentry kind="lib" path="/Applications/android-sdk/tools/support/annotations.jar"/>
 	<classpathentry kind="lib" path="/Applications/android-sdk/extras/android/support/v13/android-support-v13.jar"/>
-	<classpathentry kind="lib" path="/Users/esimacmini2013/Library/Application Support/Titanium/mobilesdk/osx/4.0.0.RC3/android/kroll-apt.jar"/>
-	<classpathentry kind="lib" path="/Users/esimacmini2013/Library/Application Support/Titanium/mobilesdk/osx/4.0.0.RC3/android/kroll-common.jar"/>
-	<classpathentry kind="lib" path="/Users/esimacmini2013/Library/Application Support/Titanium/mobilesdk/osx/4.0.0.RC3/android/titanium.jar"/>
-	<classpathentry kind="lib" path="/Users/esimacmini2013/Library/Application Support/Titanium/mobilesdk/osx/4.0.0.RC3/android/modules/titanium-ui.jar"/>
+	<classpathentry kind="lib" path="/Users/esimacmini2013/Library/Application Support/Titanium/mobilesdk/osx/4.0.0.GA/android/kroll-apt.jar"/>
+	<classpathentry kind="lib" path="/Users/esimacmini2013/Library/Application Support/Titanium/mobilesdk/osx/4.0.0.GA/android/kroll-common.jar"/>
+	<classpathentry kind="lib" path="/Users/esimacmini2013/Library/Application Support/Titanium/mobilesdk/osx/4.0.0.GA/android/titanium.jar"/>
+	<classpathentry kind="lib" path="/Users/esimacmini2013/Library/Application Support/Titanium/mobilesdk/osx/4.0.0.GA/android/modules/titanium-ui.jar"/>
 	<classpathentry kind="src" path=".apt_generated">
 		<attributes>
 			<attribute name="optional" value="true"/>

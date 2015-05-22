@@ -2,7 +2,7 @@
 # this is your module manifest and used by Titanium
 # during compilation, packaging, distribution, etc.
 #
-version: 1.1.5.RC
+version: 1.1.5
 apiversion: 2
 description: Napp Drawer
 author: Mads Moller
@@ -15,4 +15,4 @@ name: nappslide
 moduleid: dk.napp.drawer
 guid: 0f157d47-db5c-4891-8197-c851e8d329e0
 platform: android
-minsdk: 4.0.0.RC3
+minsdk: 4.0.0.GA
