@@ -190,7 +190,7 @@ public class SlidingMenu extends RelativeLayout {
 	 * Lollipop Bottom Nav Bar Overlays App When Moving Action Bar
 	 */
 	private void updateSystemUiVisibility(Activity activity){
-		if(Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP){
+		if(Build.VERSION.SDK_INT >= 21){
 			int flags = activity.getWindow().getAttributes().flags;
 			if ((flags & WindowManager.LayoutParams.FLAG_DRAWS_SYSTEM_BAR_BACKGROUNDS) != 0){
 				setSystemUiVisibility(SYSTEM_UI_FLAG_LAYOUT_HIDE_NAVIGATION);
