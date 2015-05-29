@@ -177,6 +177,14 @@ mainWindow. isAnyWindowOpen();
 
 ## Changelog
 
+* v1.1.5
+  * Fix #159 - useArrowAnimation not working when there is no listener for didChangeOffset
+  * Fix #162 - Lollipop Bottom Nav Bar Overlays App on Android 5.0 and up
+  * Updated Ti min-sdk to 4.0.0.GA
+  
+* v1.1.4
+  * Burger To Arrow animation icon. (Android L style)
+  
 * v1.1.3  
   * Fix #71 - IllegalStateException when recreating activity in Android
 
