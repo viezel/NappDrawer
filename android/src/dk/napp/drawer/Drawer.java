@@ -139,23 +139,23 @@ public class Drawer extends TiUIView implements ConfigurationChangedListener{
 				if (proxy.hasListeners("didChangeOffset")) {
 					KrollDict options = new KrollDict();
 					options.put("offset", scroll);
-					if( useArrowAnimation){
-						// Only the rightDrawer should convert the offset in 0-1 range for the drawerArrowAnimation.
-						if (scroll <= 0f) {
-							leftMenuOffset = 0f;
-						}else{
-							leftMenuOffset = (float) scroll/leftMenuWidth;
-						}
-						
-			    	    if (leftMenuOffset >= .995) {
-			    	      drawerArrowDrawable.setFlip(true);
-			    	    } else if (leftMenuOffset <= .005) {
-			    	      drawerArrowDrawable.setFlip(false);
-			    	    }
-			    	    drawerArrowDrawable.setParameter(leftMenuOffset);
-					}
 					proxy.fireEvent("didChangeOffset", options);
-				}	
+				}
+				if( useArrowAnimation){
+					// Only the rightDrawer should convert the offset in 0-1 range for the drawerArrowAnimation.
+					if (scroll <= 0f) {
+						leftMenuOffset = 0f;
+					}else{
+						leftMenuOffset = (float) scroll/leftMenuWidth;
+					}
+					
+		    	    if (leftMenuOffset >= .995) {
+		    	      drawerArrowDrawable.setFlip(true);
+		    	    } else if (leftMenuOffset <= .005) {
+		    	      drawerArrowDrawable.setFlip(false);
+		    	    }
+		    	    drawerArrowDrawable.setParameter(leftMenuOffset);
+				}
 			}
 		});
 		

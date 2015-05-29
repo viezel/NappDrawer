@@ -32,6 +32,7 @@ import com.slidingmenu.lib.SlidingMenu;
 import dk.napp.drawer.Drawer;
 import android.app.Activity;
 import android.content.Intent;
+import android.os.Bundle;
 import android.os.Message;
 
 @Kroll.proxy(creatableInModule=NappdrawerModule.class)
@@ -203,9 +204,6 @@ public class DrawerProxy extends TiWindowProxy implements TiActivityWindow
 	{
 		if (hasProperty(TiC.PROPERTY_FULLSCREEN)) {
 			intent.putExtra(TiC.PROPERTY_FULLSCREEN, TiConvert.toBoolean(getProperty(TiC.PROPERTY_FULLSCREEN)));
-		}
-		if (hasProperty(TiC.PROPERTY_NAV_BAR_HIDDEN)) {
-			intent.putExtra(TiC.PROPERTY_NAV_BAR_HIDDEN, TiConvert.toBoolean(getProperty(TiC.PROPERTY_NAV_BAR_HIDDEN)));
 		}
 		if (hasProperty(TiC.PROPERTY_WINDOW_SOFT_INPUT_MODE)) {
 			intent.putExtra(TiC.PROPERTY_WINDOW_SOFT_INPUT_MODE, TiConvert.toInt(getProperty(TiC.PROPERTY_WINDOW_SOFT_INPUT_MODE)));
