@@ -184,6 +184,19 @@ public class SlidingMenu extends RelativeLayout {
 		 */
 		public void transformCanvas(Canvas canvas, float percentOpen);
 	}
+	
+	/**
+	 * Fixes issue https://github.com/jfeinstein10/SlidingMenu/issues/680
+	 * Lollipop Bottom Nav Bar Overlays App When Moving Action Bar
+	 */
+	private void updateSystemUiVisibility(Activity activity){
+		if(Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP){
+			int flags = activity.getWindow().getAttributes().flags;
+			if ((flags & WindowManager.LayoutParams.FLAG_DRAWS_SYSTEM_BAR_BACKGROUNDS) != 0){
+				setSystemUiVisibility(SYSTEM_UI_FLAG_LAYOUT_HIDE_NAVIGATION);
+			}
+		}
+	}
 
 	/**
 	 * Instantiates a new SlidingMenu.
@@ -192,6 +205,7 @@ public class SlidingMenu extends RelativeLayout {
 	 */
 	public SlidingMenu(Context context) {
 		this(context, null);
+		updateSystemUiVisibility((Activity) context);
 	}
 
 	/**
@@ -202,6 +216,7 @@ public class SlidingMenu extends RelativeLayout {
 	 */
 	public SlidingMenu(Activity activity, int slideStyle) {
 		this(activity, null);
+		updateSystemUiVisibility((Activity) activity);
 		this.attachToActivity(activity, slideStyle);
 	}
 
@@ -213,6 +228,7 @@ public class SlidingMenu extends RelativeLayout {
 	 */
 	public SlidingMenu(Context context, AttributeSet attrs) {
 		this(context, attrs, 0);
+		updateSystemUiVisibility((Activity) context);
 	}
 
 	/**
@@ -224,6 +240,7 @@ public class SlidingMenu extends RelativeLayout {
 	 */
 	public SlidingMenu(Context context, AttributeSet attrs, int defStyle) {
 		super(context, attrs, defStyle);
+		updateSystemUiVisibility((Activity) context);
 		
 		LayoutParams behindParams = new LayoutParams(LayoutParams.MATCH_PARENT, LayoutParams.MATCH_PARENT);
 		mViewBehind = new CustomViewBehind(context);
