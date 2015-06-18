@@ -1,0 +1,263 @@
+#!/usr/bin/env node
+
+var path = require('path');
+var fs = require('fs');
+var child_process = require('child_process');
+
+var OS_WINDOWS = (process.platform === 'win32');
+
+install();
+
+function install() {
+  var pkg;
+
+  try {
+    pkg = JSON.parse(fs.readFileSync('package.json', {
+      encoding: 'utf-8'
+    }));
+  } catch (e) {
+    die('Could not read package.json');
+  }
+
+  var appcNPM = pkg['appc-npm'];
+
+  if (typeof appcNPM !== 'object') {
+    die('Could not find \'appc-npm\' in package.json');
+  }
+
+  var target = findTarget();
+
+  if (!target) {
+    die('Could not find project');
+  }
+
+  var targetPath = (typeof appcNPM.target === 'object') ? appcNPM.target[target.name] : appcNPM.target;
+
+  if (typeof targetPath !== 'string') {
+    die('Could not find \'appc-npm.target.' + target.name + '\' or \'appc-npm.target\' in package.json');
+  }
+
+  targetPath = path.join(target.base, targetPath);
+
+  var zipFiles = toArray(appcNPM.unzip);
+
+  if (zipFiles.length > 0) {
+
+    if (OS_WINDOWS) {
+      mkdirsSync(targetPath);
+    }
+
+    unzip(zipFiles, targetPath);
+
+  } else {
+    var ignore = toArray(appcNPM.ignore);
+    ignore.push('appc-npm');
+
+    try {
+      copySync(__dirname, targetPath, function (fullPath) {
+        var relPath = fullPath.substr(__dirname.length + 1);
+
+        return ignore.indexOf(relPath) === -1;
+      });
+
+    } catch (e) {
+      die('Could not copy \'' + __dirname + '\' to \'' + targetPath + '\'');
+    }
+
+    console.log('Copied \'' + __dirname + '\' to \'' + targetPath + '\'');
+
+    console.log();
+    process.exit(0);
+  }
+}
+
+function unzip(files, targetPath) {
+  var file = files.shift();
+  var filePath = path.join(__dirname, file);
+  var command;
+
+  if (OS_WINDOWS) {
+    command = '/c cd "' + targetPath + '" && jar xf "' + filePath + '"';
+
+  } else {
+    command = 'unzip "' + filePath + '" -d "' + targetPath + '"';
+  }
+
+  return child_process.exec(command, function(error, stdout, stderr) {
+
+    if (error) {
+
+      var err = 'Could not unzip \'' + filePath + '\': ' + stderr;
+
+      if (OS_WINDOWS) {
+        var EOL = require('os').EOL;
+        err += EOL + 'Make sure you have Java JDK installed and added to PATH: ' + EOL + 'http://docs.oracle.com/javase/8/docs/technotes/guides/install/windows_jdk_install.html#BABGDJFH';
+      }
+
+      die(err);
+
+    } else {
+      console.log('Unzipped \'' + filePath + '\' to \'' + targetPath + '\'');
+
+      if (files.length > 0) {
+        unzip(files, targetPath);
+
+      } else {
+        console.log();
+        process.exit(0);
+      }
+    }
+  });
+}
+
+function findTarget(dir) {
+
+  if (dir) {
+
+    if (fs.existsSync(path.join(dir, 'appc.json'))) {
+      return {
+        name: 'arrow',
+        base: dir
+      };
+    } else if (fs.existsSync(path.join(dir, 'app', 'controllers', 'index.js'))) {
+      return {
+        name: 'alloy',
+        base: dir
+      };
+    } else if (fs.existsSync(path.join(dir, 'tiapp.xml'))) {
+      return {
+        name: 'titanium',
+        base: dir
+      };
+    }
+
+  } else {
+    dir = __dirname;
+  }
+
+  dirUp = path.resolve(dir, '..', '..');
+
+  if (!dirUp || dirUp === dir) {
+    return;
+  }
+
+  return findTarget(dirUp);
+}
+
+function die(err) {
+  console.error(err);
+  console.error();
+  process.exit(1);
+}
+
+function toArray(val) {
+
+  if (typeof val === 'string') {
+    return [val];
+  } else if (Object.prototype.toString.call(val) === '[object Array]') {
+    return val;
+  } else {
+    return [];
+  }
+
+}
+
+/* jshint ignore:start */
+
+// https://github.com/jprichardson/node-fs-extra/blob/master/lib/copy/copy-sync.js
+function copySync (src, dest, options) {
+  if (typeof options === 'function' || options instanceof RegExp) {
+    options = {filter: options}
+  }
+
+  options = options || {}
+  options.recursive = !!options.recursive
+
+  // default to true for now
+  options.clobber = 'clobber' in options ? !!options.clobber : true
+
+  options.filter = options.filter || function () { return true }
+
+  var stats = options.recursive ? fs.lstatSync(src) : fs.statSync(src)
+  var destFolder = path.dirname(dest)
+  var destFolderExists = fs.existsSync(destFolder)
+  var performCopy = false
+
+  if (stats.isFile()) {
+    if (options.filter instanceof RegExp) performCopy = options.filter.test(src)
+    else if (typeof options.filter === 'function') performCopy = options.filter(src)
+
+    if (performCopy) {
+      if (!destFolderExists) mkdirsSync(destFolder)
+      copyFileSync(src, dest, options.clobber)
+    }
+  } else if (stats.isDirectory()) {
+    if (!fs.existsSync(dest)) mkdirsSync(dest)
+    var contents = fs.readdirSync(src)
+    contents.forEach(function (content) {
+      copySync(path.join(src, content), path.join(dest, content), {filter: options.filter, recursive: true})
+    })
+  } else if (options.recursive && stats.isSymbolicLink()) {
+    var srcPath = fs.readlinkSync(src)
+    fs.symlinkSync(srcPath, dest)
+  }
+}
+
+// https://github.com/jprichardson/node-fs-extra/blob/master/lib/copy/copy-file-sync.js
+function copyFileSync (srcFile, destFile, clobber) {
+
+  if (fs.existsSync(destFile) && !clobber) {
+    throw Error('EEXIST')
+  }
+
+  // simplified to work with vanilla fs
+  fs.createReadStream(srcFile).pipe(fs.createWriteStream(destFile));
+}
+
+// https://github.com/jprichardson/node-fs-extra/blob/master/lib/mkdirs/mkdirs.js
+var o777 = parseInt('0777', 8)
+
+function mkdirsSync (p, opts, made) {
+  if (!opts || typeof opts !== 'object') {
+    opts = { mode: opts }
+  }
+
+  var mode = opts.mode
+  var xfs = opts.fs || fs
+
+  if (mode === undefined) {
+    mode = o777 & (~process.umask())
+  }
+  if (!made) made = null
+
+  p = path.resolve(p)
+
+  try {
+    xfs.mkdirSync(p)//, mode)   <!-- failed
+    made = made || p
+  } catch (err0) {
+    switch (err0.code) {
+      case 'ENOENT' :
+        made = mkdirsSync(path.dirname(p), opts, made)
+        mkdirsSync(p, opts, made)
+        break
+
+      // In the case of any other error, just see if there's a dir
+      // there already.  If so, then hooray!  If not, then something
+      // is borked.
+      default:
+        var stat
+        try {
+          stat = xfs.statSync(p)
+        } catch (err1) {
+          throw err0
+        }
+        if (!stat.isDirectory()) throw err0
+        break
+    }
+  }
+
+  return made
+}
+
+/* jshint ignore:end */
