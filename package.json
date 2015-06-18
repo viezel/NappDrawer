@@ -28,5 +28,13 @@
     "ti-module",
     "titanium",
     "alloy"
-  ]
+  ],
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/viezel/NappDrawer.git"
+  },
+  "homepage": "https://github.com/viezel/NappDrawer",
+  "bugs": {
+    "url": "https://github.com/viezel/NappDrawer/issues"
+  }
 }
