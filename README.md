@@ -1,4 +1,4 @@
-# Napp Drawer Module
+# Napp Drawer Module [![gitTio](http://gitt.io/badge.svg)](http://gitt.io/component/dk.napp.drawer) [![NPM](https://img.shields.io/npm/v/ti-module-dk.napp.drawer.svg?style=flat-square)](https://www.npmjs.com/package/ti-module-dk.napp.drawer)
 
 ## Description
 
@@ -13,11 +13,16 @@ There are **some minor platform parity differences** in this module. iOS version
 
 ## Quick Start
 
-### Get it [![gitTio](http://gitt.io/badge.png)](http://gitt.io/component/dk.napp.drawer)
-Download the latest distribution ZIP-file and consult the [Titanium Documentation](http://docs.appcelerator.com/titanium/latest/#!/guide/Using_a_Module) on how install it, or simply use the [gitTio CLI](http://gitt.io/cli):
+### Get it
+Download the latest distribution ZIP-file and consult the [Titanium Documentation](http://docs.appcelerator.com/titanium/latest/#!/guide/Using_a_Module) on how install it
+
+Or simply use the [gitTio CLI](http://gitt.io/cli) [![gitTio](http://gitt.io/badge.svg)](http://gitt.io/component/dk.napp.drawer)
 
 `$ gittio install dk.napp.drawer`
 
+Or NPM [![NPM](https://img.shields.io/npm/v/ti-module-dk.napp.drawer.svg?style=flat-square)](https://www.npmjs.com/package/ti-module-dk.napp.drawer)
+
+`$ npm i --save ti-module-dk.napp.drawer`
 
 ## Community Driven
 
