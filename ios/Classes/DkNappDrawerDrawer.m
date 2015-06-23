@@ -43,7 +43,51 @@ UINavigationController * NavigationControllerForViewProxy(TiUIiOSNavWindowProxy 
 
 - (id)accessibilityElement
 {
-	return self.controller;
+    return controllerView_;
+}
+
+- (NSArray *)accessibleElements
+
+{
+    if ( _accessibleElements != nil )
+    {
+        [_accessibleElements removeAllObjects];
+    }
+    else
+    {
+        _accessibleElements = [[NSMutableArray alloc] init];
+    }
+    
+    if ([[self isLeftWindowOpen:nil] intValue ]) {
+        [_accessibleElements addObject:leftView_];
+    } else if ([[self isRightWindowOpen:nil] intValue ]) {
+        [_accessibleElements addObject:rightView_];
+    }
+    [_accessibleElements addObject:controllerView_];
+    
+    return _accessibleElements;
+}
+
+/* The container itself is not accessible, so MultiFacetedView should return NO in isAccessiblityElement. */
+- (BOOL)isAccessibilityElement
+{
+    return NO;
+}
+
+/* The following methods are implementations of UIAccessibilityContainer protocol methods. */
+- (NSInteger)accessibilityElementCount
+{
+    return [[self accessibleElements] count];
+}
+
+- (id)accessibilityElementAtIndex:(NSInteger)index
+{
+    return [[self accessibleElements] objectAtIndex:index];
+}
+
+- (NSInteger)indexOfAccessibilityElement:(id)element
+{
+    return [[self accessibleElements] indexOfObject:element];
 }
 
 -(MMDrawerController*)controller
@@ -140,9 +184,13 @@ UINavigationController * NavigationControllerForViewProxy(TiUIiOSNavWindowProxy 
         }];
         
         // set frame bounds & add it
-        UIView * controllerView = [controller view];
-        [controllerView setFrame:[self bounds]];
-        [self addSubview:controllerView];
+        controllerView_ = [controller view];
+        [controllerView_ setFrame:[self bounds]];
+        [self addSubview:controllerView_];
+        
+        leftView_ = leftWindow.view;
+        rightView_ = rightWindow.view;
+        centerView_ = centerWindow.view;
         
 	}
 	return controller;

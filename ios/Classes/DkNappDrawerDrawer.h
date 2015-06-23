@@ -19,6 +19,14 @@
 @private
 	CustomMMDrawerController *controller;
     TiUIiOSNavWindowProxy *navProxy;
+    
+    NSMutableArray* _accessibleElements;
+    
+    UIView* controllerView_;
+    
+    UIView* leftView_;
+    UIView* rightView_;
+    UIView* centerView_;
 }
 
 -(CustomMMDrawerController*)controller;
