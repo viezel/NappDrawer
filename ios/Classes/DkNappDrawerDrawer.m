@@ -412,7 +412,7 @@ UINavigationController * NavigationControllerForViewProxy(TiUIiOSNavWindowProxy 
 
 -(NSNumber*)isRightWindowOpen:(id)args
 {
-    return NUMBOOL(controller.openSide == MMDrawerSideLeft);
+    return NUMBOOL(controller.openSide == MMDrawerSideRight);
 }
 
 @end
