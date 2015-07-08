@@ -266,6 +266,9 @@ mainWindow.addEventListener("windowDidClose", function(e) {
 ```
 
 ## Changelog
+* v1.2.2
+  * Fixed isRightDrawerOpen() returning wrong value
+
 * v1.2.1
   * Fixed close() leaking child windows
 
