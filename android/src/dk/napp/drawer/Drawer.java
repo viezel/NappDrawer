@@ -26,7 +26,7 @@ import org.appcelerator.titanium.util.TiConvert;
 import org.appcelerator.titanium.view.TiCompositeLayout;
 import org.appcelerator.titanium.view.TiUIView;
 
-import ti.modules.titanium.ui.WindowProxy;
+import org.appcelerator.titanium.proxy.TiWindowProxy;
 
 import android.content.res.Configuration;
 import android.content.res.Resources;
@@ -333,7 +333,7 @@ public class Drawer extends TiUIView implements ConfigurationChangedListener{
 		if (d.containsKey(PROPERTY_LEFT_VIEW)) {
 			Object leftView = d.get(PROPERTY_LEFT_VIEW);
 			if (leftView != null && leftView instanceof TiViewProxy) {
-				if (leftView instanceof WindowProxy)
+				if (leftView instanceof TiWindowProxy)
 					throw new IllegalStateException("[ERROR] Cannot use window as SlideMenu view");
 				this.leftView = (TiViewProxy)leftView;
 			} else {
@@ -343,7 +343,7 @@ public class Drawer extends TiUIView implements ConfigurationChangedListener{
 		if (d.containsKey(PROPERTY_RIGHT_VIEW)) {
 			Object rightView = d.get(PROPERTY_RIGHT_VIEW);
 			if (rightView != null && rightView instanceof TiViewProxy) {
-				if (rightView instanceof WindowProxy)
+				if (rightView instanceof TiWindowProxy)
 					throw new IllegalStateException("[ERROR] Cannot use window as SlideMenu view");
 				this.rightView = (TiViewProxy)rightView;
 			} else {
@@ -354,7 +354,7 @@ public class Drawer extends TiUIView implements ConfigurationChangedListener{
 		if (d.containsKey(PROPERTY_CENTER_VIEW)) {
 			Object centerView = d.get(PROPERTY_CENTER_VIEW);
 			if (centerView != null && centerView instanceof TiViewProxy) {
-				if (centerView instanceof WindowProxy)
+				if (centerView instanceof TiWindowProxy)
 					throw new IllegalStateException("[ERROR] Cannot use window as SlideMenu view");
 				
 				this.centerView = (TiViewProxy)centerView;
@@ -432,7 +432,7 @@ public class Drawer extends TiUIView implements ConfigurationChangedListener{
 			if (newValue == this.leftView) return;
 			TiViewProxy newProxy = null;
 			if (newValue != null && newValue instanceof TiViewProxy) {
-				if (newValue instanceof WindowProxy)
+				if (newValue instanceof TiWindowProxy)
 					throw new IllegalStateException("Cannot use window as SlideMenu view");
 				newProxy = (TiViewProxy)newValue;
 			} else {
@@ -444,7 +444,7 @@ public class Drawer extends TiUIView implements ConfigurationChangedListener{
 			if (newValue == this.rightView) return;
 			TiViewProxy newProxy = null;
 			if (newValue != null && newValue instanceof TiViewProxy) {
-				if (newValue instanceof WindowProxy)
+				if (newValue instanceof TiWindowProxy)
 					throw new IllegalStateException("Cannot use window as SlideMenu view");
 				newProxy = (TiViewProxy)newValue;
 			} else {
@@ -461,7 +461,7 @@ public class Drawer extends TiUIView implements ConfigurationChangedListener{
 				index = content.indexOfChild(this.centerView.getOrCreateView().getNativeView());
 			}
 			if (newValue != null && newValue instanceof TiViewProxy) {
-				if (newValue instanceof WindowProxy)
+				if (newValue instanceof TiWindowProxy)
 					throw new IllegalStateException("Cannot use window as SlideMenu view");
 				newProxy = (TiViewProxy)newValue;
 				TiCompositeLayout.LayoutParams params = new TiCompositeLayout.LayoutParams();

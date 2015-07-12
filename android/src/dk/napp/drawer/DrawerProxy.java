@@ -21,6 +21,7 @@ import org.appcelerator.titanium.TiActivityWindow;
 import org.appcelerator.titanium.TiActivityWindows;
 import org.appcelerator.titanium.TiApplication;
 import org.appcelerator.titanium.TiBaseActivity;
+import org.appcelerator.titanium.TiBlob;
 import org.appcelerator.titanium.TiC;
 import org.appcelerator.titanium.TiContext;
 import org.appcelerator.titanium.proxy.TiWindowProxy;
@@ -217,9 +218,10 @@ public class DrawerProxy extends TiWindowProxy implements TiActivityWindow
 	}
 
 	@Override
-	public KrollDict handleToImage()
+	public TiBlob handleToImage()
 	{
-		return TiUIHelper.viewToImage(new KrollDict(), getActivity().getWindow().getDecorView());
+		KrollDict d = TiUIHelper.viewToImage(new KrollDict(), getActivity().getWindow().getDecorView());
+		return TiUIHelper.getImageFromDict(d);
 	}
 
 	@Override
