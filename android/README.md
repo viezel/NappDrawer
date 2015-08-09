@@ -177,6 +177,9 @@ mainWindow. isAnyWindowOpen();
 
 ## Changelog
 
+* v1.1.6
+  * Updated Ti min-sdk to 4.1.0.GA
+
 * v1.1.5
   * Fix #159 - useArrowAnimation not working when there is no listener for didChangeOffset
   * Fix #162 - Lollipop Bottom Nav Bar Overlays App on Android 5.0 and up
