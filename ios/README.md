@@ -266,6 +266,9 @@ mainWindow.addEventListener("windowDidClose", function(e) {
 ```
 
 ## Changelog
+* v1.2.3
+  * Fixed statusbare frame when rotating the device
+
 * v1.2.2
   * Fixed isRightDrawerOpen() returning wrong value
 
