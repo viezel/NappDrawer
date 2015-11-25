@@ -192,8 +192,27 @@ UINavigationController * NavigationControllerForViewProxy(TiUIiOSNavWindowProxy 
         rightView_ = rightWindow.view;
         centerView_ = centerWindow.view;
         
+        [[NSNotificationCenter defaultCenter] addObserver: self
+                                                 selector: @selector(orientationDidChange:)
+                                                     name: UIApplicationDidChangeStatusBarOrientationNotification
+                                                   object: nil];
+        
 	}
 	return controller;
+}
+
+- (void)orientationDidChange:(NSNotification *)note
+{
+    UIInterfaceOrientation orientation = [[[note userInfo] objectForKey: UIApplicationStatusBarOrientationUserInfoKey] integerValue];
+    
+    if([self.controller.centerViewController isKindOfClass:[UINavigationController class]]) {
+        UINavigationController * navCon = (UINavigationController *)self.controller.centerViewController;
+        UINavigationBar *bar = navCon.navigationBar;
+        
+        [[UIApplication sharedApplication] setStatusBarHidden:NO];
+        
+        bar.frame = CGRectMake(0, 0, self.controller.view.bounds.size.width, 64);
+    }
 }
 
 -(void)frameSizeChanged:(CGRect)frame bounds:(CGRect)bounds
