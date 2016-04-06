@@ -126,6 +126,12 @@ public class DrawerProxy extends TiWindowProxy implements TiActivityWindow
 	protected void handleOpen(KrollDict options)
 	{
 		Activity topActivity = TiApplication.getAppCurrentActivity();
+
+		if (topActivity == null || topActivity.isFinishing()) {
+			Log.w(TAG, "Unable to open drawer. Activity is null");
+			return;
+		}		
+
 		Intent intent = new Intent(topActivity, TiActivity.class);
 		fillIntent(topActivity, intent);
 
