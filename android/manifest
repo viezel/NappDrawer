@@ -2,13 +2,13 @@
 # this is your module manifest and used by Titanium
 # during compilation, packaging, distribution, etc.
 #
-version: 1.1.7
-apiversion: 2
+version: 2.0.0
+apiversion: 3
 description: Napp Drawer
 author: Mads Moller
 license: MIT
 copyright: Napp ApS
-architectures: armeabi armeabi-v7a x86
+architectures: armeabi-v7a x86
 
 # these should not be edited
 name: nappslide
