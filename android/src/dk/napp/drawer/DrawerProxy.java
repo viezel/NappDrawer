@@ -23,7 +23,6 @@ import org.appcelerator.titanium.TiApplication;
 import org.appcelerator.titanium.TiBaseActivity;
 import org.appcelerator.titanium.TiBlob;
 import org.appcelerator.titanium.TiC;
-import org.appcelerator.titanium.TiContext;
 import org.appcelerator.titanium.proxy.TiWindowProxy;
 import org.appcelerator.titanium.util.TiConvert;
 import org.appcelerator.titanium.util.TiUIHelper;
@@ -59,11 +58,6 @@ public class DrawerProxy extends TiWindowProxy implements TiActivityWindow
 	public DrawerProxy()
 	{
 		super();
-	}
-
-	public DrawerProxy(TiContext tiContext)
-	{
-		this();
 	}
 
 	@Override
