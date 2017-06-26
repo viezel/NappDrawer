@@ -3,7 +3,7 @@
 # during compilation, packaging, distribution, etc.
 #
 version: 2.0.0
-apiversion: 3
+apiversion: 4
 description: Napp Drawer
 author: Mads Moller
 license: MIT
@@ -15,4 +15,4 @@ name: nappslide
 moduleid: dk.napp.drawer
 guid: 0f157d47-db5c-4891-8197-c851e8d329e0
 platform: android
-minsdk: 4.1.0.GA
+minsdk: 6.2.0
