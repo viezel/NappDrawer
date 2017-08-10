@@ -2,6 +2,9 @@ package com.slidingmenu.lib;
 
 import java.lang.reflect.Method;
 
+
+
+
 //import android.annotation.SuppressLint;
 //import android.annotation.TargetApi;
 import android.app.Activity;
@@ -14,7 +17,6 @@ import android.graphics.Point;
 import android.graphics.Rect;
 import android.graphics.drawable.Drawable;
 import android.os.Build;
-import android.os.Handler;
 import android.os.Parcel;
 import android.os.Parcelable;
 import android.util.AttributeSet;
@@ -24,9 +26,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.WindowManager;
-import android.widget.FrameLayout;
 import android.widget.RelativeLayout;
-
 
 import com.slidingmenu.lib.CustomViewAbove.OnPageChangeListener;
 
@@ -308,8 +308,11 @@ public class SlidingMenu extends RelativeLayout {
 	 * @param slideStyle either SLIDING_CONTENT or SLIDING_WINDOW
 	 */
 	public void attachToActivity(Activity activity, int slideStyle) {
-		attachToActivity(activity, slideStyle, false);
-	}
+        attachToActivity(activity, slideStyle, false);
+        if(slideStyle == SLIDING_WINDOW && Build.VERSION.SDK_INT >= 21) {
+            setSystemUiVisibility(SYSTEM_UI_FLAG_LAYOUT_HIDE_NAVIGATION);
+        }
+    }
 
 	/**
 	 * Attaches the SlidingMenu to an entire Activity
@@ -653,8 +656,9 @@ public class SlidingMenu extends RelativeLayout {
 		setAboveOffset(i);
 	}
 
-  private int getDisplayWidth() {
-    int width;
+	@SuppressWarnings("deprecation")
+	private int getDisplayWidth() {
+		int width;
 		Display display = ((WindowManager) getContext().getSystemService(Context.WINDOW_SERVICE))
 				.getDefaultDisplay();
 		try {
@@ -667,14 +671,13 @@ public class SlidingMenu extends RelativeLayout {
 		} catch (Exception e) {
 			width = display.getWidth();
 		}
-    return width;
-  }
+		return width;
+  	}
 	/**
 	 * Sets the behind width.
 	 *
 	 * @param i The width the Sliding Menu will open to, in pixels
 	 */
-	@SuppressWarnings("deprecation")
 	public void setBehindWidth(int i) {
     setBehindOffset(getDisplayWidth()-i);
 	}
@@ -684,7 +687,6 @@ public class SlidingMenu extends RelativeLayout {
 	 *
 	 * @param i The width the Sliding Menu will open to, in pixels
 	 */
-	@SuppressWarnings("deprecation")
 	public void setRightBehindWidth(int i) {
     setRightBehindOffset(getDisplayWidth()-i);
 	}
@@ -792,6 +794,7 @@ public class SlidingMenu extends RelativeLayout {
 	 *
 	 * @param resId the resource ID of the new shadow drawable
 	 */
+	@SuppressWarnings("deprecation")
 	public void setShadowDrawable(int resId) {
 		setShadowDrawable(getContext().getResources().getDrawable(resId));
 	}
@@ -810,6 +813,7 @@ public class SlidingMenu extends RelativeLayout {
 	 *
 	 * @param resId the resource ID of the new shadow drawable
 	 */
+	@SuppressWarnings("deprecation")
 	public void setSecondaryShadowDrawable(int resId) {
 		setSecondaryShadowDrawable(getContext().getResources().getDrawable(resId));
 	}
