@@ -1,5 +1,5 @@
 {
-  "version": "1.2.2",
+  "version": "2.0.0",
   "description": "A side drawer navigation container view controller for Appcelerator Titanium.",
   "author": "Mads Møller",
   "license": "MIT",
@@ -10,14 +10,14 @@
       "alloy": "/"
     },
     "unzip": [
-      "ios/dist/dk.napp.drawer-iphone-1.2.2.zip",
-      "android/dist/dk.napp.drawer-android-1.1.5.zip"
+      "ios/dist/dk.napp.drawer-iphone-2.0.0.zip",
+      "android/dist/dk.napp.drawer-android-2.0.2.zip"
     ]
   },
   "files": [
     "appc-npm",
-    "ios/dist/dk.napp.drawer-iphone-1.2.2.zip",
-    "android/dist/dk.napp.drawer-android-1.1.5.zip"
+    "ios/dist/dk.napp.drawer-iphone-2.0.0.zip",
+    "android/dist/dk.napp.drawer-android-2.0.2.zip"
   ],
   "scripts": {
     "postinstall": "node ./appc-npm"
