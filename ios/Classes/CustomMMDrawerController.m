@@ -47,9 +47,9 @@
 
 -(void)dealloc
 {
-    [super dealloc];
     [_callback release];
     _callback = nil;
+  [super dealloc];
 }
 
 @end

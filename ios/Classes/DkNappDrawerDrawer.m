@@ -202,9 +202,7 @@ UINavigationController * NavigationControllerForViewProxy(TiUIiOSNavWindowProxy 
 }
 
 - (void)orientationDidChange:(NSNotification *)note
-{
-    UIInterfaceOrientation orientation = [[[note userInfo] objectForKey: UIApplicationStatusBarOrientationUserInfoKey] integerValue];
-    
+{    
     if([self.controller.centerViewController isKindOfClass:[UINavigationController class]]) {
         UINavigationController * navCon = (UINavigationController *)self.controller.centerViewController;
         UINavigationBar *bar = navCon.navigationBar;

@@ -26,8 +26,9 @@
         
         CGFloat maxDistance = 50;
         CGFloat distance = maxDistance * percentVisible;
-        CATransform3D translateTransform;
-        UIViewController * sideDrawerViewController;
+        CATransform3D translateTransform = CATransform3DIdentity;
+        UIViewController * sideDrawerViewController = nil;
+
         if(drawerSide == MMDrawerSideLeft) {
             sideDrawerViewController = drawerController.leftDrawerViewController;
             translateTransform = CATransform3DMakeTranslation((maxDistance-distance), 0.0, 0.0);
@@ -36,9 +37,11 @@
             sideDrawerViewController = drawerController.rightDrawerViewController;
             translateTransform = CATransform3DMakeTranslation(-(maxDistance-distance), 0.0, 0.0);
         }
-                
-        [sideDrawerViewController.view.layer setTransform:CATransform3DConcat(scaleTransform, translateTransform)];
-        [sideDrawerViewController.view setAlpha:percentVisible];
+      
+        if (sideDrawerViewController != nil && !CATransform3DIsIdentity(translateTransform)) {
+            [sideDrawerViewController.view.layer setTransform:CATransform3DConcat(scaleTransform, translateTransform)];
+            [sideDrawerViewController.view setAlpha:percentVisible];
+        }
     };
     return visualStateBlock;
 }
@@ -52,7 +55,7 @@
         }
         
         UIViewController * sideDrawerViewController;
-        CGPoint anchorPoint = CGPointMake(0.5, 0.5);
+      CGPoint anchorPoint = CGPointZero;
         CGFloat maxDrawerWidth = 0.0;
         CGFloat xOffset;
         CGFloat angle = 0.0;
@@ -144,8 +147,9 @@
         //SETTING
         CGFloat parallaxFactor = 1.0;
         
-        UIViewController * sideDrawerViewController;
-        CATransform3D transform;
+        UIViewController * sideDrawerViewController = nil;
+        CATransform3D transform = CATransform3DIdentity;
+
         if(drawerSide == MMDrawerSideLeft) {
             sideDrawerViewController = drawerController.leftDrawerViewController;
             CGFloat distance = MAX(drawerController.maximumLeftDrawerWidth,drawerController.visibleLeftDrawerWidth);
@@ -168,7 +172,10 @@
                 transform = CATransform3DTranslate(transform, -drawerController.maximumRightDrawerWidth*(percentVisible-1.f)/2, 0.f, 0.f);
             }
         }
-        [sideDrawerViewController.view.layer setTransform:transform];
+      
+        if (sideDrawerViewController != nil && !CATransform3DIsIdentity(transform)) {
+            [sideDrawerViewController.view.layer setTransform:transform];
+        }
     };
     return visualStateBlock;
 }
@@ -185,8 +192,9 @@
         //SETTING
         CGFloat parallaxFactor = 3.0;
         
-        UIViewController * sideDrawerViewController;
-        CATransform3D transform;
+        UIViewController * sideDrawerViewController = nil;
+        CATransform3D transform = CATransform3DIdentity;
+
         if(drawerSide == MMDrawerSideLeft) {
             sideDrawerViewController = drawerController.leftDrawerViewController;
             CGFloat distance = MAX(drawerController.maximumLeftDrawerWidth,drawerController.visibleLeftDrawerWidth);
@@ -209,7 +217,9 @@
                 transform = CATransform3DTranslate(transform, -drawerController.maximumRightDrawerWidth*(percentVisible-1.f)/2, 0.f, 0.f);
             }
         }
-        [sideDrawerViewController.view.layer setTransform:transform];
+        if (sideDrawerViewController != nil && !CATransform3DIsIdentity(transform)) {
+            [sideDrawerViewController.view.layer setTransform:transform];
+        }
     };
     return visualStateBlock;
 }
@@ -226,8 +236,9 @@
         //SETTING
         CGFloat parallaxFactor = 5.0;
         
-        UIViewController * sideDrawerViewController;
-        CATransform3D transform;
+        UIViewController * sideDrawerViewController = nil;
+        CATransform3D transform = CATransform3DIdentity;
+
         if(drawerSide == MMDrawerSideLeft) {
             sideDrawerViewController = drawerController.leftDrawerViewController;
             CGFloat distance = MAX(drawerController.maximumLeftDrawerWidth,drawerController.visibleLeftDrawerWidth);
@@ -250,7 +261,10 @@
                 transform = CATransform3DTranslate(transform, -drawerController.maximumRightDrawerWidth*(percentVisible-1.f)/2, 0.f, 0.f);
             }
         }
-        [sideDrawerViewController.view.layer setTransform:transform];
+
+        if (sideDrawerViewController != nil && !CATransform3DIsIdentity(transform)) {
+            [sideDrawerViewController.view.layer setTransform:transform];
+        }
     };
     return visualStateBlock;
 }
@@ -267,8 +281,9 @@
         //SETTING
         CGFloat parallaxFactor = 7.0;
         
-        UIViewController * sideDrawerViewController;
-        CATransform3D transform;
+        UIViewController * sideDrawerViewController = nil;
+        CATransform3D transform = CATransform3DIdentity;
+
         if(drawerSide == MMDrawerSideLeft) {
             sideDrawerViewController = drawerController.leftDrawerViewController;
             CGFloat distance = MAX(drawerController.maximumLeftDrawerWidth,drawerController.visibleLeftDrawerWidth);
@@ -291,7 +306,10 @@
                 transform = CATransform3DTranslate(transform, -drawerController.maximumRightDrawerWidth*(percentVisible-1.f)/2, 0.f, 0.f);
             }
         }
-        [sideDrawerViewController.view.layer setTransform:transform];
+
+        if (sideDrawerViewController != nil && !CATransform3DIsIdentity(transform)) {
+            [sideDrawerViewController.view.layer setTransform:transform];
+        }
     };
     return visualStateBlock;
 }
