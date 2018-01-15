@@ -25,7 +25,7 @@ UIViewController * ControllerForViewProxy(TiViewProxy * proxy)
         [proxy reposition];
         [proxy windowDidOpen];
     },YES);
-    return [[[TiViewController alloc] initWithViewProxy:proxy] autorelease];
+    return [[TiViewController alloc] initWithViewProxy:proxy];
 }
 
 UINavigationController * NavigationControllerForViewProxy(TiUIiOSNavWindowProxy *proxy)
@@ -34,12 +34,6 @@ UINavigationController * NavigationControllerForViewProxy(TiUIiOSNavWindowProxy 
 }
 
 @implementation DkNappDrawerDrawer
-
--(void)dealloc
-{
-	RELEASE_TO_NIL(controller);
-	[super dealloc];
-}
 
 - (id)accessibilityElement
 {
@@ -106,7 +100,8 @@ UINavigationController * NavigationControllerForViewProxy(TiUIiOSNavWindowProxy 
         
 		TiViewProxy *leftWindow = [self.proxy valueForUndefinedKey:@"leftWindow"];
         TiViewProxy *rightWindow = [self.proxy valueForUndefinedKey:@"rightWindow"];
-        
+      __weak __typeof__(self) weakSelf = self;
+
         if(leftWindow != nil){
             if(rightWindow != nil){
                 //both left and right
@@ -175,11 +170,13 @@ UINavigationController * NavigationControllerForViewProxy(TiUIiOSNavWindowProxy 
 
         // open/close window
         [controller setWindowAppearanceCallback:^(NSString *state) {
+            __typeof__(self) strongSelf = weakSelf;
+
             if ([state isEqualToString:@"open"]) {
-                [self.proxy fireEvent:@"windowDidOpen"];
+                [[strongSelf proxy] fireEvent:@"windowDidOpen"];
             }
             else if ([state isEqualToString:@"close"]) {
-                [self.proxy fireEvent:@"windowDidClose"];
+                [[strongSelf proxy] fireEvent:@"windowDidClose"];
             }
         }];
         

@@ -34,22 +34,18 @@
 -(void)setWindowAppearanceCallback:(void(^)(NSString*))callback
 {
     _callback = [callback copy];
-    
+    __weak __typeof__(self) weakSelf = self;
+  
     // add callback for the gestures
     [super setGestureCompletionBlock:^(MMDrawerController *controller, UIGestureRecognizer *gesture) {
+        __typeof__(self) strongSelf = weakSelf;
+
         if(controller.openSide == MMDrawerSideNone){
-            _callback(@"close");
+          strongSelf->_callback(@"close");
         } else {
-            _callback(@"open");
+          strongSelf->_callback(@"open");
         }
     }];
-}
-
--(void)dealloc
-{
-    [_callback release];
-    _callback = nil;
-  [super dealloc];
 }
 
 @end
