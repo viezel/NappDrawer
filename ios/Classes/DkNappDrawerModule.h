@@ -8,8 +8,7 @@
  */
 #import "TiModule.h"
 
-@interface DkNappDrawerModule : TiModule 
-{
+@interface DkNappDrawerModule : TiModule {
 }
 
 @end

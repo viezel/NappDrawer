@@ -1,10 +1,5 @@
 /**
- * Module developed by Napp ApS
- * www.napp.dk
- * Mads Møller
- *
- * Appcelerator Titanium is Copyright (c) 2009-2010 by Appcelerator, Inc.
- * and licensed under the Apache Public License (version 2)
+ * This is a generated file. Do not edit or your changes will be lost
  */
 #import "DkNappDrawerModuleAssets.h"
 
@@ -12,20 +7,18 @@ extern NSData* filterDataInRange(NSData* thedata, NSRange range);
 
 @implementation DkNappDrawerModuleAssets
 
-- (NSData*) moduleAsset
+- (NSData *)moduleAsset
 {
-	//##TI_AUTOGEN_BEGIN asset
-	//Compiler generates code for asset here
-	return nil; // DEFAULT BEHAVIOR
-	//##TI_AUTOGEN_END asset
+  
+
+  return nil;
 }
 
-- (NSData*) resolveModuleAsset:(NSString*)path
+- (NSData *)resolveModuleAsset:(NSString *)path
 {
-	//##TI_AUTOGEN_BEGIN resolve_asset
-	//Compiler generates code for asset resolution here
-	return nil; // DEFAULT BEHAVIOR
-	//##TI_AUTOGEN_END resolve_asset
+  
+
+  return nil;
 }
 
 @end
