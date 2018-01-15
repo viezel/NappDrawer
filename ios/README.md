@@ -25,23 +25,21 @@ Simply add the following lines to your `tiapp.xml` file:
 
 For more detailed code examples take a look into the example app.
 
-For Alloy projects, use the [nl.fokkezb.drawer](https://github.com/fokkezb/nl.fokkezb.drawer) widget.
-
 ### centerWindow, leftWindow, rightWindow
 
-Napp Drawer does not require you to use the 3 windows. You can also use either the combo of center/left or center/right for your desired needs.
+Napp Drawer does not require you to use the three windows. You can also use either the combo of center/left or center/right for your desired needs.
 
 ```javascript
 var mainWindow = NappDrawerModule.createDrawer({
-	centerWindow: navController,
-	leftWindow: winLeft,
-	rightWindow: winRight,
-	closeDrawerGestureMode: NappDrawerModule.CLOSE_MODE_ALL,
-	openDrawerGestureMode: NappDrawerModule.OPEN_MODE_ALL,
-	leftDrawerWidth: 180,
-	rightDrawerWidth: 220,
-	statusBarStyle: NappDrawerModule.STATUSBAR_WHITE,
-	orientationModes: [Ti.UI.PORTRAIT, Ti.UI.UPSIDE_PORTRAIT]
+  centerWindow: navController,
+  leftWindow: winLeft,
+  rightWindow: winRight,
+  closeDrawerGestureMode: NappDrawerModule.CLOSE_MODE_ALL,
+  openDrawerGestureMode: NappDrawerModule.OPEN_MODE_ALL,
+  leftDrawerWidth: 180,
+  rightDrawerWidth: 220,
+  statusBarStyle: NappDrawerModule.STATUSBAR_WHITE,
+  orientationModes: [Ti.UI.PORTRAIT, Ti.UI.UPSIDE_PORTRAIT]
 });
 ```
 
@@ -52,7 +50,7 @@ var mainWindow = NappDrawerModule.createDrawer({
 A method that allow change of a window. You can either use a window or a navigation group.
 ```javascript
 var newWin = Ti.UI.createWindow({
-	backgroundColor: "#FF0000"
+  backgroundColor: "#FF0000"
 };
 mainWindow.setCenterWindow(newWin);
 ```
@@ -75,8 +73,8 @@ With animation:
 
 ```javascript
 mainWindow.setLeftDrawerWidth({
-	width: 160,
-	animated: true
+  width: 160,
+  animated: true
 });
 ```
 
@@ -251,7 +249,7 @@ When the drawer has been opened.
 
 ```javascript
 mainWindow.addEventListener("windowDidOpen", function(e) {
-	// do stuff
+  // Drawer opened
 });
 ```
 
@@ -261,7 +259,7 @@ When the drawer has been closed.
 
 ```javascript
 mainWindow.addEventListener("windowDidClose", function(e) {
-	// do stuff
+  // Drawer closed
 });
 ```
 
@@ -281,7 +279,7 @@ When the drawer center window has been blurred.
 
 ```javascript
 mainWindow.addEventListener("centerWindowDidBlur", function(e) {
-// Center window blurred
+  // Center window blurred
 });
 ```
 
