@@ -174,6 +174,8 @@ UINavigationController *NavigationControllerForViewProxy(TiUIiOSNavWindowProxy *
       } else if ([state isEqualToString:@"close"]) {
         [[strongSelf proxy] fireEvent:@"windowDidClose"];
       }
+      
+      [strongSelf _fireStateEventForCurrentState];
     }];
 
     // set frame bounds & add it
@@ -415,4 +417,17 @@ UINavigationController *NavigationControllerForViewProxy(TiUIiOSNavWindowProxy *
   return NUMBOOL(controller.openSide == MMDrawerSideRight);
 }
 
+// Little hack to propagate focus/blur events
+- (void)_fireStateEventForCurrentState
+{
+  if ([[self controller] openSide] == MMDrawerSideNone) {
+    if ([[self proxy] _hasListeners:@"centerWindowDidFocus"]) {
+      [[self proxy] fireEvent:@"centerWindowDidFocus"];
+    }
+  } else {
+    if ([[self proxy] _hasListeners:@"centerWindowDidBlur"]) {
+      [[self proxy] fireEvent:@"centerWindowDidBlur"];
+    }
+  }
+}
 @end

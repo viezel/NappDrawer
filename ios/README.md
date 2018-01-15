@@ -265,7 +265,30 @@ mainWindow.addEventListener("windowDidClose", function(e) {
 });
 ```
 
+### centerWindowDidFocus
+
+When the drawer center window has been focussed.
+
+```javascript
+mainWindow.addEventListener("centerWindowDidFocus", function(e) {
+  // Center window focussed
+});
+```
+
+### centerWindowDidBlur
+
+When the drawer center window has been blurred.
+
+```javascript
+mainWindow.addEventListener("centerWindowDidBlur", function(e) {
+// Center window blurred
+});
+```
+
 ## Changelog
+* v2.0.0
+  * Major module refactoring (https://github.com/viezel/NappDrawer/pull/211)
+
 * v1.2.3
   * Fixed statusbare frame when rotating the device
 

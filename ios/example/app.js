@@ -244,6 +244,14 @@ var drawer = NappDrawerModule.createDrawer({
   orientationModes: [Ti.UI.PORTRAIT, Ti.UI.UPSIDE_PORTRAIT]
 });
 
+drawer.addEventListener('centerFocus', function() {
+  Ti.API.info('Center did focus!');
+});
+
+drawer.addEventListener('centerBlur', function() {
+  Ti.API.info('Center did blur!');
+});
+
 drawer.addEventListener('windowDidOpen', function(e) {
   Ti.API.info("windowDidOpen");
 });
