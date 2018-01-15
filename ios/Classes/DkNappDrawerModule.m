@@ -49,8 +49,8 @@ MAKE_SYSTEM_PROP(ANIMATION_NONE, 100);
 
 #pragma mark StatusBar
 
-MAKE_SYSTEM_PROP(STATUSBAR_BLACK, 0);
-MAKE_SYSTEM_PROP(STATUSBAR_WHITE, 1);
+MAKE_SYSTEM_PROP(STATUSBAR_BLACK, UIStatusBarStyleDefault);
+MAKE_SYSTEM_PROP(STATUSBAR_WHITE, UIStatusBarStyleLightContent);
 
 MAKE_SYSTEM_PROP(STATUSBAR_ANIMATION_NONE, 0);
 MAKE_SYSTEM_PROP(STATUSBAR_ANIMATION_FADE, 1);
@@ -58,13 +58,11 @@ MAKE_SYSTEM_PROP(STATUSBAR_ANIMATION_SLIDE, 2);
 
 #pragma mark Internal
 
-// this is generated for your module, please do not change it
 - (id)moduleGUID
 {
   return @"2a446559-1d59-4808-aefc-7d02d3130ebb";
 }
 
-// this is generated for your module, please do not change it
 - (NSString *)moduleId
 {
   return @"dk.napp.drawer";
@@ -72,22 +70,10 @@ MAKE_SYSTEM_PROP(STATUSBAR_ANIMATION_SLIDE, 2);
 
 #pragma mark Lifecycle
 
-- (void)startup // module class startup method
+- (void)startup
 {
-  // this method is called when the module is first loaded
-  // you *must* call the superclass
   [super startup];
-  NSLog(@"[INFO] %@ loaded", self);
-}
-
-- (void)shutdown:(id)sender
-{
-  // this method is called when the module is being unloaded
-  // typically this is during shutdown. make sure you don't do too
-  // much processing here or the app will be quit forceably
-
-  // you *must* call the superclass
-  [super shutdown:sender];
+  NSLog(@"[DEBUG] %@ loaded", self);
 }
 
 #pragma Public APIs

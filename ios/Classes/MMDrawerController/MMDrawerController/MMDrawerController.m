@@ -230,7 +230,7 @@ static NSString *MMDrawerOpenSideKey = @"MMDrawerOpenSide";
     }
 
     if ((openside = [coder decodeIntegerForKey:MMDrawerOpenSideKey])){
-        [self openDrawerSide:openside animated:false completion:nil];
+        [self openDrawerSide:openside animated:NO completion:nil];
     }
 }
 #pragma mark - Open/Close methods

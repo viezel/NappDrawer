@@ -31,7 +31,8 @@
 
 - (CustomMMDrawerController *)controller;
 
-//API
+// Public APIs
+
 - (void)toggleLeftWindow:(id)args;
 - (void)toggleRightWindow:(id)args;
 - (void)bounceLeftWindow:(id)args;

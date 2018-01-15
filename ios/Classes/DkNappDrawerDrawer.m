@@ -87,9 +87,9 @@ UINavigationController *NavigationControllerForViewProxy(TiUIiOSNavWindowProxy *
   if (controller == nil) {
 
     // Check in centerWindow is a UINavigationController
-    BOOL useNavController = FALSE;
+    BOOL useNavController = NO;
     if ([[[[self.proxy valueForUndefinedKey:@"centerWindow"] class] description] isEqualToString:@"TiUIiOSNavWindowProxy"]) {
-      useNavController = TRUE;
+      useNavController = YES;
     }
 
     // navController or TiWindow ?
@@ -216,9 +216,9 @@ UINavigationController *NavigationControllerForViewProxy(TiUIiOSNavWindowProxy *
 - (void)setCenterWindow_:(id)args
 {
   ENSURE_UI_THREAD(setCenterWindow_, args);
-  BOOL useNavController = FALSE;
+  BOOL useNavController = NO;
   if ([[[args class] description] isEqualToString:@"TiUIiOSNavWindowProxy"]) {
-    useNavController = TRUE;
+    useNavController = YES;
   }
   UIViewController *centerWindow = useNavController ? NavigationControllerForViewProxy([self.proxy valueForUndefinedKey:@"centerWindow"]) : ControllerForViewProxy([self.proxy valueForUndefinedKey:@"centerWindow"]);
   [controller setCenterViewController:centerWindow];
