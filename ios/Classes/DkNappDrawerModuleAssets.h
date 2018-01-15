@@ -6,10 +6,9 @@
  * Appcelerator Titanium is Copyright (c) 2009-2010 by Appcelerator, Inc.
  * and licensed under the Apache Public License (version 2)
  */
-@interface DkNappDrawerModuleAssets : NSObject
-{
+@interface DkNappDrawerModuleAssets : NSObject {
 }
-- (NSData*) moduleAsset;
-- (NSData*) resolveModuleAsset:(NSString*)path;
+- (NSData *)moduleAsset;
+- (NSData *)resolveModuleAsset:(NSString *)path;
 
 @end

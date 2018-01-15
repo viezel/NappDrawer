@@ -13,43 +13,42 @@
 
 @implementation CustomMMDrawerController
 
--(void)openDrawerSide:(MMDrawerSide)drawerSide animated:(BOOL)animated completion:(void (^)(BOOL finished))completion
+- (void)openDrawerSide:(MMDrawerSide)drawerSide animated:(BOOL)animated completion:(void (^)(BOOL finished))completion
 {
-    [super openDrawerSide:drawerSide animated:animated completion:^(BOOL finished) {
-        if (finished){
-            _callback(@"open");
-        }
-    }];
+  [super openDrawerSide:drawerSide
+               animated:animated
+             completion:^(BOOL finished) {
+               if (finished) {
+                 _callback(@"open");
+               }
+             }];
 }
 
--(void)closeDrawerAnimated:(BOOL)animated completion:(void (^)(BOOL finished))completion
+- (void)closeDrawerAnimated:(BOOL)animated completion:(void (^)(BOOL finished))completion
 {
-    [super closeDrawerAnimated:animated completion:^(BOOL finished) {
-        if (finished){
-            _callback(@"close");
-        }
-    }];
+  [super closeDrawerAnimated:animated
+                  completion:^(BOOL finished) {
+                    if (finished) {
+                      _callback(@"close");
+                    }
+                  }];
 }
 
--(void)setWindowAppearanceCallback:(void(^)(NSString*))callback
+- (void)setWindowAppearanceCallback:(void (^)(NSString *))callback
 {
-    _callback = [callback copy];
-    
-    // add callback for the gestures
-    [super setGestureCompletionBlock:^(MMDrawerController *controller, UIGestureRecognizer *gesture) {
-        if(controller.openSide == MMDrawerSideNone){
-            _callback(@"close");
-        } else {
-            _callback(@"open");
-        }
-    }];
-}
+  _callback = [callback copy];
+  __weak __typeof__(self) weakSelf = self;
 
--(void)dealloc
-{
-    [super dealloc];
-    [_callback release];
-    _callback = nil;
+  // add callback for the gestures
+  [super setGestureCompletionBlock:^(MMDrawerController *controller, UIGestureRecognizer *gesture) {
+    __typeof__(self) strongSelf = weakSelf;
+
+    if (controller.openSide == MMDrawerSideNone) {
+      strongSelf->_callback(@"close");
+    } else {
+      strongSelf->_callback(@"open");
+    }
+  }];
 }
 
 @end

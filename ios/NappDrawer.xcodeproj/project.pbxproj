@@ -23,29 +23,29 @@
 
 /* Begin PBXBuildFile section */
 		24DD6CF91134B3F500162E58 /* DkNappDrawerModule.h in Headers */ = {isa = PBXBuildFile; fileRef = 24DD6CF71134B3F500162E58 /* DkNappDrawerModule.h */; };
-		24DD6CFA1134B3F500162E58 /* DkNappDrawerModule.m in Sources */ = {isa = PBXBuildFile; fileRef = 24DD6CF81134B3F500162E58 /* DkNappDrawerModule.m */; };
+		24DD6CFA1134B3F500162E58 /* DkNappDrawerModule.m in Sources */ = {isa = PBXBuildFile; fileRef = 24DD6CF81134B3F500162E58 /* DkNappDrawerModule.m */; settings = {COMPILER_FLAGS = "-fobjc-arc"; }; };
 		24DE9E1111C5FE74003F90F6 /* DkNappDrawerModuleAssets.h in Headers */ = {isa = PBXBuildFile; fileRef = 24DE9E0F11C5FE74003F90F6 /* DkNappDrawerModuleAssets.h */; };
-		24DE9E1211C5FE74003F90F6 /* DkNappDrawerModuleAssets.m in Sources */ = {isa = PBXBuildFile; fileRef = 24DE9E1011C5FE74003F90F6 /* DkNappDrawerModuleAssets.m */; };
+		24DE9E1211C5FE74003F90F6 /* DkNappDrawerModuleAssets.m in Sources */ = {isa = PBXBuildFile; fileRef = 24DE9E1011C5FE74003F90F6 /* DkNappDrawerModuleAssets.m */; settings = {COMPILER_FLAGS = "-fobjc-arc"; }; };
 		AA747D9F0F9514B9006C5449 /* DkNappDrawer_Prefix.pch in Headers */ = {isa = PBXBuildFile; fileRef = AA747D9E0F9514B9006C5449 /* DkNappDrawer_Prefix.pch */; };
 		AACBBE4A0F95108600F1A2B1 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AACBBE490F95108600F1A2B1 /* Foundation.framework */; };
 		B6579363178CA9BF00F89C92 /* NappDrawerVisualState.h in Headers */ = {isa = PBXBuildFile; fileRef = B6579361178CA9BF00F89C92 /* NappDrawerVisualState.h */; };
-		B6579364178CA9BF00F89C92 /* NappDrawerVisualState.m in Sources */ = {isa = PBXBuildFile; fileRef = B6579362178CA9BF00F89C92 /* NappDrawerVisualState.m */; };
+		B6579364178CA9BF00F89C92 /* NappDrawerVisualState.m in Sources */ = {isa = PBXBuildFile; fileRef = B6579362178CA9BF00F89C92 /* NappDrawerVisualState.m */; settings = {COMPILER_FLAGS = "-fobjc-arc"; }; };
 		B67C6EA7188837D2009C03BC /* CustomMMDrawerController.h in Headers */ = {isa = PBXBuildFile; fileRef = B67C6EA5188837D2009C03BC /* CustomMMDrawerController.h */; };
-		B67C6EA8188837D2009C03BC /* CustomMMDrawerController.m in Sources */ = {isa = PBXBuildFile; fileRef = B67C6EA6188837D2009C03BC /* CustomMMDrawerController.m */; };
+		B67C6EA8188837D2009C03BC /* CustomMMDrawerController.m in Sources */ = {isa = PBXBuildFile; fileRef = B67C6EA6188837D2009C03BC /* CustomMMDrawerController.m */; settings = {COMPILER_FLAGS = "-fobjc-arc"; }; };
 		B67E52EA1780B77B001348B3 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B67E52E91780B77B001348B3 /* QuartzCore.framework */; };
 		B67E52ED1780B7D2001348B3 /* DkNappDrawerDrawerProxy.h in Headers */ = {isa = PBXBuildFile; fileRef = B67E52EB1780B7D2001348B3 /* DkNappDrawerDrawerProxy.h */; };
-		B67E52EE1780B7D2001348B3 /* DkNappDrawerDrawerProxy.m in Sources */ = {isa = PBXBuildFile; fileRef = B67E52EC1780B7D2001348B3 /* DkNappDrawerDrawerProxy.m */; };
+		B67E52EE1780B7D2001348B3 /* DkNappDrawerDrawerProxy.m in Sources */ = {isa = PBXBuildFile; fileRef = B67E52EC1780B7D2001348B3 /* DkNappDrawerDrawerProxy.m */; settings = {COMPILER_FLAGS = "-fobjc-arc"; }; };
 		B67E52F11780B7E8001348B3 /* DkNappDrawerDrawer.h in Headers */ = {isa = PBXBuildFile; fileRef = B67E52EF1780B7E8001348B3 /* DkNappDrawerDrawer.h */; };
-		B67E52F21780B7E8001348B3 /* DkNappDrawerDrawer.m in Sources */ = {isa = PBXBuildFile; fileRef = B67E52F01780B7E8001348B3 /* DkNappDrawerDrawer.m */; };
-		D914F3A919B403DC00E3C518 /* MMDrawerBarButtonItem.h in Headers */ = {isa = PBXBuildFile; fileRef = D914F3A019B403DC00E3C518 /* MMDrawerBarButtonItem.h */; };
-		D914F3AA19B403DC00E3C518 /* MMDrawerBarButtonItem.m in Sources */ = {isa = PBXBuildFile; fileRef = D914F3A119B403DC00E3C518 /* MMDrawerBarButtonItem.m */; settings = {COMPILER_FLAGS = "-fobjc-arc"; }; };
-		D914F3AB19B403DC00E3C518 /* MMDrawerController+Subclass.h in Headers */ = {isa = PBXBuildFile; fileRef = D914F3A219B403DC00E3C518 /* MMDrawerController+Subclass.h */; };
-		D914F3AC19B403DC00E3C518 /* MMDrawerController.h in Headers */ = {isa = PBXBuildFile; fileRef = D914F3A319B403DC00E3C518 /* MMDrawerController.h */; };
-		D914F3AD19B403DC00E3C518 /* MMDrawerController.m in Sources */ = {isa = PBXBuildFile; fileRef = D914F3A419B403DC00E3C518 /* MMDrawerController.m */; settings = {COMPILER_FLAGS = "-fobjc-arc"; }; };
-		D914F3AE19B403DC00E3C518 /* MMDrawerVisualState.h in Headers */ = {isa = PBXBuildFile; fileRef = D914F3A519B403DC00E3C518 /* MMDrawerVisualState.h */; };
-		D914F3AF19B403DC00E3C518 /* MMDrawerVisualState.m in Sources */ = {isa = PBXBuildFile; fileRef = D914F3A619B403DC00E3C518 /* MMDrawerVisualState.m */; settings = {COMPILER_FLAGS = "-fobjc-arc"; }; };
-		D914F3B019B403DC00E3C518 /* UIViewController+MMDrawerController.h in Headers */ = {isa = PBXBuildFile; fileRef = D914F3A719B403DC00E3C518 /* UIViewController+MMDrawerController.h */; };
-		D914F3B119B403DC00E3C518 /* UIViewController+MMDrawerController.m in Sources */ = {isa = PBXBuildFile; fileRef = D914F3A819B403DC00E3C518 /* UIViewController+MMDrawerController.m */; settings = {COMPILER_FLAGS = "-fobjc-arc"; }; };
+		B67E52F21780B7E8001348B3 /* DkNappDrawerDrawer.m in Sources */ = {isa = PBXBuildFile; fileRef = B67E52F01780B7E8001348B3 /* DkNappDrawerDrawer.m */; settings = {COMPILER_FLAGS = "-fobjc-arc"; }; };
+		DBDF0587200CE7D300A84135 /* MMDrawerBarButtonItem.m in Sources */ = {isa = PBXBuildFile; fileRef = DBDF057E200CE7D300A84135 /* MMDrawerBarButtonItem.m */; };
+		DBDF0588200CE7D300A84135 /* UIViewController+MMDrawerController.m in Sources */ = {isa = PBXBuildFile; fileRef = DBDF057F200CE7D300A84135 /* UIViewController+MMDrawerController.m */; };
+		DBDF0589200CE7D300A84135 /* MMDrawerController.m in Sources */ = {isa = PBXBuildFile; fileRef = DBDF0580200CE7D300A84135 /* MMDrawerController.m */; };
+		DBDF058A200CE7D300A84135 /* MMDrawerController+Subclass.h in Headers */ = {isa = PBXBuildFile; fileRef = DBDF0581200CE7D300A84135 /* MMDrawerController+Subclass.h */; };
+		DBDF058B200CE7D300A84135 /* MMDrawerVisualState.h in Headers */ = {isa = PBXBuildFile; fileRef = DBDF0582200CE7D300A84135 /* MMDrawerVisualState.h */; };
+		DBDF058C200CE7D300A84135 /* MMDrawerBarButtonItem.h in Headers */ = {isa = PBXBuildFile; fileRef = DBDF0583200CE7D300A84135 /* MMDrawerBarButtonItem.h */; };
+		DBDF058D200CE7D300A84135 /* UIViewController+MMDrawerController.h in Headers */ = {isa = PBXBuildFile; fileRef = DBDF0584200CE7D300A84135 /* UIViewController+MMDrawerController.h */; };
+		DBDF058E200CE7D300A84135 /* MMDrawerVisualState.m in Sources */ = {isa = PBXBuildFile; fileRef = DBDF0585200CE7D300A84135 /* MMDrawerVisualState.m */; };
+		DBDF058F200CE7D300A84135 /* MMDrawerController.h in Headers */ = {isa = PBXBuildFile; fileRef = DBDF0586200CE7D300A84135 /* MMDrawerController.h */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -76,15 +76,15 @@
 		B67E52EF1780B7E8001348B3 /* DkNappDrawerDrawer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = DkNappDrawerDrawer.h; path = Classes/DkNappDrawerDrawer.h; sourceTree = "<group>"; };
 		B67E52F01780B7E8001348B3 /* DkNappDrawerDrawer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = DkNappDrawerDrawer.m; path = Classes/DkNappDrawerDrawer.m; sourceTree = "<group>"; };
 		D2AAC07E0554694100DB518D /* libDkNappDrawer.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libDkNappDrawer.a; sourceTree = BUILT_PRODUCTS_DIR; };
-		D914F3A019B403DC00E3C518 /* MMDrawerBarButtonItem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MMDrawerBarButtonItem.h; sourceTree = "<group>"; };
-		D914F3A119B403DC00E3C518 /* MMDrawerBarButtonItem.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MMDrawerBarButtonItem.m; sourceTree = "<group>"; };
-		D914F3A219B403DC00E3C518 /* MMDrawerController+Subclass.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "MMDrawerController+Subclass.h"; sourceTree = "<group>"; };
-		D914F3A319B403DC00E3C518 /* MMDrawerController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MMDrawerController.h; sourceTree = "<group>"; };
-		D914F3A419B403DC00E3C518 /* MMDrawerController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MMDrawerController.m; sourceTree = "<group>"; };
-		D914F3A519B403DC00E3C518 /* MMDrawerVisualState.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MMDrawerVisualState.h; sourceTree = "<group>"; };
-		D914F3A619B403DC00E3C518 /* MMDrawerVisualState.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MMDrawerVisualState.m; sourceTree = "<group>"; };
-		D914F3A719B403DC00E3C518 /* UIViewController+MMDrawerController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIViewController+MMDrawerController.h"; sourceTree = "<group>"; };
-		D914F3A819B403DC00E3C518 /* UIViewController+MMDrawerController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIViewController+MMDrawerController.m"; sourceTree = "<group>"; };
+		DBDF057E200CE7D300A84135 /* MMDrawerBarButtonItem.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MMDrawerBarButtonItem.m; sourceTree = "<group>"; };
+		DBDF057F200CE7D300A84135 /* UIViewController+MMDrawerController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIViewController+MMDrawerController.m"; sourceTree = "<group>"; };
+		DBDF0580200CE7D300A84135 /* MMDrawerController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MMDrawerController.m; sourceTree = "<group>"; };
+		DBDF0581200CE7D300A84135 /* MMDrawerController+Subclass.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "MMDrawerController+Subclass.h"; sourceTree = "<group>"; };
+		DBDF0582200CE7D300A84135 /* MMDrawerVisualState.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MMDrawerVisualState.h; sourceTree = "<group>"; };
+		DBDF0583200CE7D300A84135 /* MMDrawerBarButtonItem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MMDrawerBarButtonItem.h; sourceTree = "<group>"; };
+		DBDF0584200CE7D300A84135 /* UIViewController+MMDrawerController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIViewController+MMDrawerController.h"; sourceTree = "<group>"; };
+		DBDF0585200CE7D300A84135 /* MMDrawerVisualState.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MMDrawerVisualState.m; sourceTree = "<group>"; };
+		DBDF0586200CE7D300A84135 /* MMDrawerController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MMDrawerController.h; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -131,7 +131,7 @@
 		08FB77AEFE84172EC02AAC07 /* Classes */ = {
 			isa = PBXGroup;
 			children = (
-				D914F39F19B403DC00E3C518 /* MMDrawerController */,
+				DBDF057D200CE7D300A84135 /* MMDrawerController */,
 				24DE9E0F11C5FE74003F90F6 /* DkNappDrawerModuleAssets.h */,
 				24DE9E1011C5FE74003F90F6 /* DkNappDrawerModuleAssets.m */,
 				24DD6CF71134B3F500162E58 /* DkNappDrawerModule.h */,
@@ -157,21 +157,21 @@
 			name = "Other Sources";
 			sourceTree = "<group>";
 		};
-		D914F39F19B403DC00E3C518 /* MMDrawerController */ = {
+		DBDF057D200CE7D300A84135 /* MMDrawerController */ = {
 			isa = PBXGroup;
 			children = (
-				D914F3A019B403DC00E3C518 /* MMDrawerBarButtonItem.h */,
-				D914F3A119B403DC00E3C518 /* MMDrawerBarButtonItem.m */,
-				D914F3A219B403DC00E3C518 /* MMDrawerController+Subclass.h */,
-				D914F3A319B403DC00E3C518 /* MMDrawerController.h */,
-				D914F3A419B403DC00E3C518 /* MMDrawerController.m */,
-				D914F3A519B403DC00E3C518 /* MMDrawerVisualState.h */,
-				D914F3A619B403DC00E3C518 /* MMDrawerVisualState.m */,
-				D914F3A719B403DC00E3C518 /* UIViewController+MMDrawerController.h */,
-				D914F3A819B403DC00E3C518 /* UIViewController+MMDrawerController.m */,
+				DBDF0584200CE7D300A84135 /* UIViewController+MMDrawerController.h */,
+				DBDF057F200CE7D300A84135 /* UIViewController+MMDrawerController.m */,
+				DBDF0583200CE7D300A84135 /* MMDrawerBarButtonItem.h */,
+				DBDF057E200CE7D300A84135 /* MMDrawerBarButtonItem.m */,
+				DBDF0581200CE7D300A84135 /* MMDrawerController+Subclass.h */,
+				DBDF0586200CE7D300A84135 /* MMDrawerController.h */,
+				DBDF0580200CE7D300A84135 /* MMDrawerController.m */,
+				DBDF0582200CE7D300A84135 /* MMDrawerVisualState.h */,
+				DBDF0585200CE7D300A84135 /* MMDrawerVisualState.m */,
 			);
 			name = MMDrawerController;
-			path = MMDrawerController/MMDrawerController;
+			path = Classes/MMDrawerController/MMDrawerController;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -181,18 +181,18 @@
 			isa = PBXHeadersBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B67C6EA7188837D2009C03BC /* CustomMMDrawerController.h in Headers */,
 				AA747D9F0F9514B9006C5449 /* DkNappDrawer_Prefix.pch in Headers */,
-				D914F3AC19B403DC00E3C518 /* MMDrawerController.h in Headers */,
 				24DD6CF91134B3F500162E58 /* DkNappDrawerModule.h in Headers */,
 				24DE9E1111C5FE74003F90F6 /* DkNappDrawerModuleAssets.h in Headers */,
-				B67C6EA7188837D2009C03BC /* CustomMMDrawerController.h in Headers */,
-				D914F3A919B403DC00E3C518 /* MMDrawerBarButtonItem.h in Headers */,
-				D914F3B019B403DC00E3C518 /* UIViewController+MMDrawerController.h in Headers */,
-				D914F3AB19B403DC00E3C518 /* MMDrawerController+Subclass.h in Headers */,
 				B67E52ED1780B7D2001348B3 /* DkNappDrawerDrawerProxy.h in Headers */,
 				B67E52F11780B7E8001348B3 /* DkNappDrawerDrawer.h in Headers */,
-				D914F3AE19B403DC00E3C518 /* MMDrawerVisualState.h in Headers */,
 				B6579363178CA9BF00F89C92 /* NappDrawerVisualState.h in Headers */,
+				DBDF058D200CE7D300A84135 /* UIViewController+MMDrawerController.h in Headers */,
+				DBDF058A200CE7D300A84135 /* MMDrawerController+Subclass.h in Headers */,
+				DBDF058C200CE7D300A84135 /* MMDrawerBarButtonItem.h in Headers */,
+				DBDF058B200CE7D300A84135 /* MMDrawerVisualState.h in Headers */,
+				DBDF058F200CE7D300A84135 /* MMDrawerController.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -266,16 +266,16 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				24DD6CFA1134B3F500162E58 /* DkNappDrawerModule.m in Sources */,
 				B67C6EA8188837D2009C03BC /* CustomMMDrawerController.m in Sources */,
-				D914F3AD19B403DC00E3C518 /* MMDrawerController.m in Sources */,
-				D914F3B119B403DC00E3C518 /* UIViewController+MMDrawerController.m in Sources */,
-				D914F3AF19B403DC00E3C518 /* MMDrawerVisualState.m in Sources */,
+				24DD6CFA1134B3F500162E58 /* DkNappDrawerModule.m in Sources */,
 				24DE9E1211C5FE74003F90F6 /* DkNappDrawerModuleAssets.m in Sources */,
 				B67E52EE1780B7D2001348B3 /* DkNappDrawerDrawerProxy.m in Sources */,
 				B67E52F21780B7E8001348B3 /* DkNappDrawerDrawer.m in Sources */,
 				B6579364178CA9BF00F89C92 /* NappDrawerVisualState.m in Sources */,
-				D914F3AA19B403DC00E3C518 /* MMDrawerBarButtonItem.m in Sources */,
+				DBDF0588200CE7D300A84135 /* UIViewController+MMDrawerController.m in Sources */,
+				DBDF058E200CE7D300A84135 /* MMDrawerVisualState.m in Sources */,
+				DBDF0589200CE7D300A84135 /* MMDrawerController.m in Sources */,
+				DBDF0587200CE7D300A84135 /* MMDrawerBarButtonItem.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -339,6 +339,7 @@
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				"ARCHS[sdk=iphoneos*]" = "$(ARCHS_STANDARD)";
 				"ARCHS[sdk=iphonesimulator*]" = "$(ARCHS_STANDARD)";
+				DEPLOYMENT_POSTPROCESSING = YES;
 				DSTROOT = /tmp/DkNappDrawer.dst;
 				GCC_C_LANGUAGE_STANDARD = c99;
 				GCC_MODEL_TUNING = G5;
