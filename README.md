@@ -1,5 +1,7 @@
 # Napp Drawer Module [![gitTio](http://gitt.io/badge.svg)](http://gitt.io/component/dk.napp.drawer) [![NPM](https://img.shields.io/npm/v/ti-module-dk.napp.drawer.svg?style=flat-square)](https://www.npmjs.com/package/ti-module-dk.napp.drawer)
 
+<img src="./example-cross-platform.jpg" alt="Cross Platform Example (iOS / Android)" width="800" />
+
 ## Description
 
 The Napp Drawer module extends the Appcelerator Titanium Mobile framework. 
@@ -7,13 +9,10 @@ The module is licensed under the MIT license.
 
 There are **some minor platform parity differences** in this module. iOS version uses Windows whereas Android uses views. The android version still uses the same properties even though its views rather than windows, e.g. `isAnyWindowOpen()` is the exact same method call on each platform. 
 
-### Demo Video
-
-<img src="./example-cross-platform.jpg" alt="Cross Platform Example (iOS / Android)" width="800" />
-
 ## Quick Start
 
 ### Get it
+
 Download the latest distribution ZIP-file and consult the [Titanium Documentation](http://docs.appcelerator.com/titanium/latest/#!/guide/Using_a_Module) on how install it
 
 Or simply use the [gitTio CLI](http://gitt.io/cli) [![gitTio](http://gitt.io/badge.svg)](http://gitt.io/component/dk.napp.drawer)
@@ -27,7 +26,6 @@ Or NPM [![NPM](https://img.shields.io/npm/v/ti-module-dk.napp.drawer.svg?style=f
 ## Community Driven
 
 I encourage everyone to send Pull Requests - keeping this module flying with new features.
-
 
 ## Author
 
