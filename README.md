@@ -9,7 +9,7 @@ There are **some minor platform parity differences** in this module. iOS version
 
 ### Demo Video
 
-[![IMAGE ALT TEXT HERE](http://img.youtube.com/vi/VfuGr4VsWjw/0.jpg)](http://www.youtube.com/watch?v=VfuGr4VsWjw)
+<img src="./example-cross-platform.jpg" alt="Cross Platform Example (iOS / Android)" width="800" />
 
 ## Quick Start
 
