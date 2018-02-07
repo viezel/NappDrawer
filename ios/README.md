@@ -16,10 +16,11 @@ Thanks to the folks at Mutual Mobile for their great work with MMDrawerControlle
 
 Simply add the following lines to your `tiapp.xml` file:
 
-    <modules>
-        <module platform="iphone">dk.napp.drawer</module>
-    </modules>
-
+```xml
+<modules>
+  <module platform="iphone">dk.napp.drawer</module>
+</modules>
+```
 
 ## Reference
 
@@ -50,7 +51,7 @@ var mainWindow = NappDrawerModule.createDrawer({
 A method that allow change of a window. You can either use a window or a navigation group.
 ```javascript
 var newWin = Ti.UI.createWindow({
-  backgroundColor: "#FF0000"
+  backgroundColor: '#FF0000'
 };
 mainWindow.setCenterWindow(newWin);
 ```
@@ -59,7 +60,6 @@ If you want to remove the side drawer, you can do this be parsing false as the a
 ```javascript
 mainWindow.setRightWindow(false);
 ```
-
 
 ### LeftDrawerWidth, rightDrawerWidth
 
@@ -186,15 +186,16 @@ mainWindow.setOrientationModes([Ti.UI.PORTRAIT, Ti.UI.UPSIDE_PORTRAIT]);
 
 Use this property to set the statusBar. You will need to add the following to tiapp.xml in order to make this work:
 
-    <ios>
-        <plist>
-    	    <dict>
-        	    <key>UIViewControllerBasedStatusBarAppearance</key>
-                <false/>
-            </dict>
-        </plist>
-    </ios>
-
+```xml
+<ios>
+  <plist>
+    <dict>
+      <key>UIViewControllerBasedStatusBarAppearance</key>
+      <false/>
+    </dict>
+  </plist>
+</ios>
+```
 
 | input (constant) | Description |
 | ----- | ----------- |
@@ -210,9 +211,9 @@ mainWindow.setStatusBarStyle(NappDrawerModule.STATUSBAR_WHITE);
 If your drawer has a rightWindow, you can also set the statusbarStyle off that window, which will automagically apply that style to all of the drawer. This was discovered by Andrea Vitale.
 
 ```javascript
-  rightWindow: Ti.UI.createWindow({
-    statusBarStyle: Ti.UI.iPhone.StatusBar.LIGHT_CONTENT
-  }),
+rightWindow: Ti.UI.createWindow({
+  statusBarStyle: Ti.UI.iPhone.StatusBar.LIGHT_CONTENT
+});
 ```
 
 ## API Methods
@@ -248,7 +249,7 @@ mainWindow.isAnyWindowOpen();
 When the drawer has been opened.
 
 ```javascript
-mainWindow.addEventListener("windowDidOpen", function(e) {
+mainWindow.addEventListener('windowDidOpen', function(e) {
   // Drawer opened
 });
 ```
@@ -258,7 +259,7 @@ mainWindow.addEventListener("windowDidOpen", function(e) {
 When the drawer has been closed.
 
 ```javascript
-mainWindow.addEventListener("windowDidClose", function(e) {
+mainWindow.addEventListener('windowDidClose', function(e) {
   // Drawer closed
 });
 ```
@@ -268,7 +269,7 @@ mainWindow.addEventListener("windowDidClose", function(e) {
 When the drawer center window has been focussed.
 
 ```javascript
-mainWindow.addEventListener("centerWindowDidFocus", function(e) {
+mainWindow.addEventListener('centerWindowDidFocus', function(e) {
   // Center window focussed
 });
 ```
@@ -278,12 +279,16 @@ mainWindow.addEventListener("centerWindowDidFocus", function(e) {
 When the drawer center window has been blurred.
 
 ```javascript
-mainWindow.addEventListener("centerWindowDidBlur", function(e) {
+mainWindow.addEventListener('centerWindowDidBlur', function(e) {
   // Center window blurred
 });
 ```
 
 ## Changelog
+
+*v2.1.0
+  * Added accessibility to the menu buttons (#102)
+
 * v2.0.0
   * Major module refactoring (https://github.com/viezel/NappDrawer/pull/211)
 
@@ -347,7 +352,7 @@ twitter: @nappdev
 
 ## License
 
-    Copyright (c) 2010-2013 Mads Møller
+    Copyright (c) 2010-present Mads Møller
 
     Permission is hereby granted, free of charge, to any person obtaining a copy
     of this software and associated documentation files (the "Software"), to deal

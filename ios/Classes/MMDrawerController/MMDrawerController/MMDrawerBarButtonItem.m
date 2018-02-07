@@ -255,6 +255,12 @@
         }
         self.action = action;
         self.target = target;
+
+        // Enable accessibility
+        self.isAccessibilityElement = YES;
+        self.accessibilityLabel = NSLocalizedString(@"Menu", nil);
+        self.accessibilityHint = NSLocalizedString(@"Toggles the menu", nil);
+
         return self;
     }
 }
