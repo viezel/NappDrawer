@@ -234,6 +234,7 @@ UINavigationController *NavigationControllerForViewProxy(TiUIiOSNavWindowProxy *
   if (useNavController) {
     if (navProxy != nil) {
       NSLog(@"[DkNappDrawerDrawer][INFO] Destroying old nav proxy");
+      [navProxy windowWillClose];
       [navProxy windowDidClose];
     }
     // Save new proxy
