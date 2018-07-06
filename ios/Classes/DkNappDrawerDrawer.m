@@ -36,6 +36,8 @@ UINavigationController *NavigationControllerForViewProxy(TiUIiOSNavWindowProxy *
 
 @implementation DkNappDrawerDrawer
 
+#pragma mark - Accessibility
+
 - (id)accessibilityElement
 {
   return controllerView_;
@@ -81,6 +83,8 @@ UINavigationController *NavigationControllerForViewProxy(TiUIiOSNavWindowProxy *
 {
   return [[self accessibleElements] indexOfObject:element];
 }
+
+#pragma mark - Init
 
 - (MMDrawerController *)controller
 {
@@ -213,7 +217,7 @@ UINavigationController *NavigationControllerForViewProxy(TiUIiOSNavWindowProxy *
   [super frameSizeChanged:frame bounds:bounds];
 }
 
-// PROPERTIES
+#pragma mark - Properties
 
 - (void)setCenterWindow_:(id)args
 {
@@ -377,7 +381,8 @@ UINavigationController *NavigationControllerForViewProxy(TiUIiOSNavWindowProxy *
   }
 }
 
-// API
+#pragma mark - API
+
 - (void)toggleLeftWindow:(id)args
 {
   ENSURE_UI_THREAD(toggleLeftWindow, args);
@@ -416,6 +421,8 @@ UINavigationController *NavigationControllerForViewProxy(TiUIiOSNavWindowProxy *
 {
   return NUMBOOL(controller.openSide == MMDrawerSideRight);
 }
+
+#pragma mark - Events
 
 // Little hack to propagate focus/blur events
 - (void)_fireStateEventForCurrentState
