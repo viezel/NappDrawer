@@ -358,7 +358,6 @@ UINavigationController *NavigationControllerForViewProxy(TiUIiOSNavWindowProxy *
     [controller setDrawerVisualStateBlock:[NappDrawerVisualState slideVisualStateBlock]];
     break;
   case 3:
-    //[controller setDrawerVisualStateBlock:[NappDrawerVisualState swingingDoorVisualStateBlock]];
     [controller setDrawerVisualStateBlock:[NappDrawerVisualState noneVisualStateBlock]];
     break;
   case 4:
