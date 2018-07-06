@@ -73,7 +73,6 @@ MAKE_SYSTEM_PROP(STATUSBAR_ANIMATION_SLIDE, 2);
 - (void)startup
 {
   [super startup];
-  NSLog(@"[DEBUG] %@ loaded", self);
 }
 
 #pragma Public APIs
