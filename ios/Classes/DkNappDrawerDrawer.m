@@ -120,7 +120,8 @@ UINavigationController *NavigationControllerForViewProxy(TiUIiOSNavWindowProxy *
                                                         rightDrawerViewController:ControllerForViewProxy(rightWindow)];
     } else {
       //error
-      NSLog(@"[ERROR] NappDrawer: No windows assigned");
+    } else {
+      NSLog(@"[DkNappDrawerDrawer][ERROR] No windows assigned");
       return nil;
     }
 
@@ -232,7 +233,7 @@ UINavigationController *NavigationControllerForViewProxy(TiUIiOSNavWindowProxy *
   // Cleanup
   if (useNavController) {
     if (navProxy != nil) {
-      NSLog(@"[DEBUG| Destroying old nav proxy");
+      NSLog(@"[DkNappDrawerDrawer][INFO] Destroying old nav proxy");
       [navProxy windowDidClose];
     }
     // Save new proxy
