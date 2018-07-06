@@ -53,6 +53,16 @@
   return [[DkNappDrawerDrawer alloc] init];
 }
 
+- (UIStatusBarStyle)preferredStatusBarStyle
+{
+  [[self _controller] preferredStatusBarStyle];
+}
+
+- (UIViewController *)childViewControllerForStatusBarStyle
+{
+  return nil;
+}
+
 #pragma API
 
 - (void)toggleLeftWindow:(id)args
