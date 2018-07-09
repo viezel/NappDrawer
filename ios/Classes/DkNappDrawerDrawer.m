@@ -104,57 +104,57 @@ UINavigationController *NavigationControllerForViewProxy(TiUIiOSNavWindowProxy *
     __weak __typeof__(self) weakSelf = self;
 
     if (leftWindow != nil) {
-      
+
       //both left and right
       if (rightWindow != nil) {
-        
+
         TiViewController *leftController = ControllerForViewProxy(leftWindow);
         TiViewController *rightController = ControllerForViewProxy(rightWindow);
-        
+
         TiUIiOSNavWindowProxy *centerProxy = [self.proxy valueForUndefinedKey:@"centerWindow"];
-        
+
         TiThreadPerformOnMainThread(^{
           [centerProxy windowWillOpen];
           [centerProxy windowDidOpen];
         },
-                                    YES);
-        
+            YES);
+
         controller = [[CustomMMDrawerController alloc] initWithCenterViewController:centerWindow
                                                            leftDrawerViewController:leftController
                                                           rightDrawerViewController:rightController];
-      //left only
+        //left only
       } else {
-        
+
         TiViewController *leftController = ControllerForViewProxy(leftWindow);
-        
+
         TiUIiOSNavWindowProxy *centerProxy = [self.proxy valueForUndefinedKey:@"centerWindow"];
-        
+
         TiThreadPerformOnMainThread(^{
           [centerProxy windowWillOpen];
           [centerProxy windowDidOpen];
         },
-                                    YES);
-        
+            YES);
+
         controller = [[CustomMMDrawerController alloc] initWithCenterViewController:centerWindow
                                                            leftDrawerViewController:leftController];
       }
-    //right only
+      //right only
     } else if (rightWindow != nil) {
-      
+
       TiViewController *rightController = ControllerForViewProxy(rightWindow);
-      
+
       TiUIiOSNavWindowProxy *centerProxy = [self.proxy valueForUndefinedKey:@"centerWindow"];
-      
+
       TiThreadPerformOnMainThread(^{
         [centerProxy windowWillOpen];
         [centerProxy windowDidOpen];
       },
-                                  YES);
-      
+          YES);
+
       controller = [[CustomMMDrawerController alloc] initWithCenterViewController:centerWindow
                                                         rightDrawerViewController:rightController];
-      
-    //error
+
+      //error
     } else {
       NSLog(@"[DkNappDrawerDrawer][ERROR] No windows assigned");
       return nil;
@@ -214,7 +214,7 @@ UINavigationController *NavigationControllerForViewProxy(TiUIiOSNavWindowProxy *
       } else if ([state isEqualToString:@"close"]) {
         [[strongSelf proxy] fireEvent:@"windowDidClose"];
       }
-      
+
       [strongSelf _fireStateEventForCurrentState];
     }];
 
@@ -263,17 +263,17 @@ UINavigationController *NavigationControllerForViewProxy(TiUIiOSNavWindowProxy *
     useNavController = YES;
   }
   UIViewController *centerWindow = useNavController ? NavigationControllerForViewProxy([self.proxy valueForUndefinedKey:@"centerWindow"]) : ControllerForViewProxy([self.proxy valueForUndefinedKey:@"centerWindow"]);
-  
+
   if (useNavController) {
-    
+
     TiUIiOSNavWindowProxy *centerProxy = [self.proxy valueForUndefinedKey:@"centerWindow"];
-    
+
     if (controller) {
       [centerProxy windowWillOpen];
       [centerProxy windowDidOpen];
     }
   }
-  
+
   [controller setCenterViewController:centerWindow];
 
   // Cleanup
