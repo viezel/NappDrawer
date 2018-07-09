@@ -15,4 +15,4 @@ name: NappDrawer
 moduleid: dk.napp.drawer
 guid: 2a446559-1d59-4808-aefc-7d02d3130ebb
 platform: iphone
-minsdk: 5.5.0
+minsdk: 7.0.1
