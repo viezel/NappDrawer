@@ -346,11 +346,7 @@ UINavigationController *NavigationControllerForViewProxy(TiUIiOSNavWindowProxy *
 
 - (UIStatusBarStyle)preferredStatusBarStyle
 {
-  if (self.controller.showsStatusBarBackgroundView) {
-    return UIStatusBarStyleLightContent;
-  } else {
-    return UIStatusBarStyleDefault;
-  }
+  return [controller preferredStatusBarStyle];
 }
 
 - (void)setStatusBarStyle_:(NSNumber *)style
