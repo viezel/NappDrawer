@@ -349,6 +349,11 @@ UINavigationController *NavigationControllerForViewProxy(TiUIiOSNavWindowProxy *
   return [controller preferredStatusBarStyle];
 }
 
+- (UIViewController *)childViewControllerForStatusBarStyle
+{
+  return nil;
+}
+
 - (void)setStatusBarStyle_:(NSNumber *)style
 {
   ENSURE_UI_THREAD(setStatusBarStyle_, style);
