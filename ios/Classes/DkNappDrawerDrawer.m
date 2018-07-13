@@ -156,7 +156,7 @@ UINavigationController *NavigationControllerForViewProxy(TiUIiOSNavWindowProxy *
 
       //error
     } else {
-      NSLog(@"[DkNappDrawerDrawer][ERROR] No windows assigned");
+      NSLog(@"[ERROR][DkNappDrawerDrawer] No windows assigned");
       return nil;
     }
 
