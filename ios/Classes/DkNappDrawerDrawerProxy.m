@@ -55,7 +55,7 @@
 
 - (UIStatusBarStyle)preferredStatusBarStyle
 {
-  [[self _controller] preferredStatusBarStyle];
+  return [[self _controller] preferredStatusBarStyle];
 }
 
 - (UIViewController *)childViewControllerForStatusBarStyle
