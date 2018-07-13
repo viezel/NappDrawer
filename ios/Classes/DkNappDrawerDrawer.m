@@ -266,7 +266,7 @@ UINavigationController *NavigationControllerForViewProxy(TiUIiOSNavWindowProxy *
   if (useNavController) {
     TiUIiOSNavWindowProxy *centerProxy = [self.proxy valueForUndefinedKey:@"centerWindow"];
 
-    if (controller) {
+    if (controller != nil) {
       [centerProxy windowWillOpen];
       [centerProxy windowDidOpen];
     }
