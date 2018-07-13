@@ -15,7 +15,6 @@
 + (MMDrawerControllerDrawerVisualStateBlock)slideAndScaleVisualStateBlock
 {
   MMDrawerControllerDrawerVisualStateBlock visualStateBlock = ^(MMDrawerController *drawerController, MMDrawerSide drawerSide, CGFloat percentVisible) {
-
     if (drawerSide == MMDrawerSideNone) {
       return;
     }
@@ -48,7 +47,6 @@
 + (MMDrawerControllerDrawerVisualStateBlock)swingingDoorVisualStateBlock
 {
   MMDrawerControllerDrawerVisualStateBlock visualStateBlock = ^(MMDrawerController *drawerController, MMDrawerSide drawerSide, CGFloat percentVisible) {
-
     if (drawerSide == MMDrawerSideNone) {
       return;
     }
@@ -110,7 +108,6 @@
 + (MMDrawerControllerDrawerVisualStateBlock)fadeVisualStateBlock
 {
   MMDrawerControllerDrawerVisualStateBlock visualStateBlock = ^(MMDrawerController *drawerController, MMDrawerSide drawerSide, CGFloat percentVisible) {
-
     if (drawerSide == MMDrawerSideNone) {
       return;
     }
@@ -136,7 +133,6 @@
 + (MMDrawerControllerDrawerVisualStateBlock)slideVisualStateBlock
 {
   MMDrawerControllerDrawerVisualStateBlock visualStateBlock = ^(MMDrawerController *drawerController, MMDrawerSide drawerSide, CGFloat percentVisible) {
-
     if (drawerSide == MMDrawerSideNone) {
       return;
     }
@@ -177,7 +173,6 @@
 + (MMDrawerControllerDrawerVisualStateBlock)parallax3VisualStateBlock
 {
   MMDrawerControllerDrawerVisualStateBlock visualStateBlock = ^(MMDrawerController *drawerController, MMDrawerSide drawerSide, CGFloat percentVisible) {
-
     if (drawerSide == MMDrawerSideNone) {
       return;
     }
@@ -217,7 +212,6 @@
 + (MMDrawerControllerDrawerVisualStateBlock)parallax5VisualStateBlock
 {
   MMDrawerControllerDrawerVisualStateBlock visualStateBlock = ^(MMDrawerController *drawerController, MMDrawerSide drawerSide, CGFloat percentVisible) {
-
     if (drawerSide == MMDrawerSideNone) {
       return;
     }
@@ -258,7 +252,6 @@
 + (MMDrawerControllerDrawerVisualStateBlock)parallax7VisualStateBlock
 {
   MMDrawerControllerDrawerVisualStateBlock visualStateBlock = ^(MMDrawerController *drawerController, MMDrawerSide drawerSide, CGFloat percentVisible) {
-
     if (drawerSide == MMDrawerSideNone) {
       return;
     }

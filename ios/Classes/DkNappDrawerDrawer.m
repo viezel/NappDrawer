@@ -36,6 +36,8 @@ UINavigationController *NavigationControllerForViewProxy(TiUIiOSNavWindowProxy *
 
 @implementation DkNappDrawerDrawer
 
+#pragma mark - Accessibility
+
 - (id)accessibilityElement
 {
   return controllerView_;
@@ -82,6 +84,8 @@ UINavigationController *NavigationControllerForViewProxy(TiUIiOSNavWindowProxy *
   return [[self accessibleElements] indexOfObject:element];
 }
 
+#pragma mark - Init
+
 - (MMDrawerController *)controller
 {
   if (controller == nil) {
@@ -100,23 +104,59 @@ UINavigationController *NavigationControllerForViewProxy(TiUIiOSNavWindowProxy *
     __weak __typeof__(self) weakSelf = self;
 
     if (leftWindow != nil) {
+
+      //both left and right
       if (rightWindow != nil) {
-        //both left and right
+
+        TiViewController *leftController = ControllerForViewProxy(leftWindow);
+        TiViewController *rightController = ControllerForViewProxy(rightWindow);
+
+        TiUIiOSNavWindowProxy *centerProxy = [self.proxy valueForUndefinedKey:@"centerWindow"];
+
+        TiThreadPerformOnMainThread(^{
+          [centerProxy windowWillOpen];
+          [centerProxy windowDidOpen];
+        },
+            YES);
+
         controller = [[CustomMMDrawerController alloc] initWithCenterViewController:centerWindow
-                                                           leftDrawerViewController:ControllerForViewProxy(leftWindow)
-                                                          rightDrawerViewController:ControllerForViewProxy(rightWindow)];
-      } else {
+                                                           leftDrawerViewController:leftController
+                                                          rightDrawerViewController:rightController];
         //left only
+      } else {
+
+        TiViewController *leftController = ControllerForViewProxy(leftWindow);
+
+        TiUIiOSNavWindowProxy *centerProxy = [self.proxy valueForUndefinedKey:@"centerWindow"];
+
+        TiThreadPerformOnMainThread(^{
+          [centerProxy windowWillOpen];
+          [centerProxy windowDidOpen];
+        },
+            YES);
+
         controller = [[CustomMMDrawerController alloc] initWithCenterViewController:centerWindow
-                                                           leftDrawerViewController:ControllerForViewProxy(leftWindow)];
+                                                           leftDrawerViewController:leftController];
       }
-    } else if (rightWindow != nil) {
       //right only
+    } else if (rightWindow != nil) {
+
+      TiViewController *rightController = ControllerForViewProxy(rightWindow);
+
+      TiUIiOSNavWindowProxy *centerProxy = [self.proxy valueForUndefinedKey:@"centerWindow"];
+
+      TiThreadPerformOnMainThread(^{
+        [centerProxy windowWillOpen];
+        [centerProxy windowDidOpen];
+      },
+          YES);
+
       controller = [[CustomMMDrawerController alloc] initWithCenterViewController:centerWindow
-                                                        rightDrawerViewController:ControllerForViewProxy(rightWindow)];
-    } else {
+                                                        rightDrawerViewController:rightController];
+
       //error
-      NSLog(@"[ERROR] NappDrawer: No windows assigned");
+    } else {
+      NSLog(@"[ERROR][DkNappDrawerDrawer] No windows assigned");
       return nil;
     }
 
@@ -174,7 +214,7 @@ UINavigationController *NavigationControllerForViewProxy(TiUIiOSNavWindowProxy *
       } else if ([state isEqualToString:@"close"]) {
         [[strongSelf proxy] fireEvent:@"windowDidClose"];
       }
-      
+
       [strongSelf _fireStateEventForCurrentState];
     }];
 
@@ -213,7 +253,7 @@ UINavigationController *NavigationControllerForViewProxy(TiUIiOSNavWindowProxy *
   [super frameSizeChanged:frame bounds:bounds];
 }
 
-// PROPERTIES
+#pragma mark - Properties
 
 - (void)setCenterWindow_:(id)args
 {
@@ -223,12 +263,21 @@ UINavigationController *NavigationControllerForViewProxy(TiUIiOSNavWindowProxy *
     useNavController = YES;
   }
   UIViewController *centerWindow = useNavController ? NavigationControllerForViewProxy([self.proxy valueForUndefinedKey:@"centerWindow"]) : ControllerForViewProxy([self.proxy valueForUndefinedKey:@"centerWindow"]);
+  if (useNavController) {
+    TiUIiOSNavWindowProxy *centerProxy = [self.proxy valueForUndefinedKey:@"centerWindow"];
+
+    if (controller != nil) {
+      [centerProxy windowWillOpen];
+      [centerProxy windowDidOpen];
+    }
+  }
+
   [controller setCenterViewController:centerWindow];
 
   // Cleanup
   if (useNavController) {
     if (navProxy != nil) {
-      NSLog(@"[DEBUG| Destroying old nav proxy");
+      [navProxy windowWillClose];
       [navProxy windowDidClose];
     }
     // Save new proxy
@@ -329,11 +378,12 @@ UINavigationController *NavigationControllerForViewProxy(TiUIiOSNavWindowProxy *
 
 - (UIStatusBarStyle)preferredStatusBarStyle
 {
-  if (self.controller.showsStatusBarBackgroundView) {
-    return UIStatusBarStyleLightContent;
-  } else {
-    return UIStatusBarStyleDefault;
-  }
+  return [controller preferredStatusBarStyle];
+}
+
+- (UIViewController *)childViewControllerForStatusBarStyle
+{
+  return nil;
 }
 
 - (void)setStatusBarStyle_:(NSNumber *)style
@@ -354,7 +404,6 @@ UINavigationController *NavigationControllerForViewProxy(TiUIiOSNavWindowProxy *
     [controller setDrawerVisualStateBlock:[NappDrawerVisualState slideVisualStateBlock]];
     break;
   case 3:
-    //[controller setDrawerVisualStateBlock:[NappDrawerVisualState swingingDoorVisualStateBlock]];
     [controller setDrawerVisualStateBlock:[NappDrawerVisualState noneVisualStateBlock]];
     break;
   case 4:
@@ -377,7 +426,8 @@ UINavigationController *NavigationControllerForViewProxy(TiUIiOSNavWindowProxy *
   }
 }
 
-// API
+#pragma mark - API
+
 - (void)toggleLeftWindow:(id)args
 {
   ENSURE_UI_THREAD(toggleLeftWindow, args);
@@ -416,6 +466,8 @@ UINavigationController *NavigationControllerForViewProxy(TiUIiOSNavWindowProxy *
 {
   return NUMBOOL(controller.openSide == MMDrawerSideRight);
 }
+
+#pragma mark - Events
 
 // Little hack to propagate focus/blur events
 - (void)_fireStateEventForCurrentState
