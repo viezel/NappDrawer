@@ -150,7 +150,7 @@ public class DrawerProxy extends TiWindowProxy implements TiActivityWindow
 		// Push the tab group onto the window stack. It needs to intercept
 		// stack changes to properly dispatch tab focus and blur events
 		// when windows open and close on top of it.
-		activity.addWindowToStack(this);
+		// activity.addWindowToStack(this);
 	}
 
 	@Override
