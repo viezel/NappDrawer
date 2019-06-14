@@ -7,7 +7,6 @@ import android.content.Context;
 import android.graphics.Canvas;
 import android.graphics.Rect;
 import android.os.Build;
-import android.support.v4.view.KeyEventCompat;
 import android.support.v4.view.MotionEventCompat;
 import android.support.v4.view.VelocityTrackerCompat;
 import android.support.v4.view.ViewCompat;
@@ -427,7 +426,7 @@ public class CustomViewAbove extends ViewGroup {
 	}
 
 	public void setContent(View v) {
-		if (mContent != null) 
+		if (mContent != null)
 			this.removeView(mContent);
 		mContent = v;
 		if(v != null){
@@ -478,7 +477,7 @@ public class CustomViewAbove extends ViewGroup {
 	public void setAboveOffset(int i) {
 		//		RelativeLayout.LayoutParams params = ((RelativeLayout.LayoutParams)mContent.getLayoutParams());
 		//		params.setMargins(i, params.topMargin, params.rightMargin, params.bottomMargin);
-		mContent.setPadding(i, mContent.getPaddingTop(), 
+		mContent.setPadding(i, mContent.getPaddingTop(),
 				mContent.getPaddingRight(), mContent.getPaddingBottom());
 	}
 
@@ -696,7 +695,7 @@ public class CustomViewAbove extends ViewGroup {
 			mLastMotionX = mInitialMotionX = ev.getX();
 			break;
 		case MotionEvent.ACTION_MOVE:
-			if (!mIsBeingDragged) {	
+			if (!mIsBeingDragged) {
 				determineDrag(ev);
 				if (mIsUnableToDrag)
 					return false;
@@ -741,7 +740,7 @@ public class CustomViewAbove extends ViewGroup {
 					final int totalDelta = (int) (x - mInitialMotionX);
 					int nextPage = determineTargetPage(pageOffset, initialVelocity, totalDelta);
 					setCurrentItemInternal(nextPage, true, true, initialVelocity);
-				} else {	
+				} else {
 					setCurrentItemInternal(mCurItem, true, true, initialVelocity);
 				}
 				mActivePointerId = INVALID_POINTER;
@@ -775,7 +774,7 @@ public class CustomViewAbove extends ViewGroup {
 		}
 		return true;
 	}
-	
+
 	private void determineDrag(MotionEvent ev) {
 		final int activePointerId = mActivePointerId;
 		final int pointerIndex = getPointerIndex(ev, activePointerId);
@@ -787,7 +786,7 @@ public class CustomViewAbove extends ViewGroup {
 		final float y = MotionEventCompat.getY(ev, pointerIndex);
 		final float dy = y - mLastMotionY;
 		final float yDiff = Math.abs(dy);
-		if (xDiff > (isMenuOpen()?mTouchSlop/2:mTouchSlop) && xDiff > yDiff && thisSlideAllowed(dx)) {		
+		if (xDiff > (isMenuOpen()?mTouchSlop/2:mTouchSlop) && xDiff > yDiff && thisSlideAllowed(dx)) {
 			startDrag();
 			mLastMotionX = x;
 			mLastMotionY = y;
@@ -802,8 +801,8 @@ public class CustomViewAbove extends ViewGroup {
 	public void scrollTo(int x, int y) {
 		super.scrollTo(x, y);
 		mScrollX = x;
-		mViewBehind.scrollBehindTo(mContent, x, y);	
-		
+		mViewBehind.scrollBehindTo(mContent, x, y);
+
 		// TODO NAPP: fix this
 		//((SlidingMenu)getParent()).manageLayers(getPercentOpen());
 	}
@@ -947,9 +946,9 @@ public class CustomViewAbove extends ViewGroup {
 				if (Build.VERSION.SDK_INT >= 11) {
 					// The focus finder had a bug handling FOCUS_FORWARD and FOCUS_BACKWARD
 					// before Android 3.0. Ignore the tab key on those devices.
-					if (KeyEventCompat.hasNoModifiers(event)) {
+					if (event.hasNoModifiers()) {
 						handled = arrowScroll(FOCUS_FORWARD);
-					} else if (KeyEventCompat.hasModifiers(event, KeyEvent.META_SHIFT_ON)) {
+					} else if (event.hasModifiers(KeyEvent.META_SHIFT_ON)) {
 						handled = arrowScroll(FOCUS_BACKWARD);
 					}
 				}
