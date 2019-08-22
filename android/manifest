@@ -2,7 +2,7 @@
 # this is your module manifest and used by Titanium
 # during compilation, packaging, distribution, etc.
 #
-version: 2.0.3
+version: 2.0.4
 apiversion: 4
 description: Napp Drawer
 author: Mads Moller
