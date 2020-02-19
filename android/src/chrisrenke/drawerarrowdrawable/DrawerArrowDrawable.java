@@ -33,7 +33,6 @@ import static android.graphics.Paint.Cap.BUTT;
 import static android.graphics.Paint.Cap.ROUND;
 import static android.graphics.Paint.SUBPIXEL_TEXT_FLAG;
 import static android.graphics.Paint.Style.STROKE;
-import static android.graphics.PixelFormat.TRANSLUCENT;
 import static java.lang.Math.sqrt;
 
 /** A drawable that rotates between a drawer icon and a back arrow based on parameter. */
@@ -259,18 +258,22 @@ public class DrawerArrowDrawable extends Drawable {
     if (flip) canvas.restore();
   }
 
-  @Override public void setAlpha(int alpha) {
+  @Override
+  public void setAlpha(int alpha) {
     linePaint.setAlpha(alpha);
     invalidateSelf();
   }
 
-  @Override public void setColorFilter(ColorFilter cf) {
+  @Override
+  public void setColorFilter(ColorFilter cf) {
     linePaint.setColorFilter(cf);
     invalidateSelf();
   }
 
-  @Override public int getOpacity() {
-    return TRANSLUCENT;
+  @Deprecated
+  @Override
+  public int getOpacity() {
+    return android.graphics.PixelFormat.TRANSLUCENT;
   }
 
   public void setStrokeColor(int color) {

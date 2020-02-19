@@ -1,12 +1,6 @@
 package com.slidingmenu.lib;
 
 import java.lang.reflect.Method;
-
-
-
-
-//import android.annotation.SuppressLint;
-//import android.annotation.TargetApi;
 import android.app.Activity;
 import android.content.Context;
 import android.content.res.TypedArray;
@@ -216,7 +210,7 @@ public class SlidingMenu extends RelativeLayout {
 	 */
 	public SlidingMenu(Activity activity, int slideStyle) {
 		this(activity, null);
-		updateSystemUiVisibility((Activity) activity);
+		updateSystemUiVisibility(activity);
 		this.attachToActivity(activity, slideStyle);
 	}
 
@@ -1045,6 +1039,7 @@ public class SlidingMenu extends RelativeLayout {
 	 */
 	
 	//@SuppressLint("NewApi")
+	@Deprecated
 	@Override
 	protected boolean fitSystemWindows(Rect insets) {
 		int leftPadding = insets.left;
