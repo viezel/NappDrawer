@@ -41,11 +41,11 @@ function createAPIExampleWindow() {
         break;
       case 3:
         var newWin = openNewNavWindow();
-        drawer.setCenterWindow(newWin);
+        drawer.centerWindow = newWin;
         drawer.toggleLeftWindow();
         break;
       case 4:
-        drawer.setCenterWindow(createCenterNavWindow());
+        drawer.centerWindow = createCenterNavWindow();
         drawer.toggleLeftWindow();
         break;
       case 5:
@@ -99,7 +99,7 @@ function openNewNavWindow() {
     scrollView.add(label);
   }
   win.add(scrollView);
-  var navController = Ti.UI.iOS.createNavigationWindow({
+  var navController = Ti.UI.createNavigationWindow({
     window: win
   });
   return navController;
@@ -226,7 +226,7 @@ function createCenterNavWindow() {
   win.add(label);
   win.add(slider);
 
-  var navController = Ti.UI.iOS.createNavigationWindow({
+  var navController = Ti.UI.createNavigationWindow({
     window: win
   });
   return navController;
